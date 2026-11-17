@@ -786,7 +786,7 @@ input[type=range]{width:100%;accent-color:var(--primary);min-height:24px}
 .tray h3{font:700 14px var(--font-title);color:var(--warn-tx);margin-bottom:2px}
 .tray p{font-size:12px;color:var(--muted);margin-bottom:8px}
 
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border:1px solid var(--border);border-radius:22px;overflow:hidden;background:var(--panel);padding:3px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;border:1px solid var(--border);border-radius:22px;overflow:hidden;background:var(--panel);padding:3px}
 .seg button{background:transparent;border:0;border-radius:999px;padding:6px 4px;font-size:12.5px;font-weight:700;min-height:34px;color:var(--text);transition:background .15s,color .15s}
 .seg button:hover{background:var(--panel-2)}
 .seg button.on{background:var(--primary);color:var(--primary-tx)}
@@ -809,6 +809,47 @@ input[type=range]{width:100%;accent-color:var(--primary);min-height:24px}
 .s-amb{font-size:12px;color:#4b4a7a;background:#ecebf5;border-radius:9px;padding:2px 8px;margin:4px 0 0;font-weight:600}
 .gone{font-size:13px;font-weight:700;color:var(--danger);background:#fbe9e4;border-radius:12px;padding:7px 10px;margin:0 0 8px}
 .d-src a{word-break:break-all}
+/* ---- Grupos (actualización 6) ---- */
+#gbar{position:fixed;z-index:510;top:72px;left:374px;right:408px;pointer-events:none;display:flex;align-items:flex-start;gap:6px}
+.gb-ind{flex:none;pointer-events:auto;padding:4px 2px 6px} .gb-ind:empty{display:none}
+.gb-in{flex:1 1 auto;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px 2px 6px;pointer-events:auto;-webkit-overflow-scrolling:touch}
+.gb-in::-webkit-scrollbar{display:none}
+.gp{--c:var(--primary);flex:none;display:inline-flex;align-items:center;gap:5px;min-height:44px;padding:0 13px;border-radius:999px;border:1.5px solid var(--border);
+  background:rgba(255,253,246,.92);color:var(--muted);font:600 13.5px var(--font-body);white-space:nowrap;box-shadow:var(--shadow-sm);transition:background .15s,border-color .15s,color .15s,opacity .15s;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:pan-x}
+.gp .ge{opacity:.4;filter:grayscale(1);font-size:16px;line-height:1}
+.gp i{font-style:normal;font-size:12px;opacity:.8}
+.gp.on{background:color-mix(in srgb,var(--c) 18%,var(--panel));border-color:var(--c);color:var(--text)} .gp.on .ge{opacity:1;filter:none}
+.gp.part{background:color-mix(in srgb,var(--c) 9%,var(--panel))} .gp .gpart{color:var(--c);font-size:12px}
+.gp.solo{box-shadow:0 0 0 3px rgba(217,164,65,.45),var(--shadow-sm)}
+.gp-fix{color:var(--text);font-weight:700} .gp-fix.on{background:var(--primary);border-color:var(--primary);color:var(--primary-tx)}
+.gp-ind{background:#fbf0d9;border-color:#ecd9ad;color:#8a5a14;font-weight:700}
+.gsec{border:1px solid var(--border);border-radius:16px;background:var(--panel-2);padding:0 10px}
+.gsec summary{cursor:pointer;font:700 15px var(--font-title);padding:10px 2px;list-style-position:inside} .gsec summary i{font:600 12.5px var(--font-body);color:var(--muted);font-style:normal}
+.gsec[open]{padding-bottom:10px}
+.g-acts{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px} .g-acts .btn{flex:1;min-height:40px}
+.g-tree,.g-subs{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:4px}
+.g-subs{margin:2px 0 6px 26px}
+.g-item{border-left:4px solid var(--c);border-radius:12px;background:var(--panel);padding:2px 4px 2px 8px}
+.g-row{display:flex;align-items:center;gap:4px}
+.sw{display:flex;align-items:center;gap:9px;flex:1;min-width:0;min-height:44px;cursor:pointer;font-size:13.5px}
+.sw input{position:absolute;opacity:0;width:1px;height:1px}
+.sw-ui{flex:none;width:38px;height:22px;border-radius:999px;background:var(--border);position:relative;transition:background .15s}
+.sw-ui::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);transition:transform .15s}
+.sw input:checked+.sw-ui{background:var(--primary)} .sw input:checked+.sw-ui::after{transform:translateX(16px)}
+.sw input:focus-visible+.sw-ui{outline:2px solid var(--primary);outline-offset:2px}
+.sw .g-lb{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis} .sw .g-lb small{color:var(--muted)}
+.sw i{font-style:normal;font-size:12px;color:var(--muted);padding-right:4px}
+.sw.sm{min-height:40px;font-size:13px}
+.g-exp{transition:transform .15s} .g-exp.open{transform:rotate(90deg)} .g-exp-sp{width:30px;flex:none}
+.mf-h{font:700 14px var(--font-title);color:var(--text);margin-bottom:2px}
+.gtray{border-color:var(--border);background:var(--panel-2)} .gtray h3{color:var(--text)}
+.gh{margin-bottom:8px} .gh .card{margin-bottom:4px;opacity:.75} .gshow{width:100%;min-height:40px;font-size:13px}
+.mk.pinned{opacity:.55}
+.mk.fadein{animation:mkin .3s ease-out}
+@keyframes mkin{from{opacity:0;transform:translate(var(--dx,0px),var(--dy,0px)) scale(.6)}}
+@media (min-width:761px) and (max-width:1180px){ #gbar{right:12px} #panel-agenda{top:130px;max-height:calc(100vh - 204px)} }
+@media (min-width:761px){ #detail{top:130px;max-height:calc(100vh - 154px)} }
 #subF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #foodF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #ftChips,#fgChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--sb) transparent;padding-bottom:4px}
@@ -1007,6 +1048,9 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   .grab::after{content:"";position:absolute;left:50%;top:9px;width:38px;height:4px;border-radius:4px;background:var(--border);transform:translateX(-50%)}
   #panel-agenda .phead{cursor:default;touch-action:auto}
   #mapbtns{right:8px;top:68px;bottom:auto;flex-direction:column}
+  /* móvil: arriba no cabe sin tapar los botones del mapa → encima de la barra inferior; las hojas la tapan al abrirse */
+  #gbar{top:auto;bottom:calc(58px + env(safe-area-inset-bottom));left:0;right:0;z-index:495} .gb-in{padding:6px 8px 6px} .gb-ind{padding:6px 8px 6px 0}
+  .leaflet-bottom{bottom:calc(114px + env(safe-area-inset-bottom))!important}
   #mapbtns .btn.keep .lb{display:none}
   #mapbtns .btn{min-width:44px;width:44px;height:44px;padding:0;border-radius:50%}
   #mobnav{position:fixed;left:0;right:0;bottom:0;z-index:700;display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));
@@ -1014,7 +1058,7 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   #mobnav .btn{min-height:46px;font-weight:700;border-radius:999px;color:var(--text)}
   body.sh-opts #mobnav [data-toggle=opts],body.sh-agenda #mobnav [data-toggle=agenda]{background:var(--primary);border-color:var(--primary);color:var(--primary-tx)}
   .leaflet-bottom{bottom:calc(58px + env(safe-area-inset-bottom))}
-  #toasts{bottom:calc(70px + env(safe-area-inset-bottom))}
+  #toasts{bottom:calc(122px + env(safe-area-inset-bottom))}
   .toast{border-radius:var(--radius)}
   #modal-root{align-items:flex-end;padding:0}
   .modal{width:100%;border-radius:var(--radius-lg) var(--radius-lg) 0 0;max-height:88vh;padding-bottom:calc(16px + env(safe-area-inset-bottom))}
@@ -1055,6 +1099,8 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
     <button class="btn" data-tb="help" title="Ayuda y atajos (?)" aria-label="Ayuda">❔ <span class="lb">Ayuda</span></button>
   </div>
 </header>
+<!-- Barra rápida de grupos (actualización 6) -->
+<nav id="gbar" aria-label="Grupos de iconos del mapa"><div id="gbIn" class="gb-in"></div><div id="gbInd" class="gb-ind"></div></nav>
 <button id="exitFS" class="btn glass">✕ Salir de pantalla completa</button>
 <input type="file" id="importFile" accept="application/json,.json" hidden>
 
@@ -1067,13 +1113,22 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   </div>
   <div class="pbody">
     <div class="filters">
+      <details id="gSec" class="gsec"><summary>🎛️ Filtros <i id="gSum"></i></summary>
+        <div class="g-acts"><button type="button" class="btn" data-ga="all">✅ Activar todo</button><button type="button" class="btn" data-ga="none">⬜ Desactivar todo</button></div>
+        <label class="ck"><input type="checkbox" id="fMine"> 📌 Mostrar siempre lo de mi agenda (y favoritas)</label>
+        <ul id="gTree" class="g-tree"></ul>
+      </details>
       <input id="q" type="search" placeholder="Buscar nombre, etiqueta, dirección…  ( / )" aria-label="Buscar opciones" autocomplete="off">
       <div id="scopeSeg" class="seg" role="group" aria-label="Qué mostrar">
-        <button data-scope="all">Todo</button><button data-scope="ocio">Solo ocio</button><button data-scope="comida">Solo comida</button><button data-scope="super">Solo súper</button><button data-scope="peluqueria">Solo peluquería</button><button data-scope="farmacia">Solo farmacia</button><button data-scope="noche">Solo noche</button>
+        <button data-scope="all">Todo</button><button data-scope="ocio">Solo ocio</button><button data-scope="comida">Solo comida</button><button data-scope="super">Solo súper</button><button data-scope="peluqueria">Solo peluquería</button><button data-scope="farmacia">Solo farmacia</button><button data-scope="noche">Solo noche</button><button data-scope="servicios">Solo servicios</button><button data-scope="beber">Comer y beber</button>
       </div>
-      <div id="catChips" class="chips" role="group" aria-label="Filtrar por categoría"></div>
+      <div id="catChips" class="chips" role="group" aria-label="Filtrar por categoría" hidden></div>
+       <div class="resn"><span id="resN"></span><button id="moreF" class="lnk" aria-expanded="false" aria-controls="extraF">⚙️ Más filtros (F)</button></div>
+      <div id="extraF" hidden>
+        <p class="mf-h">⚙️ Más filtros</p>
+      <label class="ck" title="Muestra lo barato o barato-medio; lo que no tiene presupuesto (farmacias, sitios anteriores) se queda"><input type="checkbox" id="fCheap"> 💶 Solo barato</label>
       <div id="foodF" hidden>
-        <div id="ftChips" class="chips" role="group" aria-label="Tipo de comida"></div>
+        <div id="ftChips" class="chips" role="group" aria-label="Tipo de comida" hidden></div>
         <div id="fgChips" class="chips" role="group" aria-label="Filtros de comida"></div>
         <details class="info"><summary>ℹ️ Cómo funciona</summary>
           <p><b>Tapa gratis:</b> con cada consumición (caña, vino, vermut) suelen servir una tapa; en algunos locales se elige y en otros es sorpresa.</p>
@@ -1081,21 +1136,18 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
           <p><b>Avisos:</b> algunas guías dicen que en la Calle Navas y alrededor de Plaza Nueva hay bares muy turísticos; revisa la carta antes de sentarte. Las valoraciones y los horarios son de Google Maps y orientativos: todos los locales de comida están «por verificar».</p>
         </details>
       </div>
-      <label class="ck" title="Muestra lo barato o barato-medio; lo que no tiene presupuesto (farmacias, sitios anteriores) se queda"><input type="checkbox" id="fCheap"> 💶 Solo barato</label>
       <div id="crowdF" class="frow"><span>🪩 Ambiente del día en la noche <small style="color:var(--muted)">· estimación</small></span><div id="crowdChips" class="chips" role="group" aria-label="Ambiente del día"></div></div>
       <div id="subF" hidden>
-        <div id="subChips" class="chips" role="group" aria-label="Subtipos"></div>
+        <div id="subChips" class="chips" role="group" aria-label="Subtipos" hidden></div>
         <div id="nightChips" class="chips" role="group" aria-label="Opciones de la noche" hidden></div>
         <p class="s-note" id="pharmaNote" hidden>💊 Las farmacias de guardia cambian cada día: comprobad la de hoy en la web del Colegio de Farmacéuticos de Granada.</p>
       </div>
       <div id="superF" hidden>
-        <div id="stoChips" class="chips" role="group" aria-label="Tipo de tienda"></div>
+        <div id="stoChips" class="chips" role="group" aria-label="Tipo de tienda" hidden></div>
         <div id="brChips" class="chips" role="group" aria-label="Marca"></div>
         <div id="sgChips" class="chips" role="group" aria-label="Filtros de supermercados"></div>
         <p class="s-note">🛒 Los horarios son de Google y pueden variar; el domingo muchas tiendas cierran.</p>
       </div>
-      <div class="resn"><span id="resN"></span><button id="moreF" class="lnk" aria-expanded="false" aria-controls="extraF">⚙️ Más filtros (F)</button></div>
-      <div id="extraF" hidden>
         <div class="frow"><span>Estado</span><div id="stChips" class="chips" role="group" aria-label="Filtrar por estado"></div></div>
         <div class="frow"><label for="km">Distancia máxima al hotel: <b id="kmV"></b></label><input id="km" type="range" min="0" max="3" step="0.1"></div>
         <label class="ck"><input type="checkbox" id="fFar"> Mostrar lejanas (a más de 3 km)</label>
@@ -5879,31 +5931,131 @@ function distTxt(o) {
   if (isFood(o) && o.dist >= 1) return fmtDist(o.dist) + ' · 🚕 taxi/VTC o ~' + walkMin(o.dist) + ' min a pie';
   return fmtDist(o.dist) + ' · ' + walkMin(o.dist) + ' min a pie';
 }
+/* =====================================================================
+   Grupos de iconos (actualización 6): una categoría = un grupo.
+   Estado propio en localStorage («gpns_filters_v1»); la clave antigua no se toca.
+   ===================================================================== */
+const GKEY = 'gpns_filters_v1';
+const GROUPS = DATA.categories, GIDS = GROUPS.map(c => c.id);   // se generan de los datos: las categorías futuras salen solas
+const GSHORT = {casino_salon: 'Casinos', videojuegos_vr: 'Videojuegos', escape_room: 'Escape rooms', juego_urbano: 'Detectives', bar_juegos: 'Bares y juegos',
+  tienda_friki: 'Tiendas', super: 'Súper', peluqueria: 'Peluquerías', noche: 'Noche'};
+const gShort = c => GSHORT[c.id] || c.label.split(/[,:(]| y /)[0].trim();
+function subgroupsOf(id) {   // subgrupos: foodType, storeType o subType, según la categoría
+  const mk = (list, p) => (list || []).map(s => ({k: id + ':' + s.id, id: s.id, label: s.label, emoji: s.emoji, prop: p}));
+  if (id === 'comer') return mk(DATA.foodTypes, 'foodType');
+  if (id === 'super') return mk(DATA.storeTypes, 'storeType');
+  if (DATA.subTypes && DATA.subTypes[id]) return mk(DATA.subTypes[id], 'subType');
+  return [];
+}
+const subKey = o => isFood(o) ? (o.foodType ? 'comer:' + o.foodType : null) : isSuper(o) ? (o.storeType ? 'super:' + o.storeType : null)
+  : SUBCATS.includes(o.category) && o.subType ? o.category + ':' + o.subType : null;
+const PRESETS = {
+  all: () => GIDS, ocio: () => GIDS.filter(id => !['comer', 'super', 'peluqueria', 'farmacia'].includes(id)),
+  comida: () => ['comer'], super: () => ['super'], peluqueria: () => ['peluqueria'], farmacia: () => ['farmacia'], noche: () => ['noche'],
+  servicios: () => ['farmacia', 'peluqueria', 'super'], beber: () => ['comer', 'noche']
+};
+const presetCats = k => (PRESETS[k] || PRESETS.all)().filter(id => GIDS.includes(id));
+let G = {v: 1, off: [], offSub: [], keepMine: true, solo: null};
+(function loadG() {
+  let raw = null;
+  try { raw = JSON.parse(localStorage.getItem(GKEY) || 'null'); } catch (e) { raw = null; }
+  const okSub = k => typeof k === 'string' && GIDS.includes(k.split(':')[0]);
+  if (isObj(raw)) {
+    G.off = (Array.isArray(raw.off) ? raw.off : []).filter(id => GIDS.includes(id));
+    G.offSub = (Array.isArray(raw.offSub) ? raw.offSub : []).filter(okSub);
+    G.keepMine = raw.keepMine !== false;
+    if (isObj(raw.solo) && GIDS.includes(raw.solo.id) && Array.isArray(raw.solo.off) && Array.isArray(raw.solo.offSub))
+      G.solo = {id: raw.solo.id, off: raw.solo.off.filter(id => GIDS.includes(id)), offSub: raw.solo.offSub.filter(okSub)};
+    return;
+  }
+  // primera vez: se traducen los filtros antiguos (selector, chips de categoría y de subtipo) a grupos
+  const f = state.filters, on = f.cats.length ? f.cats.filter(id => GIDS.includes(id)) : presetCats(f.scope);
+  G.off = GIDS.filter(id => !on.includes(id));
+  const inc = (id, sel) => { if (sel.length) subgroupsOf(id).forEach(s => { if (!sel.includes(s.id)) G.offSub.push(s.k); }); };
+  inc('comer', f.food || []); inc('super', f.store || []);
+  SUBCATS.forEach(c => inc(c, (f.sub || []).filter(k => k.startsWith(c + ':')).map(k => k.split(':')[1])));
+})();
+function saveG() { try { localStorage.setItem(GKEY, JSON.stringify(G)); } catch (e) { /* sin almacenamiento: se pierde al cerrar */ } }
+const groupOn = id => !G.off.includes(id);
+const subsOff = id => subgroupsOf(id).filter(s => G.offSub.includes(s.k));
+const isMine = o => isSel(o.id) || !!state.favs[o.id];
+function grpState(o) {   // 'on' | 'pinned' (de mi agenda/favoritas con su grupo apagado) | 'off'
+  const sk = subKey(o);
+  if (groupOn(cat(o).id) && !(sk && G.offSub.includes(sk))) return 'on';
+  return G.keepMine && isMine(o) ? 'pinned' : 'off';
+}
+function setGroup(id, on) {
+  G.off = G.off.filter(x => x !== id);
+  if (!on) G.off.push(id);
+  else { const ss = subgroupsOf(id); if (ss.length && ss.every(s => G.offSub.includes(s.k))) G.offSub = G.offSub.filter(k => !k.startsWith(id + ':')); }
+}
+function setSub(k, on) {
+  const id = k.split(':')[0];
+  G.offSub = G.offSub.filter(x => x !== k);
+  if (on) return setGroup(id, true);   // encender un subgrupo enciende su grupo
+  G.offSub.push(k);
+  if (subgroupsOf(id).every(s => G.offSub.includes(s.k))) setGroup(id, false);   // todos apagados → grupo apagado
+}
+function setAll(on) { G.off = on ? [] : GIDS.slice(); if (on) G.offSub = []; G.solo = null; }
+function applyPreset(k) { const on = presetCats(k); G.off = GIDS.filter(id => !on.includes(id)); G.offSub = []; G.solo = null; }
+function activePreset() {
+  if (G.offSub.length) return null;
+  const on = GIDS.filter(groupOn);
+  return ['all', 'ocio', 'comida', 'super', 'peluqueria', 'farmacia', 'noche', 'servicios', 'beber'].find(k => { const p = presetCats(k); return p.length === on.length && p.every(x => on.includes(x)); }) || null;
+}
+function soloGroup(id) {   // «solo este»; repetir el gesto sobre el mismo grupo vuelve a como estaba
+  const c = CATS[id];
+  if (G.solo && G.solo.id === id) { G.off = G.solo.off; G.offSub = G.solo.offSub; G.solo = null; toast('↩️ Grupos como estaban'); return; }
+  const base = G.solo ? {off: G.solo.off, offSub: G.solo.offSub} : {off: G.off.slice(), offSub: G.offSub.slice()};
+  G.solo = {id, ...base}; G.off = GIDS.filter(x => x !== id); G.offSub = [];
+  toast(`${c.emoji} Solo «${gShort(c)}» · mantén pulsado otra vez para volver`);
+}
+let fadeCats = null;   // grupos recién encendidos: sus marcadores aparecen con una animación suave
+function groupsChanged(prevOff) {
+  if (prevOff) fadeCats = new Set(prevOff.filter(id => groupOn(id)));
+  saveG(); renderFilters(); renderList(); renderMarkers(); fadeCats = null;
+}
+function renderGroups() {
+  const all = OPTS.filter(o => !state.hidden[o.id] || state.filters.showHidden);
+  const cnt = id => all.filter(o => cat(o).id === id).length;
+  const nOff = G.off.length, nSub = G.offSub.length;
+  // barra rápida
+  // indicador fuera de la fila desplazable: al aparecer no mueve ninguna pastilla
+  $('#gbInd').innerHTML = nOff || nSub ? `<button class="gp gp-ind" data-gb="reset" aria-label="Restablecer filtros de grupos">🎛️ ${nOff ? nOff + (nOff === 1 ? ' oculto' : ' ocultos') : ''}${nOff && nSub ? ' + ' : ''}${nSub ? nSub + ' subgr.' : ''} · <u>Restablecer</u></button>` : '';
+  $('#gbIn').innerHTML = `<button class="gp gp-fix${!nOff && !nSub ? ' on' : ''}" data-gb="all" aria-pressed="${!nOff && !nSub}">Todo</button>`
+    + `<button class="gp gp-fix${nOff === GIDS.length ? ' on' : ''}" data-gb="none" aria-pressed="${nOff === GIDS.length}">Nada</button>`
+    + GROUPS.map(c => { const on = groupOn(c.id), part = on && subsOff(c.id).length;
+      return `<button class="gp${on ? ' on' : ''}${part ? ' part' : ''}${G.solo && G.solo.id === c.id ? ' solo' : ''}" data-gb="g" data-id="${c.id}" aria-pressed="${on}" style="--c:${c.color}"
+        title="${esc(c.label)}${part ? ' (algunos subgrupos ocultos)' : ''} · toca para mostrar u ocultar · mantén pulsado o doble toque: solo este"><span class="ge">${c.emoji}</span>${esc(gShort(c))}<i>${cnt(c.id)}</i>${part ? '<b class="gpart" aria-hidden="true">◐</b>' : ''}</button>`; }).join('');
+  // panel completo
+  $('#gSum').textContent = nOff || nSub ? `· ${GIDS.length - nOff} de ${GIDS.length} grupos${nSub ? ', ' + nSub + ' subgrupos ocultos' : ''}` : `· ${GIDS.length} grupos, todos visibles`;
+  $('#fMine').checked = G.keepMine;
+  $('#gTree').innerHTML = GROUPS.map(c => {
+    const on = groupOn(c.id), ss = subgroupsOf(c.id), open = gOpen.has(c.id), part = on && subsOff(c.id).length;
+    return `<li class="g-item" style="--c:${c.color}"><div class="g-row">
+      <label class="sw"><input type="checkbox" data-gt="${c.id}"${on ? ' checked' : ''}><span class="sw-ui" aria-hidden="true"></span><span class="g-lb">${c.emoji} ${esc(c.label)}${part ? ' <small>(parcial)</small>' : ''}</span><i>${cnt(c.id)}</i></label>
+      ${ss.length ? `<button type="button" class="ib sm g-exp${open ? ' open' : ''}" data-gx="${c.id}" aria-expanded="${open}" aria-label="Subgrupos de ${esc(c.label)}">▸</button>` : '<span class="g-exp-sp"></span>'}</div>
+      ${ss.length && open ? `<ul class="g-subs">${ss.map(s => `<li><label class="sw sm"><input type="checkbox" data-gs="${s.k}"${on && !G.offSub.includes(s.k) ? ' checked' : ''}><span class="sw-ui" aria-hidden="true"></span><span class="g-lb">${s.emoji} ${esc(s.label)}</span><i>${all.filter(o => cat(o).id === c.id && o[s.prop] === s.id).length}</i></label></li>`).join('')}</ul>` : ''}</li>`;
+  }).join('');
+}
+const gOpen = new Set();
 function crowdDay() { return state.ui.crowd || (state.ui.day ? wdOf(state.ui.day) : todayWd()); }
-function pasa(o) {   // ¿supera los filtros activos?
+function pasa(o, ignoreGroups) {   // ¿supera los filtros activos? (ignoreGroups: para buscar también en grupos ocultos)
   const f = state.filters;
   if (state.hidden[o.id] && !f.showHidden) return false;
   const food = isFood(o), sup = isSuper(o);
-  if ((f.scope === 'ocio' && (food || sup || isSvc(o))) || (f.scope === 'comida' && !food) || (f.scope === 'super' && !sup)) return false;
-  if (SUBCATS.includes(f.scope) && o.category !== f.scope) return false;
+  if (!ignoreGroups && grpState(o) === 'off') return false;
   if (f.hideClosedNight && o.category === 'noche') { const c = crowdOf(o, crowdDay()); if (c && c.level === 0) return false; }
   if (f.cheap && !cheapOK(o)) return false;
-  if (SUBCATS.includes(o.category)) {   // subfiltros por subtipo: solo afectan a su propia categoría
-    const mine = f.sub.filter(k => k.startsWith(o.category + ':'));
-    if (mine.length && !mine.includes(o.category + ':' + o.subType)) return false;
-  }
   if (sup) {   // subfiltros de supermercados: no afectan al ocio ni a la comida
-    if (f.store.length && !f.store.includes(o.storeType)) return false;
     if (f.brand.length && !f.brand.includes(o.brand)) return false;
     if (f.sLate && !o.lateNight) return false;
     if (f.sWalk && !((o.distanceKmFromHotel ?? o.dist ?? 99) <= WALK_KM)) return false;
   }
   if (food) {   // subfiltros de comida: no afectan al ocio
-    if (f.food.length && !f.food.includes(o.foodType)) return false;
     if ((f.late && !o.lateNight) || (f.tapa && !o.freeTapa) || (f.cash && !o.cashOnly)) return false;
   }
   if (f.q) { const hay = norm([o.name, o.address, (o.tags || []).join(' '), cat(o).label, (FOOD[o.foodType] || {}).label, o.brand, (STORE[o.storeType] || {}).label, (subOf(o) || {}).label].join(' ')); if (!norm(f.q).split(/\s+/).filter(Boolean).every(t => hay.includes(t))) return false; }
-  if (f.cats.length && !f.cats.includes(cat(o).id)) return false;
   if (f.status.length && !f.status.includes(o.status)) return false;
   if (f.onlySel && !isSel(o.id)) return false;
   if (f.onlyFav && !state.favs[o.id]) return false;
@@ -5953,8 +6105,10 @@ let routeDay = null;     // día cuya ruta se está dibujando (o null)
 let bounceId = null;     // marcador que debe rebotar en el siguiente pintado
 let detailId = null;     // opción abierta en la tarjeta de detalle
 
-function markerHTML(o, as, nums) {
+function markerHTML(o, as, nums, gs) {
   const c = cat(o), cls = ['mk'];
+  if (gs === 'pinned') cls.push('pinned');
+  if (fadeCats && fadeCats.has(c.id)) cls.push('fadein');
   if (small(o)) cls.push('food');
   if (isSuper(o)) cls.push('shop');
   if (o.far) cls.push('far');
@@ -5973,29 +6127,37 @@ function markerHTML(o, as, nums) {
     + (nums ? `<span class="mk-n">${nums.join(',')}</span>` : '')
     + (cw ? `<span class="mk-lv" style="--lv:${CROWD_COL[cw.level] || '#fffdf6'}" title="${esc(cw.label)} (estimación)">${cw.level ? cw.level + '/5' : '—'}</span>` : '') + '</div>';
 }
+const catLayers = {}, pinLayer = L.layerGroup().addTo(map), offLayer = L.layerGroup(), home = {};   // offLayer nunca va al mapa
+const layerFor = id => catLayers[id] || (catLayers[id] = L.layerGroup().addTo(map));
 function renderMarkers() {
   const seen = {}, nums = {};
   if (routeDay) stopsOf(routeDay).forEach((x, i) => (nums[x.o.id] = nums[x.o.id] || []).push(i + 1));
   OPTS.forEach(o => {
-    if (!o.located || !pasa(o)) return;
+    if (!o.located || !pasa(o, true)) return;
+    const gs = grpState(o), cid = cat(o).id;
+    // grupo apagado → su capa sale del mapa; subgrupo apagado con el grupo encendido → capa oculta; lo mío → capa fija
+    const target = gs === 'pinned' ? pinLayer : groupOn(cid) ? (gs === 'on' ? layerFor(cid) : offLayer) : layerFor(cid);
     const as = assignsOf(o.id);
     // con «Ruta del día» activa se ocultan los sitios asignados solo a otros días
     if (routeDay && as.some(a => a.day) && !as.some(a => a.day === routeDay)) return;
     seen[o.id] = 1;
     const sz = small(o) ? 32 : 40;   // comida y supermercados van más pequeños para no tapar el ocio
-    const icon = L.divIcon({className: 'mk-wrap', html: markerHTML(o, as, nums[o.id]), iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2]});
+    const icon = L.divIcon({className: 'mk-wrap', html: markerHTML(o, as, nums[o.id], gs), iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2]});
     let m = markers[o.id];
     if (!m) {
-      m = markers[o.id] = L.marker([o.lat, o.lng], {icon, draggable: !state.ui.lock, title: o.name, alt: o.name, riseOnHover: true, autoPan: true, zIndexOffset: small(o) ? -200 : 0}).addTo(map);
+      m = markers[o.id] = L.marker([o.lat, o.lng], {icon, draggable: !state.ui.lock, title: o.name, alt: o.name, riseOnHover: true, autoPan: true, zIndexOffset: small(o) ? -200 : 0});
+      target.addLayer(m); home[o.id] = target;
       m.on('click', () => { if (!pick) openDetail(o.id); });
       m.on('dragend', () => { const ll = m.getLatLng(); commit(() => setPin(o.id, ll)); toast('📍 Pin movido', {label: 'Deshacer', fn: undo}); });
     } else {
       m.options.title = m.options.alt = o.name;
+      if (home[o.id] !== target) { home[o.id].removeLayer(m); target.addLayer(m); home[o.id] = target; }
       m.setLatLng([o.lat, o.lng]); m.setIcon(icon);
       if (m.dragging) state.ui.lock ? m.dragging.disable() : m.dragging.enable();
     }
   });
-  for (const id in markers) if (!seen[id]) { map.removeLayer(markers[id]); delete markers[id]; }
+  for (const id in markers) if (!seen[id]) { home[id].removeLayer(markers[id]); delete markers[id]; delete home[id]; }
+  for (const id in catLayers) groupOn(id) ? (map.hasLayer(catLayers[id]) || catLayers[id].addTo(map)) : map.removeLayer(catLayers[id]);
   bounceId = null;
   fan(); drawRoute();
 }
@@ -6034,6 +6196,7 @@ function fan() {
   clusterLayer.clearLayers();
   const z = map.getZoom(), ocio = [], food = [], shops = [], pelu = [], farma = [];
   Object.keys(markers).forEach(id => {
+    if (!map.hasLayer(markers[id])) return;   // grupo oculto: no cuenta en los clusters
     const o = BYID[id], it = {id, p: map.latLngToLayerPoint(markers[id].getLatLng())};
     // lo ya elegido, favorito o abierto en la ficha no se agrupa nunca
     const free = o && !isSel(id) && !state.favs[id] && id !== detailId;
@@ -6077,7 +6240,7 @@ function drawRoute() {
 function insets() {
   const w = innerWidth, h = innerHeight, b = document.body;
   if (b.classList.contains('maponly')) return {l: 30, r: 30, t: 30, b: 30};
-  if (isMobile()) return {l: 30, r: 60, t: 80, b: (detailId || b.classList.contains('sh-opts') || b.classList.contains('sh-agenda')) ? h * .62 : 90};
+  if (isMobile()) return {l: 30, r: 60, t: 80, b: (detailId || b.classList.contains('sh-opts') || b.classList.contains('sh-agenda')) ? h * .62 : 146};
   let l = 30, r = 30;
   const po = $('#panel-opts'), pa = $('#panel-agenda'), d = $('#detail');
   if (!po.classList.contains('collapsed')) l = po.getBoundingClientRect().right + 24;
@@ -6112,19 +6275,21 @@ function renderFilters() {
     const n = visibles.filter(o => o.status === k).length, on = f.status.includes(k);
     return `<button class="chip${on ? ' on' : ''}" style="--c:var(--primary)" data-st="${k}" aria-pressed="${on}">${esc(s.label)} <i>${n}</i></button>`;
   }).join('');
-  $$('#scopeSeg button').forEach(b => { const on = b.dataset.scope === f.scope; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
-  $('#foodF').hidden = !(f.scope === 'comida' || f.cats.includes('comer'));
+  renderGroups();
+  const ap = activePreset();
+  $$('#scopeSeg button').forEach(b => { const on = b.dataset.scope === ap; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+  $('#foodF').hidden = !groupOn('comer');
   $('#ftChips').innerHTML = DATA.foodTypes.map(t => {
     const n = visibles.filter(o => isFood(o) && o.foodType === t.id).length, on = f.food.includes(t.id);
     return `<button class="chip${on ? ' on' : ''}" style="--c:#d9a441" data-ft="${t.id}" aria-pressed="${on}">${t.emoji} ${esc(t.label)} <i>${n}</i></button>`;
   }).join('');
   $('#fgChips').innerHTML = [['late', '🌙 Abierto de madrugada', 'lateNight'], ['tapa', '🍺 Tapa gratis', 'freeTapa'], ['cash', '💶 Solo efectivo', 'cashOnly']].map(([k, lb, prop]) =>
     `<button class="chip${f[k] ? ' on' : ''}" style="--c:#d9a441" data-fg="${k}" aria-pressed="${!!f[k]}">${lb} <i>${visibles.filter(o => isFood(o) && o[prop]).length}</i></button>`).join('');
-  const subCats = SUBCATS.filter(c => f.scope === c || f.cats.includes(c));
-  $('#subF').hidden = !subCats.length;
+  const subCats = SUBCATS.filter(c => groupOn(c));
+  $('#subF').hidden = !subCats.some(c => c === 'noche' || c === 'farmacia');
   $('#pharmaNote').hidden = !subCats.includes('farmacia');
   const cd = crowdDay();
-  $('#crowdF').hidden = ['comida', 'super', 'peluqueria', 'farmacia'].includes(f.scope);
+  $('#crowdF').hidden = !groupOn('noche');
   $('#crowdChips').innerHTML = `<button class="chip${state.ui.crowd ? '' : ' on'}" data-crowd="" aria-pressed="${!state.ui.crowd}">Apagado</button>`
     + WDK.map(k => { const on = state.ui.crowd === k, trip = DAYS.find(x => wdOf(x.id) === k);
       return `<button class="chip cday${on ? ' on' : ''}${k === todayWd() ? ' today' : ''}" data-crowd="${k}" aria-pressed="${on}" title="${WDL[k]}${trip ? ' · ' + esc(trip.label) + ' (viaje)' : ''}${k === todayWd() ? ' · hoy' : ''}"${trip ? ` style="--c:${dayColor(trip.id)}"` : ''}>${WDLET[k]}${trip ? '<i>•</i>' : ''}</button>`; }).join('');
@@ -6136,7 +6301,7 @@ function renderFilters() {
     return `<button class="chip${on ? ' on' : ''}" style="--c:${CATS[c].color}" data-sub="${k}" aria-pressed="${on}">${s.emoji} ${esc(s.label)} <i>${n}</i></button>`;
   })).join('');
   $('#fCheap').checked = !!f.cheap;
-  $('#superF').hidden = !(f.scope === 'super' || f.cats.includes('super'));
+  $('#superF').hidden = !groupOn('super');
   $('#stoChips').innerHTML = DATA.storeTypes.map(s => {
     const n = visibles.filter(o => isSuper(o) && o.storeType === s.id).length, on = f.store.includes(s.id);
     return `<button class="chip${on ? ' on' : ''}" style="--c:#5b86b8" data-sto="${s.id}" aria-pressed="${on}">${s.emoji} ${esc(s.label)} <i>${n}</i></button>`;
@@ -6166,14 +6331,16 @@ function cardHTML(o) {
     </div></article>`;
 }
 function renderList() {
-  const shown = OPTS.filter(pasa), loc = shown.filter(o => o.located), un = shown.filter(o => !o.located);
-  if (state.filters.sortCrowd && (state.filters.scope === 'noche' || state.filters.cats.includes('noche'))) {
+  const shown = OPTS.filter(o => pasa(o)), loc = shown.filter(o => o.located), un = shown.filter(o => !o.located);
+  if (state.filters.sortCrowd && groupOn('noche')) {
     const lv = o => { const c = crowdOf(o, crowdDay()); return c ? c.level : -1; };
     loc.sort((a, b) => lv(b) - lv(a));
   }
-  $('#resN').textContent = `${shown.length} de ${OPTS.length} opciones`;
+  const hidG = state.filters.q ? OPTS.filter(o => !pasa(o) && pasa(o, true)) : [];
+  $('#resN').textContent = `${shown.length} de ${OPTS.length} opciones${hidG.length ? ` · ${hidG.length} en grupos ocultos` : ''}`;
   let h = loc.map(cardHTML).join('');
-  if (!shown.length) h = '<div class="empty">Ninguna opción coincide con los filtros.</div>';
+  if (!shown.length) h = `<div class="empty">${hidG.length ? 'Lo que buscas está en grupos ocultos (abajo).' : 'Ninguna opción coincide con los filtros.'}</div>`;
+  if (hidG.length) h += `<div class="tray gtray"><h3>🙈 En grupos ocultos (${hidG.length})</h3><p>Coinciden con la búsqueda, pero su grupo está apagado.</p>${hidG.map(o => `<div class="gh">${cardHTML(o)}<button class="btn gshow" data-act="showgrp" data-id="${esc(o.id)}">🙈 Grupo oculto · <u>Mostrar</u></button></div>`).join('')}</div>`;
   if (un.length) h += `<div class="tray"><h3>📭 Sin ubicar (${un.length})</h3><p>No tienen coordenadas: se pueden añadir a la agenda igualmente. Abre una y pulsa «Colocar en el mapa» para fijarle un pin.</p>${un.map(cardHTML).join('')}</div>`;
   const sc = $('#list'), top = sc.scrollTop; sc.innerHTML = h; sc.scrollTop = top;
 }
@@ -6786,6 +6953,7 @@ function toast(msg, action) {
 const byUid = uid => state.assigns.find(a => a.uid === uid);
 const ACT = {
   open: id => openDetail(id),
+  showgrp: id => { const o = BYID[id]; if (!o) return; const prev = G.off.slice(), sk = subKey(o); setGroup(cat(o).id, true); if (sk && G.offSub.includes(sk)) setSub(sk, true); groupsChanged(prev); openDetail(id); },
   closed: () => closeDetail(),
   fav: id => commit(() => { state.favs[id] ? delete state.favs[id] : state.favs[id] = true; }),
   add: id => openAssign(id),
@@ -6829,7 +6997,41 @@ listEl.addEventListener('focusout', e => { const c = e.target.closest('.card'); 
 $('#q').addEventListener('input', e => { state.filters.q = e.target.value; save(); renderList(); renderMarkers(); });
 $('#catChips').addEventListener('click', e => { const b = e.target.closest('[data-cat]'); if (!b) return; const a = state.filters.cats, i = a.indexOf(b.dataset.cat); i < 0 ? a.push(b.dataset.cat) : a.splice(i, 1); filtersChanged(); });
 $('#stChips').addEventListener('click', e => { const b = e.target.closest('[data-st]'); if (!b) return; const a = state.filters.status, i = a.indexOf(b.dataset.st); i < 0 ? a.push(b.dataset.st) : a.splice(i, 1); filtersChanged(); });
-$('#scopeSeg').addEventListener('click', e => { const b = e.target.closest('[data-scope]'); if (!b) return; state.filters.scope = b.dataset.scope; filtersChanged(); });
+$('#scopeSeg').addEventListener('click', e => { const b = e.target.closest('[data-scope]'); if (!b) return; const prev = G.off.slice(); applyPreset(b.dataset.scope); groupsChanged(prev); });   // atajos = presets de grupos
+/* Barra rápida: toque = mostrar/ocultar; mantener pulsado o doble toque = «solo este» */
+{ const bar = $('#gbIn'); let lp = 0, lpId = null, fired = false, sx = 0, sy = 0, tap = null;
+  const cancel = () => { clearTimeout(lp); lp = 0; };
+  bar.addEventListener('pointerdown', e => { const b = e.target.closest('[data-gb="g"]'); fired = false; if (!b) return;
+    lpId = b.dataset.id; sx = e.clientX; sy = e.clientY;
+    lp = setTimeout(() => { fired = true; lp = 0; const prev = G.off.slice(); soloGroup(lpId); groupsChanged(prev); if (navigator.vibrate) try { navigator.vibrate(15); } catch (er) {} }, 550); });
+  bar.addEventListener('pointermove', e => { if (lp && Math.hypot(e.clientX - sx, e.clientY - sy) > 8) cancel(); });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => bar.addEventListener(ev, cancel));
+  bar.addEventListener('contextmenu', e => { if (e.target.closest('.gp')) e.preventDefault(); });
+  bar.addEventListener('click', e => {
+    const b = e.target.closest('[data-gb]'); if (!b) return;
+    if (fired) { fired = false; return; }   // ya se aplicó «solo este» al mantener pulsado
+    const prev = G.off.slice(), k = b.dataset.gb, now = Date.now();
+    if (k === 'g' && tap && tap.id === b.dataset.id && now - tap.t < 350) {   // doble toque: deshace el primer toque y aplica «solo este»
+      G.off = tap.off; G.offSub = tap.offSub; tap = null; soloGroup(b.dataset.id); return groupsChanged(prev);
+    }
+    tap = k === 'g' ? {id: b.dataset.id, t: now, off: G.off.slice(), offSub: G.offSub.slice()} : null;
+    if (k === 'all' || k === 'reset') setAll(true); else if (k === 'none') setAll(false); else setGroup(b.dataset.id, !groupOn(b.dataset.id));
+    groupsChanged(prev);
+  });
+}
+/* Panel «Filtros»: interruptores por grupo y subgrupo */
+$('#gbInd').addEventListener('click', e => { if (!e.target.closest('[data-gb="reset"]')) return; const prev = G.off.slice(); setAll(true); groupsChanged(prev); });
+$('#gSec').addEventListener('change', e => {
+  const t = e.target, prev = G.off.slice();
+  if (t.id === 'fMine') { G.keepMine = t.checked; return groupsChanged(prev); }
+  if (t.dataset.gt) { setGroup(t.dataset.gt, t.checked); return groupsChanged(prev); }
+  if (t.dataset.gs) { setSub(t.dataset.gs, t.checked); return groupsChanged(prev); }
+});
+$('#gSec').addEventListener('click', e => {
+  const x = e.target.closest('[data-gx]'), a = e.target.closest('[data-ga]');
+  if (x) { gOpen.has(x.dataset.gx) ? gOpen.delete(x.dataset.gx) : gOpen.add(x.dataset.gx); renderGroups(); $(`[data-gx="${x.dataset.gx}"]`).focus(); }
+  if (a) { const prev = G.off.slice(); setAll(a.dataset.ga === 'all'); groupsChanged(prev); }
+});
 $('#ftChips').addEventListener('click', e => { const b = e.target.closest('[data-ft]'); if (!b) return; const a = state.filters.food, i = a.indexOf(b.dataset.ft); i < 0 ? a.push(b.dataset.ft) : a.splice(i, 1); filtersChanged(); });
 $('#stoChips').addEventListener('click', e => { const b = e.target.closest('[data-sto]'); if (!b) return; const a = state.filters.store, i = a.indexOf(b.dataset.sto); i < 0 ? a.push(b.dataset.sto) : a.splice(i, 1); filtersChanged(); });
 $('#brChips').addEventListener('click', e => { const b = e.target.closest('[data-br]'); if (!b) return; const a = state.filters.brand, i = a.indexOf(b.dataset.br); i < 0 ? a.push(b.dataset.br) : a.splice(i, 1); filtersChanged(); });
@@ -6841,7 +7043,7 @@ $('#sgChips').addEventListener('click', e => { const b = e.target.closest('[data
 $('#fgChips').addEventListener('click', e => { const b = e.target.closest('[data-fg]'); if (!b) return; state.filters[b.dataset.fg] = !state.filters[b.dataset.fg]; filtersChanged(); });
 $('#km').addEventListener('input', e => { state.filters.maxKm = +e.target.value; filtersChanged(); });
 [['fFar', 'far'], ['fSel', 'onlySel'], ['fFav', 'onlyFav'], ['fUn', 'onlyUnloc'], ['fHid', 'showHidden']].forEach(([id, k]) => $('#' + id).addEventListener('change', e => { state.filters[k] = e.target.checked; filtersChanged(); }));
-$('#fClear').onclick = () => { state.filters = blank().filters; filtersChanged(); };
+$('#fClear').onclick = () => { state.filters = blank().filters; setAll(true); saveG(); filtersChanged(); };
 function toggleFilters(force) { const x = $('#extraF'); x.hidden = force === undefined ? !x.hidden : !force; $('#moreF').setAttribute('aria-expanded', !x.hidden); }
 $('#moreF').onclick = () => toggleFilters();
 
