@@ -850,6 +850,39 @@ input[type=range]{width:100%;accent-color:var(--primary);min-height:24px}
 @keyframes mkin{from{opacity:0;transform:translate(var(--dx,0px),var(--dy,0px)) scale(.6)}}
 @media (min-width:761px) and (max-width:1180px){ #gbar{right:12px} #panel-agenda{top:130px;max-height:calc(100vh - 204px)} }
 @media (min-width:761px){ #detail{top:130px;max-height:calc(100vh - 154px)} }
+/* ---- Fotos (actualización 7) ---- */
+.ph{margin:10px 0;padding:10px;border-radius:16px;border:1px solid var(--border);background:var(--panel-2)}
+.ph-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px} .ph-h h4{font:700 15px var(--font-title);flex:1}
+.ph-tabs{display:flex;gap:4px}
+.ph-tab{border:1px solid var(--border);background:var(--panel);border-radius:999px;padding:4px 11px;min-height:34px;font-weight:700;font-size:12.5px;color:var(--text)}
+.ph-tab.on{background:var(--primary);border-color:var(--primary);color:var(--primary-tx)}
+.ph-sv{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--panel)} .ph-sv iframe{display:block;width:100%;height:200px;border:0}
+.ph-ext{margin-top:8px;width:100%;text-decoration:none;color:var(--text)} .ph-big{width:100%;text-decoration:none;min-height:44px}
+.ph-note,.ph-fail{font-size:12px;color:var(--muted);margin-top:6px} .ph-fail{font-weight:700;color:var(--text)}
+.ph-cm{margin-top:10px} .ph-cm b{display:block;font-size:13px} .ph-cm small{display:block;font-size:11.5px;color:var(--muted)}
+.ph-car{display:flex;gap:8px;overflow-x:auto;padding:6px 0 4px;scrollbar-width:thin;scrollbar-color:var(--sb) transparent}
+.ph-th{flex:none;padding:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--panel);cursor:zoom-in}
+.ph-th img{display:block;width:160px;height:120px;object-fit:cover}
+.ph-add{width:100%;cursor:pointer;min-height:44px}
+.ph-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.ph-mi{position:relative} .ph-mi .ph-th{width:100%} .ph-mi .ph-th img{width:100%;height:auto;aspect-ratio:1/1}
+.ph-del{position:absolute;right:4px;top:4px;background:rgba(255,253,246,.92)}
+#phv{position:fixed;inset:0;z-index:3000;background:rgba(20,28,30,.9);display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+#phv figure{margin:0;max-width:94vw;max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:8px}
+#phv img{max-width:94vw;max-height:78vh;border-radius:12px;object-fit:contain;background:#000}
+#phv figcaption{color:#f4ecd8;font-size:13px;text-align:center;max-width:90vw} #phv figcaption a{color:#9fd0d6}
+.phv-x{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,253,246,.92);font-size:18px;color:var(--text);z-index:2}
+.phv-n{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:64px;border:0;border-radius:14px;background:rgba(255,253,246,.85);font-size:28px;color:var(--text);z-index:2}
+.phv-p{left:10px} .phv-nx{right:10px}
+.mk-ph{position:absolute;left:-8px;bottom:-6px;font-size:12px;line-height:1;background:var(--panel);border-radius:50%;padding:2px;box-shadow:var(--shadow-sm);pointer-events:none}
+/* ---- Verificación (actualización 7) ---- */
+.vbdg{display:inline-flex;align-items:center;gap:4px;margin:4px 4px 0 0;padding:1px 9px;border-radius:999px;border:1px solid var(--border);background:var(--panel);font:700 12px/1.6 var(--font-body);color:var(--text);cursor:pointer}
+.v-ok{background:#e3f1e8;border-color:#a9d3b8;color:#22603f} .v-pr{background:#fbf0d9;border-color:#ecd9ad;color:#7a5a14}
+.v-ct{background:#fbe9e4;border-color:#efc2b8;color:#9a3a32} .v-sc{background:var(--panel-2);color:var(--muted)} .v-cd{background:#ececec;border-color:#cfcfcf;color:#555}
+.vpanel{margin:6px 0 10px;padding:10px 12px;border-radius:14px;border:1px solid var(--border);background:var(--panel-2);font-size:12.5px;display:grid;gap:3px}
+.vpanel b{font-size:12.5px;margin-top:4px} .vpanel ul{margin:0;padding-left:16px;display:grid;gap:2px} .vpanel a{word-break:break-word}
+.v-meta{font-size:12px;color:var(--muted)} .v-counts{display:flex;flex-wrap:wrap;gap:2px;margin:6px 0} .v-counts .vbdg{cursor:default}
+.vrep{font-size:12.5px;padding-bottom:4px} .vrep b{display:block;margin-top:6px} .v-list{margin:4px 0 0;padding-left:16px;display:grid;gap:3px}
 #subF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #foodF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #ftChips,#fgChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--sb) transparent;padding-bottom:4px}
@@ -1032,6 +1065,7 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   .chip i,.bdg,.card .meta,.resn,.frow,.tray p,details.info,.hrs,.d-rows .hrs,.slots i,.s-note,.d-cat,.d-src,.d-notes label,.daynote,.daybar,.tab i,.s-n,
   .d-btn,.s-end,.moon,.warns,.leg,.fl,.m-info,.form label,.count small,.seg button,.d-as,.empty,kbd{font-size:13px}
   .s-n{width:22px;height:22px}
+  .ph-note,.ph-cm small,.v-meta,.vpanel,.vpanel b,.vrep,.vbdg,.ph-tab{font-size:13px}
   .amb-leg,.amb-col small,.s-amb,.mk-lv{font-size:13px} .amb-col b{font-size:13px} #crowdChips .chip{min-width:40px}
   small{font-size:13px} .lnk,.s-name{min-height:44px} .toast .lnk{min-height:0}
   .panel,#detail{left:0!important;right:0!important;top:auto!important;bottom:calc(58px + env(safe-area-inset-bottom))!important;width:auto!important;
@@ -1116,8 +1150,10 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
       <details id="gSec" class="gsec"><summary>🎛️ Filtros <i id="gSum"></i></summary>
         <div class="g-acts"><button type="button" class="btn" data-ga="all">✅ Activar todo</button><button type="button" class="btn" data-ga="none">⬜ Desactivar todo</button></div>
         <label class="ck"><input type="checkbox" id="fMine"> 📌 Mostrar siempre lo de mi agenda (y favoritas)</label>
+        <label class="ck"><input type="checkbox" id="fGone"> ⛔ Ocultar cerrados definitivamente</label>
         <ul id="gTree" class="g-tree"></ul>
       </details>
+      <details id="vRep" class="gsec"><summary>🔎 Informe de verificación</summary><div id="vRepBody" class="vrep"></div></details>
       <input id="q" type="search" placeholder="Buscar nombre, etiqueta, dirección…  ( / )" aria-label="Buscar opciones" autocomplete="off">
       <div id="scopeSeg" class="seg" role="group" aria-label="Qué mostrar">
         <button data-scope="all">Todo</button><button data-scope="ocio">Solo ocio</button><button data-scope="comida">Solo comida</button><button data-scope="super">Solo súper</button><button data-scope="peluqueria">Solo peluquería</button><button data-scope="farmacia">Solo farmacia</button><button data-scope="noche">Solo noche</button><button data-scope="servicios">Solo servicios</button><button data-scope="beber">Comer y beber</button>
@@ -1191,6 +1227,7 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   <button class="btn" data-toggle="agenda">📅 Mi agenda <span id="navN"></span></button>
 </nav>
 
+<div id="phv" hidden role="dialog" aria-modal="true" aria-label="Foto a pantalla completa"><button class="phv-x" data-phv="x" aria-label="Cerrar foto">✕</button><button class="phv-n phv-p" data-phv="p" aria-label="Foto anterior">‹</button><figure><img alt=""><figcaption></figcaption></figure><button class="phv-n phv-nx" data-phv="n" aria-label="Foto siguiente">›</button></div>
 <div id="modal-root" hidden></div>
 <div id="toasts" aria-live="polite"></div>
 <div id="print"></div>
@@ -5720,6 +5757,11 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
 {"crowdScale":[{"level":0,"label":"Cerrado"},{"level":1,"label":"Casi vacío"},{"level":2,"label":"Tranquilo"},{"level":3,"label":"Ambiente normal"},{"level":4,"label":"Lleno"},{"level":5,"label":"Muy lleno"}],"options_add":[{"id":"granada-10","name":"Granada 10","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Cárcel Baja 10, 18010 Granada","lat":37.1775583,"lng":-3.5978722,"coordsConfidence":"alta","status":"por_verificar","hours":"Mar–jue 0:00–6:00; vie–sáb 0:00–7:00; dom–lun cerrado","hoursByDay":{"mar":[["23:59","06:00"]],"mie":[["23:59","06:00"]],"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato-medio","price":"Martes Erasmus 8 € con copa; viernes 10 € con copa; lista gratis hasta la 1:30 (precios de oct. 2026)","minAge":18,"travel":"a pie (~7 min)","distanceKmFromHotel":0.53,"description":"La discoteca de referencia para estudiantes y Erasmus, en un antiguo cine junto a la Catedral (a ~550 m). La que más se llena entre semana.","tips":"Apuntaos a la lista gratis antes de la 1:30. Llevad DNI. El martes es la noche Erasmus.","tags":["discoteca","Erasmus","universitaria","céntrica","lista gratis"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":5,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":4,"label":"Lleno","note":"Noche Erasmus (dress code casual)"},"mie":{"level":3,"label":"Ambiente normal"},"jue":{"level":5,"label":"Muy lleno","note":"Gran noche universitaria de la ciudad"},"vie":{"level":4,"label":"Lleno","note":"Lista gratis hasta la 1:30"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–3:30","fillsUp":"Se llena entre las 2:00 y las 3:00","dressCode":"Casual el martes; jueves y viernes piden ir arreglado","crowdType":"Universitarios y Erasmus, 18–25 años","music":"Comercial, reguetón y urbana","capacity":"Hasta 1.000 personas (2 plantas)","tripEvents":[{"date":"2026-11-17","night":"mar","name":"Fiesta Funk","time":"00:00–06:00"},{"date":"2026-11-18","night":"mie","name":"Miércoles en Granada 10","time":"00:00–06:00"},{"date":"2026-11-19","night":"jue","name":"Equis","time":"00:00–06:00"}],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/granada-10; https://clubsingranada.com/es/blog/erasmus-granada-fiesta; https://lastnight.es/discotecas/granada/granada-10/eventos; https://studentexperience.com/es/noticias/908/vida-nocturna-en-granada-la-guia-definitiva-para-estudiantes"},{"id":"mae-west","name":"Mae West","category":"noche","subType":"discoteca","emoji":"🪩","address":"Centro Comercial Neptuno, Calle Arabial s/n, 18004 Granada","lat":37.1683147,"lng":-3.6078836,"coordsConfidence":"alta","status":"por_verificar","hours":"Todos los días 22:00–6:00 (vie–sáb hasta las 7:00)","hoursByDay":{"lun":[["22:00","06:00"]],"mar":[["22:00","06:00"]],"mie":[["22:00","06:00"]],"jue":[["22:00","06:00"]],"dom":[["22:00","06:00"]],"vie":[["22:00","07:00"]],"sab":[["22:00","07:00"]]},"budget":"medio","price":"Mar 17 desde 9,90 €; mié 18 y jue 19 desde 12,10 €; viernes 19 € con 2 copas (chicas 11 € hasta la 1:00)","minAge":18,"travel":"a pie (~16 min) o taxi compartido de vuelta","distanceKmFromHotel":1.17,"description":"La discoteca más grande y conocida de Granada, con varias salas. Abre todas las noches con una fiesta temática distinta.","tips":"Google 3,4 sobre 5: muchas quejas de porteros y de que es cara. Está a ~1,2 km: volved en taxi compartido. Comprad la entrada anticipada, que sale más barata.","tags":["discoteca","la más grande","todas las noches","Ladies Night"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":5,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo","note":"Pretty Monday"},"mar":{"level":3,"label":"Ambiente normal","note":"Maertes"},"mie":{"level":4,"label":"Lleno","note":"Ladies Night, la noche clásica de Mae West"},"jue":{"level":4,"label":"Lleno","note":"Juernes de Contoneo"},"vie":{"level":5,"label":"Muy lleno","note":"Sesión grande"},"sab":{"level":5,"label":"Muy lleno","note":"Sesión grande (y tarde desde las 16:00)"},"dom":{"level":2,"label":"Tranquilo","note":"Domingos Mae West"}},"peakHours":"2:00–4:00","fillsUp":"Se llena a partir de las 2:00; los fines de semana hay colas","dressCode":"Miran la ropa en la puerta: mejor arreglado-informal; se desaconsejan zapatillas blancas y ropa deportiva","crowdType":"Muy joven entre semana (universitarios); más mezclado el fin de semana","music":"Reguetón, comercial y electrónica (varias salas)","capacity":"Más de 2.000 personas","tripEvents":[{"date":"2026-11-17","night":"mar","name":"Maertes","price":"desde 9,90 €"},{"date":"2026-11-18","night":"mie","name":"Ladies Night","price":"desde 12,10 €"},{"date":"2026-11-19","night":"jue","name":"Juernes de Contoneo","price":"desde 12,10 €"}],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/mae-west; https://venta.enterticket.es/rrpp-events.php?rrpp=SANO; https://studentexperience.com/es/noticias/908/vida-nocturna-en-granada-la-guia-definitiva-para-estudiantes; https://maewestgranada.entradasmaster.com/2663244939089447190/"},{"id":"365-music-club","name":"365 Music Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Neptuno 10, 18004 Granada","lat":37.169,"lng":-3.609,"coordsConfidence":"media","status":"por_verificar","hours":"Jue–dom desde las 23:30 hasta las 7:00 (lun–mié cerrado)","hoursByDay":{"jue":[["23:30","07:00"]],"vie":[["23:30","07:00"]],"sab":[["23:30","07:00"]],"dom":[["23:30","07:00"]]},"budget":"barato","price":"Anticipada 8 € con 1 copa o 12 € con 2 (oct. 2026)","minAge":18,"travel":"a pie (~16 min) o taxi compartido de vuelta","distanceKmFromHotel":1.23,"description":"Discoteca de reguetón muy universitaria en la zona de Neptuno.","tips":"Solo jueves a domingo: no abre el martes ni el miércoles. A ~1,2 km.","tags":["discoteca","reguetón","universitaria","barata"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":5,"label":"Muy lleno","note":"Playroom y Tonteo: noche universitaria, se llena"},"vie":{"level":4,"label":"Lleno","note":"Guaja Guaja"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo","note":"Pegao"}},"peakHours":"2:00–4:00","fillsUp":"Las noches universitarias se llenan: comprad la entrada antes","dressCode":"Casual","crowdType":"Universitarios, 18–23 años","music":"Reguetón y urbana","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/365-music-club; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"taboa-club","name":"Taböa Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Plaza de Gracia s/n, 18002 Granada","lat":37.1716,"lng":-3.6052,"coordsConfidence":"media","status":"por_verificar","hours":"Lun, mié y jue 0:00–6:00; vie–sáb 0:00–7:00; mar y dom cerrado","hoursByDay":{"lun":[["23:59","06:00"]],"mie":[["23:59","06:00"]],"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato-medio","price":"Unos 10 € con 1 copa o 2 cervezas; lista casi todos los días (oct. 2026)","minAge":18,"travel":"a pie (~11 min)","distanceKmFromHotel":0.83,"description":"Discoteca universitaria de reguetón a ~800 m del hotel.","tips":"Cuidado con el código de vestimenta: nada de zapatillas.","tags":["discoteca","reguetón","universitaria"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":3,"label":"Ambiente normal","note":"Noche Erasmus según guías de estudiantes"},"jue":{"level":5,"label":"Muy lleno","note":"Noche universitaria: fiestas de facultad"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–4:00","fillsUp":"Se llena hacia las 2:00–3:00","dressCode":"No dejan entrar con ropa deportiva, chanclas ni zapatillas: id arreglados","crowdType":"Universitarios","music":"Reguetón, perreo y urbana; noches de house de los 2000","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/taboa; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"vogues","name":"Discoteca Vogues","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Duquesa 37, 18001 Granada","lat":37.1772,"lng":-3.6033,"coordsConfidence":"media","status":"por_verificar","hours":"Jue 0:00–6:00; vie–sáb 0:00–7:00 (resto cerrado)","hoursByDay":{"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato","price":"Gratis antes de las 3:00; después, 10 € con copa (vie–sáb, oct. 2026)","minAge":18,"travel":"a pie (~11 min)","distanceKmFromHotel":0.8,"description":"Discoteca alternativa con dos salas, a ~800 m. La opción si no os va el reguetón.","tips":"Entrar antes de las 3:00 es gratis.","tags":["discoteca","indie","techno","gratis antes de las 3"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Gratis antes de las 3:00"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"3:00–5:00","fillsUp":"Llegad pronto: si una sala se llena podéis pasar a la otra","dressCode":"Casual: vaqueros y zapatillas valen","crowdType":"Público alternativo","music":"Sala 1: indie, rock y pop. Sala 2: techno","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/vogues; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"uny-club","name":"UNY Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Arabial 62, 18003 Granada","lat":37.1665,"lng":-3.608,"coordsConfidence":"media","status":"por_verificar","hours":"Jue–vie 23:45–6:00 (resto cerrado)","hoursByDay":{"jue":[["23:45","06:00"]],"vie":[["23:45","06:00"]]},"budget":"barato-medio","price":"Viernes 10 € con 1 copa o 14 € con 2 (oct. 2026)","minAge":18,"travel":"a pie (~17 min) o taxi compartido de vuelta","distanceKmFromHotel":1.29,"description":"Discoteca de la zona de Neptuno que solo abre jueves y viernes.","tips":"A ~1,3 km.","tags":["discoteca","jueves y viernes"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Viernes fuerte según la propia web"},"sab":{"level":0,"label":"Cerrado"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–4:00","fillsUp":"—","dressCode":"Casual","crowdType":"Jóvenes y universitarios","music":"Comercial","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/uny-club; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"colon-plaza","name":"Colón Plaza","category":"noche","subType":"discoteca","emoji":"🪩","address":"Plaza Isabel la Católica 2, 18009 Granada","lat":37.1756,"lng":-3.5969,"coordsConfidence":"media","status":"por_verificar","hours":"Todos los días desde las 16:00; cierre: dom–mié 3:00, jue 6:00, vie–sáb 7:00","hoursByDay":{"lun":[["16:00","03:00"]],"mar":[["16:00","03:00"]],"mie":[["16:00","03:00"]],"dom":[["16:00","03:00"]],"jue":[["16:00","06:00"]],"vie":[["16:00","07:00"]],"sab":[["16:00","07:00"]]},"budget":"medio","price":"No publicado (consultar por WhatsApp)","minAge":18,"travel":"a pie (~4 min)","distanceKmFromHotel":0.3,"description":"Local con varias salas (comercial, electrónica y karaoke) y terraza, a ~300 m del hotel.","tips":"El karaoke puede ser un buen plan friki entre semana.","tags":["discoteca","karaoke","muy cerca","todos los días"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"1:00–3:00","fillsUp":"—","dressCode":"Arreglado-informal","crowdType":"Mezclado","music":"Comercial; sala Noise Club de electrónica; sala de karaoke","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/colon-plaza"},{"id":"planta-baja","name":"Sala Planta Baja","category":"noche","subType":"discoteca","emoji":"🎸","address":"Calle Horno de Abad 11, 18002 Granada","lat":37.1738,"lng":-3.6035,"coordsConfidence":"media","status":"por_verificar","hours":"Conciertos casi a diario; sesiones de DJ de jueves a sábado","hoursByDay":null,"budget":"barato","price":"Según concierto; las sesiones de los sábados por la tarde (Plantarde) son gratis","minAge":18,"travel":"a pie (~9 min)","distanceKmFromHotel":0.67,"description":"Sala mítica de conciertos indie y rock con sesiones de DJ los fines de semana.","tips":"Mirad su agenda de conciertos.","tags":["conciertos","indie","rock"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":3,"label":"Ambiente normal"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"1:00–3:00","fillsUp":"Sala pequeña (unas 300 personas): se llena rápido en conciertos","dressCode":"Ve como eres","crowdType":"Indie y rock","music":"Indie, rock y alternativa","capacity":"Unas 300 personas","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/planta-baja"},{"id":"lux-granada","name":"Lux","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Frailes 7, 18005 Granada","lat":37.1723336,"lng":-3.6007327,"coordsConfidence":"alta","status":"por_verificar","hours":"No publicado","hoursByDay":null,"budget":"medio","price":"Unos 10 € la entrada, +5 € para la otra planta (según reseñas)","minAge":18,"travel":"a pie (~6 min)","distanceKmFromHotel":0.43,"description":"Discoteca de dos plantas a ~400 m. Google 3,5 sobre 5.","tips":"Varias reseñas hablan de cobrar aparte la segunda planta: preguntad antes de pagar.","tags":["discoteca","poco ambiente"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":1,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":1,"label":"Casi vacío"},"vie":{"level":2,"label":"Tranquilo"},"sab":{"level":2,"label":"Tranquilo"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"—","fillsUp":"Según reseñas, casi vacía incluso un sábado","dressCode":"—","crowdType":"—","music":"Comercial","capacity":"—","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"Google Maps (reseñas)"}],"options_patch":[{"id":"discoteca-backstage","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Música en directo"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"2:00–4:00","fillsUp":"Reseñas: muy lleno y con mucho calor los fines de semana","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Arreglado-informal; DNI","crowdType":"Algo mayor (más de 30 según Salir.com); mezclado","music":"DJ y música en directo; 80–90 y urbana según la fuente"}},"appendSource":"https://clubsingranada.com/es/clubs/backstage"},{"id":"aliatar-club","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal","note":"Jueves 19: concierto de Temples (≈20:30)"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo","note":"Tarde, hasta medianoche"}},"peakHours":"2:00–4:00","fillsUp":"—","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Estricto con la ropa; DNI","crowdType":"Unos 30 años de media","music":"Comercial, pop y reguetón; conciertos","tripEvents":[{"date":"2026-11-19","night":"jue","name":"Concierto: Temples","time":"≈20:30"}]}},"appendSource":"https://clubsingranada.com/es/clubs/aliatar; https://www.nipopnijazz.com/agenda-granada/"},{"id":"moonback-club","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":1,"label":"Casi vacío"},"vie":{"level":2,"label":"Tranquilo"},"sab":{"level":3,"label":"Ambiente normal"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"—","fillsUp":"Techno de nicho: con grupo pequeño puede estar vacío","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Casual","crowdType":"Fans del techno","music":"Techno"}},"appendSource":"Google Maps (reseñas)"},{"id":"chupiteria-69","set":{"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo","note":"Descuentos entre semana"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":3,"label":"Ambiente normal"},"jue":{"level":4,"label":"Lleno"},"vie":{"level":5,"label":"Muy lleno"},"sab":{"level":5,"label":"Muy lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-la-flaca","set":{"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":4,"label":"Lleno"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":5,"label":"Muy lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"amsterdam-cafe-pub","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"alkimia-pub","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-wall-street","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-la-chica-de-ayer","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"nitos-pub","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":2,"label":"Tranquilo"},"vie":{"level":3,"label":"Ambiente normal"},"sab":{"level":3,"label":"Ambiente normal"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-entresuelo","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":3,"label":"Ambiente normal","note":"Buen ambiente los miércoles según reseñas"},"jue":{"level":3,"label":"Ambiente normal","note":"Clases de salsa gratis"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"chupiteria-algaida","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"}],"remove_if_present":[{"id_or_name":"El Camborio","reason":"Ya no funciona como discoteca: solo bodas y eventos (clubsingranada.com, oct. 2026)"}]}
 </script>
 
+<!-- Actualización 7 (parte 2): verificación de datos -->
+<script type="application/json" id="data-verif">
+{"checkedAt":"2026-11-17","options":[],"hotel":null,"report":{"changes":[],"notes":[]}}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
 <script>
 (() => {
@@ -5769,6 +5811,7 @@ const DATA  = JSON.parse($('#data').textContent);
     Object.assign(o, p.set || {});
     if (p.appendSource) o.source = o.source ? o.source + '; ' + p.appendSource : p.appendSource;
   });
+  DATA.removeIfPresent = add.remove_if_present || [];
   (add.remove_if_present || []).forEach(r => {   // no se borra: se marca y se avisa
     const q = norm(r.id_or_name);
     DATA.options.filter(x => x.id === r.id_or_name || norm(x.name).includes(q)).forEach(x => { x.gone = 'Ya no es discoteca'; x.goneReason = r.reason; });
@@ -5779,6 +5822,18 @@ const DATA  = JSON.parse($('#data').textContent);
     comer: '#d9a441', super: '#5b86b8', juego_urbano: '#8a6bb8', otros: '#a0703f',
     peluqueria: '#b0689a', farmacia: '#3f8f6b', noche: '#5e5a8f'};   // peluquería y noche: tonos propios (malva y canela ya estaban en uso)
   DATA.categories = DATA.categories.map(c => PAL[c.id] ? {...c, color: PAL[c.id]} : c);
+}
+const VERIF = JSON.parse($('#data-verif').textContent);
+{ // fusión de la verificación (actualización 7): corrige campos, añade «verification» y no borra nada
+  (VERIF.options || []).forEach(v => {
+    const o = DATA.options.find(x => x.id === v.id); if (!o) return;
+    if (v.set) { const nl = v.set.nightlife; Object.assign(o, v.set); if (nl && o.nightlife !== nl) o.nightlife = nl; }
+    if (v.nightlifePatch && o.nightlife) Object.assign(o.nightlife, v.nightlifePatch);
+    o.verification = v.verification;
+    if (v.verification && v.verification.status === 'confirmado') o.status = 'verificado';
+    if (v.verification && v.verification.status === 'cerrado_definitivo') { o.status = 'cerrado'; o.closedForever = true; }
+  });
+  if (VERIF.hotel && VERIF.hotel.set) { Object.assign(DATA.hotel, VERIF.hotel.set); DATA.hotel.verification = VERIF.hotel.verification; }
 }
 const HOTEL = DATA.hotel, DAYS = DATA.days;
 const H     = L.latLng(HOTEL.lat, HOTEL.lng);
@@ -5955,7 +6010,7 @@ const PRESETS = {
   servicios: () => ['farmacia', 'peluqueria', 'super'], beber: () => ['comer', 'noche']
 };
 const presetCats = k => (PRESETS[k] || PRESETS.all)().filter(id => GIDS.includes(id));
-let G = {v: 1, off: [], offSub: [], keepMine: true, solo: null};
+let G = {v: 1, off: [], offSub: [], keepMine: true, solo: null, hideGone: true};
 (function loadG() {
   let raw = null;
   try { raw = JSON.parse(localStorage.getItem(GKEY) || 'null'); } catch (e) { raw = null; }
@@ -5964,6 +6019,7 @@ let G = {v: 1, off: [], offSub: [], keepMine: true, solo: null};
     G.off = (Array.isArray(raw.off) ? raw.off : []).filter(id => GIDS.includes(id));
     G.offSub = (Array.isArray(raw.offSub) ? raw.offSub : []).filter(okSub);
     G.keepMine = raw.keepMine !== false;
+    G.hideGone = raw.hideGone !== false;
     if (isObj(raw.solo) && GIDS.includes(raw.solo.id) && Array.isArray(raw.solo.off) && Array.isArray(raw.solo.offSub))
       G.solo = {id: raw.solo.id, off: raw.solo.off.filter(id => GIDS.includes(id)), offSub: raw.solo.offSub.filter(okSub)};
     return;
@@ -6030,7 +6086,8 @@ function renderGroups() {
         title="${esc(c.label)}${part ? ' (algunos subgrupos ocultos)' : ''} · toca para mostrar u ocultar · mantén pulsado o doble toque: solo este"><span class="ge">${c.emoji}</span>${esc(gShort(c))}<i>${cnt(c.id)}</i>${part ? '<b class="gpart" aria-hidden="true">◐</b>' : ''}</button>`; }).join('');
   // panel completo
   $('#gSum').textContent = nOff || nSub ? `· ${GIDS.length - nOff} de ${GIDS.length} grupos${nSub ? ', ' + nSub + ' subgrupos ocultos' : ''}` : `· ${GIDS.length} grupos, todos visibles`;
-  $('#fMine').checked = G.keepMine;
+  $('#fMine').checked = G.keepMine; $('#fGone').checked = G.hideGone;
+  renderReport();
   $('#gTree').innerHTML = GROUPS.map(c => {
     const on = groupOn(c.id), ss = subgroupsOf(c.id), open = gOpen.has(c.id), part = on && subsOff(c.id).length;
     return `<li class="g-item" style="--c:${c.color}"><div class="g-row">
@@ -6046,6 +6103,7 @@ function pasa(o, ignoreGroups) {   // ¿supera los filtros activos? (ignoreGroup
   if (state.hidden[o.id] && !f.showHidden) return false;
   const food = isFood(o), sup = isSuper(o);
   if (!ignoreGroups && grpState(o) === 'off') return false;
+  if (o.closedForever && G.hideGone && !(G.keepMine && isMine(o))) return false;
   if (f.hideClosedNight && o.category === 'noche') { const c = crowdOf(o, crowdDay()); if (c && c.level === 0) return false; }
   if (f.cheap && !cheapOK(o)) return false;
   if (sup) {   // subfiltros de supermercados: no afectan al ocio ni a la comida
@@ -6109,6 +6167,7 @@ let detailId = null;     // opción abierta en la tarjeta de detalle
 function markerHTML(o, as, nums, gs) {
   const c = cat(o), cls = ['mk'];
   if (gs === 'pinned') cls.push('pinned');
+  if (photoSites.has(o.id)) cls.push('hasph');
   if (fadeCats && fadeCats.has(c.id)) cls.push('fadein');
   if (small(o)) cls.push('food');
   if (isSuper(o)) cls.push('shop');
@@ -6126,6 +6185,7 @@ function markerHTML(o, as, nums, gs) {
   return `<div class="${cls.join(' ')}" style="--c:${c.color}"><span class="aura"></span><span class="dot">${emo(o)}</span>${tag}`
     + (o.far ? `<span class="mk-far">${o.dist > 60 ? 'coche' : 'taxi/coche'}</span>` : '')
     + (nums ? `<span class="mk-n">${nums.join(',')}</span>` : '')
+    + (photoSites.has(o.id) ? '<span class="mk-ph" title="Tiene fotos tuyas">📷</span>' : '')
     + (cw ? `<span class="mk-lv" style="--lv:${CROWD_COL[cw.level] || '#fffdf6'}" title="${esc(cw.label)} (estimación)">${cw.level ? cw.level + '/5' : '—'}</span>` : '') + '</div>';
 }
 const catLayers = {}, pinLayer = L.layerGroup().addTo(map), offLayer = L.layerGroup(), home = {};   // offLayer nunca va al mapa
@@ -6399,6 +6459,176 @@ function hoursTable(o) {   // horario por día de los sitios que traen hoursByDa
     return `<b${d ? ` style="color:${dayColor(d.id)}"` : ''}>${WDL[k]}${d ? ' ' + d.id.slice(8) : ''}</b><span class="${shut ? 'cl' : ''}">${shut ? 'cerrado' : v.map(([a, b]) => a === b ? '24 h' : (a === '23:59' ? '00:00' : a) + '–' + b).join(' · ')}</span>`;
   }).join('') + '</div>';
 }
+/* =====================================================================
+   Fotos de cada sitio (actualización 7, parte 1)
+   - Por fuera: Street View sin clave (iframe) + enlace a Google Maps.
+   - Por dentro: enlace a la ficha de Google Maps + fotos libres de Wikimedia Commons (solo al abrir la pestaña).
+   - Mis fotos: del usuario, reducidas en el navegador y guardadas en IndexedDB («gpns_photos»).
+   Nada se carga al abrir la página: solo al abrir una ficha.
+   ===================================================================== */
+const PH = {tab: 'fuera', el: null, forId: null, commons: new Map(), urls: []};
+const IDB = (() => {
+  let dbp = null;
+  const open = () => dbp || (dbp = new Promise((res, rej) => {
+    try {
+      if (!window.indexedDB) return rej(new Error('sin IndexedDB'));
+      const r = indexedDB.open('gpns_photos', 1);
+      r.onupgradeneeded = () => { const s = r.result.createObjectStore('photos', {keyPath: 'key', autoIncrement: true}); s.createIndex('site', 'site'); };
+      r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error);
+    } catch (e) { rej(e); }
+  }));
+  const tx = async (mode, fn) => { const db = await open(); return new Promise((res, rej) => { const t = db.transaction('photos', mode), s = t.objectStore('photos'); const out = fn(s); t.oncomplete = () => res(out && out.result !== undefined ? out.result : out); t.onerror = () => rej(t.error); }); };
+  return {
+    add: (site, blob) => tx('readwrite', s => s.add({site, blob, t: Date.now()})),
+    list: site => tx('readonly', s => s.index('site').getAll(site)),
+    del: key => tx('readwrite', s => s.delete(key)),
+    sites: async () => { const db = await open(); return new Promise((res, rej) => { const out = new Set(), r = db.transaction('photos').objectStore('photos').index('site').openKeyCursor();
+      r.onsuccess = () => { const c = r.result; if (c) { out.add(c.key); c.continue(); } else res(out); }; r.onerror = () => rej(r.error); }); }
+  };
+})();
+let photoSites = new Set(), idbOK = true;
+IDB.sites().then(s => { photoSites = s; renderMarkers(); }).catch(() => { idbOK = false; });   // solo los ids, no las fotos
+const plain = h => { try { return (new DOMParser().parseFromString(String(h || ''), 'text/html').body.textContent || '').replace(/\s+/g, ' ').trim(); } catch (e) { return ''; } };
+const gName = o => String(o.name || '').split(' · ')[0].replace(/\(.*?\)/g, '').trim();
+function photosHTML(o) {
+  const tabs = [['fuera', 'Por fuera'], ['dentro', 'Por dentro'], ['mias', 'Mis fotos']];
+  return `<section class="ph" aria-label="Fotos"><div class="ph-h"><h4>📷 Fotos</h4><div class="ph-tabs" role="tablist">${tabs.map(([k, lb]) =>
+    `<button role="tab" class="ph-tab${PH.tab === k ? ' on' : ''}" aria-selected="${PH.tab === k}" data-ph="${k}">${lb}</button>`).join('')}</div></div><div class="ph-body"></div></section>`;
+}
+function phRender(o) {   // pinta la pestaña activa dentro de PH.el (que se conserva entre repintados de la ficha)
+  const body = $('.ph-body', PH.el); if (!body) return;
+  $$('.ph-tab', PH.el).forEach(b => { const on = b.dataset.ph === PH.tab; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+  PH.urls.forEach(u => URL.revokeObjectURL(u)); PH.urls = [];
+  if (PH.tab === 'fuera') {
+    if (!o.located) { body.innerHTML = '<p class="ph-note">Este sitio no tiene ubicación en el mapa: no hay vista de calle.</p>'; return; }
+    const ll = (+o.lat).toFixed(6) + ',' + (+o.lng).toFixed(6);
+    body.innerHTML = `<div class="ph-sv"><iframe title="Vista de calle de ${esc(o.name)}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+        src="https://maps.google.com/maps?layer=c&cbll=${ll}&cbp=12,0,0,0,0&output=svembed"></iframe></div>
+      <p class="ph-fail" hidden>La vista de calle se abre en Google Maps</p>
+      <a class="btn ph-ext" href="https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${ll}" target="_blank" rel="noopener noreferrer">🛣️ Ver la calle en Google Maps <span aria-hidden="true">↗</span></a>
+      <p class="ph-note">La vista de calle puede ser de hace años y no mostrar el local exacto.${o.coordsConfidence === 'media' || o.coordsConfidence === 'baja' ? ' Ubicación aproximada.' : ''}</p>`;
+    const fr = $('iframe', body); let ok = false;
+    fr.addEventListener('load', () => { ok = true; });
+    setTimeout(() => { if (!ok && fr.isConnected) { $('.ph-sv', body).hidden = true; $('.ph-fail', body).hidden = false; } }, 6000);
+  } else if (PH.tab === 'dentro') {
+    const q = encodeURIComponent(gName(o) + ' ' + (o.address || 'Granada'));
+    const extra = [o.website ? `<a class="btn ph-ext" href="${esc(o.website)}" target="_blank" rel="noopener noreferrer">🌐 Web del sitio <span aria-hidden="true">↗</span></a>` : '',
+      o.instagram ? `<a class="btn ph-ext" href="${esc(/^https?:/.test(o.instagram) ? o.instagram : 'https://www.instagram.com/' + o.instagram.replace(/^@/, ''))}" target="_blank" rel="noopener noreferrer">📸 Instagram <span aria-hidden="true">↗</span></a>` : ''].join('');
+    body.innerHTML = `<a class="btn pri wide ph-big" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener noreferrer">🖼️ Ver fotos del sitio en Google Maps <span aria-hidden="true">↗</span></a>${extra}
+      <div class="ph-cm"><b>Fotos libres de la zona (Wikimedia Commons)</b><small>Son fotos de los alrededores y pueden no ser del local.</small><div class="ph-car" aria-live="polite"><span class="ph-note">Cargando…</span></div></div>`;
+    phCommons(o, $('.ph-car', body));
+  } else {
+    if (!idbOK) { body.innerHTML = '<p class="ph-note">No se pueden guardar fotos en este navegador.</p>'; return; }
+    body.innerHTML = `<label class="btn ph-add">➕ Añadir foto<input type="file" accept="image/*" capture="environment" multiple hidden></label>
+      <p class="ph-note">Se guardan solo en este navegador (no se suben a ningún sitio).</p><div class="ph-grid"></div>`;
+    $('input', body).addEventListener('change', e => phAdd(o, [...e.target.files]));
+    phMine(o, $('.ph-grid', body));
+  }
+}
+async function phCommons(o, box) {
+  if (!o.located) { box.innerHTML = '<span class="ph-note">No hay fotos libres de este punto.</span>'; return; }
+  let list = PH.commons.get(o.id);
+  if (!list) {
+    try {
+      const u = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=geosearch&ggscoord=' + o.lat + '|' + o.lng
+        + '&ggsradius=60&ggslimit=8&ggsnamespace=6&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=480';
+      const r = await fetch(u); if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      list = Object.values((j.query || {}).pages || {}).map(p => { const ii = (p.imageinfo || [])[0] || {}, m = ii.extmetadata || {};
+        return ii.thumburl ? {thumb: ii.thumburl, full: ii.thumburl, page: ii.descriptionurl, title: plain((p.title || '').replace(/^File:/, '')),
+          author: plain((m.Artist || {}).value) || 'Autor desconocido', lic: plain((m.LicenseShortName || {}).value) || 'Licencia en la página del archivo'} : null; }).filter(Boolean);
+    } catch (e) { list = []; }
+    PH.commons.set(o.id, list);   // caché en memoria durante la sesión
+  }
+  if (!box.isConnected) return;
+  box.innerHTML = list.length ? list.map((p, i) => `<button class="ph-th" data-cm="${i}" aria-label="Ver foto ${i + 1}: ${esc(p.title)}"><img src="${esc(p.thumb)}" alt="" loading="lazy" width="160" height="120"></button>`).join('')
+    : '<span class="ph-note">No hay fotos libres de este punto.</span>';
+  box.onclick = e => { const b = e.target.closest('[data-cm]'); if (b) phvOpen(list.map(p => ({src: p.full, cap: `${p.title} · ${p.author} · ${p.lic}`, link: p.page})), +b.dataset.cm); };
+}
+function shrink(file) {   // reduce a 1280 px de lado como máximo y JPEG 0,8
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => { const k = Math.min(1, 1280 / Math.max(img.width, img.height)), cv = document.createElement('canvas');
+      cv.width = Math.round(img.width * k); cv.height = Math.round(img.height * k);
+      cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height); URL.revokeObjectURL(url);
+      cv.toBlob(b => b ? res(b) : rej(new Error('toBlob')), 'image/jpeg', .8); };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('imagen')); };
+    img.src = url;
+  });
+}
+async function phAdd(o, files) {
+  let n = 0;
+  for (const f of files) { try { await IDB.add(o.id, await shrink(f)); n++; } catch (e) { toast('⚠️ No se pudo guardar una foto'); } }
+  if (n) { photoSites.add(o.id); toast(`📷 ${n === 1 ? 'Foto guardada' : n + ' fotos guardadas'}`); renderMarkers(); }
+  if (PH.forId === o.id && PH.tab === 'mias') phRender(o);
+}
+async function phMine(o, grid) {
+  let items = [];
+  try { items = await IDB.list(o.id); } catch (e) { grid.innerHTML = '<p class="ph-note">No se pueden guardar fotos en este navegador.</p>'; return; }
+  if (!grid.isConnected) return;
+  if (!items.length) { grid.innerHTML = '<p class="ph-note">Aún no has añadido fotos de este sitio.</p>'; return; }
+  const urls = items.map(x => URL.createObjectURL(x.blob)); PH.urls.push(...urls);
+  grid.innerHTML = items.map((x, i) => `<div class="ph-mi"><button class="ph-th" data-mi="${i}" aria-label="Ver foto ${i + 1}"><img src="${urls[i]}" alt=""></button>
+    <button class="ib sm ph-del" data-del="${x.key}" aria-label="Borrar foto ${i + 1}" title="Borrar">🗑️</button></div>`).join('');
+  grid.onclick = async e => {
+    const v = e.target.closest('[data-mi]'), d = e.target.closest('[data-del]');
+    if (v) phvOpen(urls.map((u, i) => ({src: u, cap: `Tu foto ${i + 1} de ${urls.length}`})), +v.dataset.mi);
+    if (d && await confirmar('<p>¿Borrar esta foto? No se puede recuperar.</p>', 'Borrar foto')) {
+      try { await IDB.del(+d.dataset.del); } catch (er) {}
+      if (items.length === 1) { photoSites.delete(o.id); renderMarkers(); }
+      if (PH.forId === o.id) phRender(o);
+    }
+  };
+}
+/* Visor a pantalla completa (fotos libres y propias): flechas, teclado y deslizar */
+const PHV = {list: [], i: 0};
+function phvShow() {
+  const v = $('#phv'), p = PHV.list[PHV.i]; if (!p) return;
+  $('img', v).src = p.src;
+  $('figcaption', v).innerHTML = esc(p.cap || '') + (p.link ? ` · <a href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">Página del archivo ↗</a>` : '');
+  $$('.phv-n', v).forEach(b => b.hidden = PHV.list.length < 2);
+}
+function phvOpen(list, i) { PHV.list = list; PHV.i = i; $('#phv').hidden = false; phvShow(); $('.phv-x').focus(); }
+function phvClose() { $('#phv').hidden = true; $('img', $('#phv')).removeAttribute('src'); }
+const phvGo = d => { if (PHV.list.length < 2) return; PHV.i = (PHV.i + d + PHV.list.length) % PHV.list.length; phvShow(); };
+$('#phv').addEventListener('click', e => { const b = e.target.closest('[data-phv]'); if (b) b.dataset.phv === 'x' ? phvClose() : phvGo(b.dataset.phv === 'n' ? 1 : -1); else if (e.target.id === 'phv') phvClose(); });
+{ let x0 = null; $('#phv').addEventListener('pointerdown', e => { x0 = e.clientX; }); $('#phv').addEventListener('pointerup', e => { if (x0 != null && Math.abs(e.clientX - x0) > 50) phvGo(e.clientX < x0 ? 1 : -1); x0 = null; }); }
+document.addEventListener('keydown', e => { if ($('#phv').hidden) return; if (e.key === 'Escape') { e.stopImmediatePropagation(); phvClose(); } if (e.key === 'ArrowRight') phvGo(1); if (e.key === 'ArrowLeft') phvGo(-1); }, true);
+$('#detail').addEventListener('click', e => { const b = e.target.closest('[data-ph]'); if (!b || !PH.el || !PH.el.contains(b)) return; PH.tab = b.dataset.ph; const o = BYID[PH.forId]; if (o) phRender(o); });
+
+/* =====================================================================
+   Verificación (actualización 7, parte 2): insignia, desplegable, cerrados e informe
+   ===================================================================== */
+const VST = {confirmado: ['✅', 'Confirmado', 'v-ok'], probable: ['🟡', 'Probable', 'v-pr'], contradictorio: ['⚠️', 'Datos que no coinciden', 'v-ct'],
+  sin_confirmar: ['⚪', 'Sin confirmar', 'v-sc'], cerrado_definitivo: ['⛔', 'Cerrado definitivamente', 'v-cd']};
+const fmtDay = s => { const m = /^(\d{4})-(\d\d)-(\d\d)/.exec(s || ''); return m ? `${+m[3]} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][+m[2] - 1]}${m[1] !== '2026' ? ' ' + m[1] : ''}` : (s || ''); };
+let vOpen = false;
+function verifBadge(o) {
+  const v = o.verification; if (!v || !VST[v.status]) return '';
+  const [ic, lb, cls] = VST[v.status];
+  return `<button class="vbdg ${cls}" data-act="vtoggle" aria-expanded="${vOpen}" title="Ver qué se ha comprobado">${ic} ${lb}${v.status === 'confirmado' && v.checkedAt ? ' (' + fmtDay(v.checkedAt) + ')' : ''} ▾</button>`;
+}
+function verifPanel(o) {
+  const v = o.verification; if (!v || !vOpen) return '';
+  const FL = {hours: 'horario', hoursByDay: 'horario por día', price: 'precio', coords: 'coordenadas', address: 'dirección', open: 'si sigue abierto', events: 'eventos del viaje',
+    minAge: 'edad mínima', freeTapa: 'tapa gratis', cashOnly: 'pago', name: 'nombre', phone: 'teléfono', luggage: 'equipaje'};
+  const li = a => (a || []).map(x => `<li>${esc(x)}</li>`).join('');
+  return `<div class="vpanel">
+    <p class="v-meta">Revisado el ${esc(fmtDay(v.checkedAt))}${v.notes ? ' · ' + esc(v.notes) : ''}</p>
+    ${v.fields && v.fields.length ? `<b>Qué se ha comprobado</b><p>${esc(v.fields.map(f => FL[f] || f).join(', '))}</p>` : ''}
+    ${v.changes && v.changes.length ? `<b>Qué ha cambiado</b><ul>${li(v.changes)}</ul>` : '<b>Qué ha cambiado</b><p>Nada: los datos coinciden con lo que había.</p>'}
+    ${v.sources && v.sources.length ? `<b>Fuentes</b><ul>${v.sources.map(s => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.title || s.url)}</a>${s.date ? ' <small>(' + esc(s.date) + ')</small>' : ''}</li>`).join('')}</ul>` : ''}</div>`;
+}
+function renderReport() {
+  const box = $('#vRepBody'); if (!box) return;
+  const rev = OPTS.filter(o => o.verification), c = k => rev.filter(o => o.verification.status === k).length;
+  const r = VERIF.report || {};
+  if (!rev.length && !HOTEL.verification) { box.innerHTML = '<p class="ph-note">Todavía no se ha hecho la verificación.</p>'; return; }
+  box.innerHTML = `<p class="v-meta">Fecha: ${esc(fmtDay(VERIF.checkedAt))} · ${rev.length} de ${OPTS.filter(o => !o.custom).length} sitios revisados${HOTEL.verification ? ' + alojamiento' : ''}</p>
+    <div class="v-counts">${Object.entries(VST).map(([k, [ic, lb, cls]]) => `<span class="vbdg ${cls}">${ic} ${lb}: ${c(k)}</span>`).join('')}</div>
+    ${(r.changes || []).length ? `<b>Cambios importantes</b><ul class="v-list">${r.changes.map(x => `<li>${x.trip ? '<span class="bdg st-pv">Días del viaje</span> ' : ''}${esc(x.text)}</li>`).join('')}</ul>` : ''}
+    ${(r.notes || []).length ? `<b>Notas</b><ul class="v-list">${r.notes.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}`;
+}
 function renderDetail() {
   const el = $('#detail'), o = detailId && BYID[detailId];
   if (!o) { detailId = null; el.hidden = true; return; }
@@ -6408,12 +6638,13 @@ function renderDetail() {
     : o.located && !o.custom && o.coordsConfidence !== 'alta' ? '<span class="bdg st-pv">📍 Ubicación aproximada</span>' : '';
   const top = el.scrollTop;
   el.style.setProperty('--c', c.color);
-  el.innerHTML = `
+  const html = `
     <div class="d-head"><div class="ic" aria-hidden="true">${emo(o)}</div>
-      <div style="flex:1;min-width:0"><h3>${esc(o.name)}</h3><div class="d-cat">${esc(c.label)}${subOf(o) ? ' · ' + esc(subOf(o).label) : ''}${isSuper(o) ? ' · ' + esc(o.brand) + (STORE[o.storeType] ? ' · ' + esc(STORE[o.storeType].label) : '') : ''}</div></div>
+      <div style="flex:1;min-width:0"><h3>${esc(o.name)}</h3>${verifBadge(o)}<div class="d-cat">${esc(c.label)}${subOf(o) ? ' · ' + esc(subOf(o).label) : ''}${isSuper(o) ? ' · ' + esc(o.brand) + (STORE[o.storeType] ? ' · ' + esc(STORE[o.storeType].label) : '') : ''}</div></div>
       <button class="ib sm" data-act="closed" aria-label="Cerrar detalle (Esc)">✕</button></div>
-    ${o.gone ? `<p class="gone">⚠️ ${esc(o.gone)}: ${esc(o.goneReason || '')}</p>` : ''}<div class="d-badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}
+    ${verifPanel(o)}${o.closedForever ? '<p class="gone">⛔ Este sitio ha cerrado definitivamente.</p>' : ''}${o.gone ? `<p class="gone">⚠️ ${esc(o.gone)}: ${esc(o.goneReason || '')}</p>` : ''}<div class="d-badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}
       ${conf}${o.minAge >= 18 ? '<span class="bdg b-age">+18 · DNI</span>' : ''}${o.freeTapa ? '<span class="bdg b-food">🍺 Tapa gratis</span>' : ''}${o.cashOnly ? '<span class="bdg b-age">💶 Solo efectivo</span>' : ''}${o.lateNight ? `<span class="bdg b-pin">🌙 ${isSuper(o) ? 'Abierto hasta tarde' : 'Abre de madrugada'}</span>` : ''}${o.edited ? '<span class="bdg b-pin">Editada</span>' : ''}${state.hidden[o.id] ? '<span class="bdg b-hid">Oculta</span>' : ''}</div>
+    <div id="phSlot"></div>
     <div class="d-rows">
       ${o.rating ? `<div><span>⭐</span><span>★ ${String(o.rating.value).replace('.', ',')} · ${miles(o.rating.count)} reseñas · ${esc(o.rating.source)} <small>· orientativo</small></span></div>` : ''}
       <div><span>📍</span><span>${o.address ? esc(o.address) : unk}</span></div>
@@ -6446,18 +6677,28 @@ function renderDetail() {
       ${o.custom ? `<button class="btn" data-act="del" data-id="${id}">🗑️ Eliminar sitio</button>` : ''}
     </div>
     <div class="d-notes"><label for="notes">📝 Mis notas (se guardan solas)</label><textarea id="notes" rows="3" placeholder="Reservas, teléfono, con quién quedar…">${esc(state.notes[o.id] || '')}</textarea></div>`;
+  // la ficha se pinta en dos trozos alrededor de la sección de fotos, que no se toca al repintar
+  // (así no se recarga la vista de calle al escribir una nota, añadir a la agenda, etc.)
+  const [hTop, hBot] = html.split('<div id="phSlot"></div>');
+  if (PH.forId !== o.id || !PH.el || !el.contains(PH.el)) {
+    if (PH.forId !== o.id) PH.tab = 'fuera';
+    PH.forId = o.id; el.innerHTML = '<div class="d-top"></div><div class="d-ph"></div><div class="d-bot"></div>';
+    $('.d-ph', el).innerHTML = photosHTML(o); PH.el = $('.d-ph .ph', el);
+    $('.d-top', el).innerHTML = hTop; $('.d-bot', el).innerHTML = hBot; phRender(o);
+  } else { $('.d-top', el).innerHTML = hTop; $('.d-bot', el).innerHTML = hBot; }
   el.hidden = false; el.scrollTop = top;
 }
 function openDetail(id, fly = true) {
   if (!BYID[id]) return;
   const changed = detailId !== id;
+  if (changed) vOpen = false;
   detailId = id; closeSheets(); renderDetail();
   if (changed) $('#detail').scrollTop = 0;
   const o = BYID[id];
   fan();
   if (fly && o.located) flyToVis(L.latLng(o.lat, o.lng), o.far ? 13 : isFood(o) ? 17.5 : 16);
 }
-function closeDetail() { detailId = null; renderDetail(); fan(); }
+function closeDetail() { detailId = null; PH.el = null; PH.forId = null; vOpen = false; renderDetail(); fan(); }
 /* Notas: guardado automático con un único punto de deshacer por edición */
 let noteSnap = false, noteTimer = 0;
 $('#detail').addEventListener('focusin', e => { if (e.target.id === 'notes') noteSnap = false; });
@@ -6583,6 +6824,7 @@ function avisos(st, i) {   // avisos NO bloqueantes de una parada
   if (o.minPlayers > 2) w.push(`Mínimo ${o.minPlayers} jugadores`);
   if (o.minAge >= 18) w.push('Solo mayores de 18: llevad el DNI');
   if (o.gone) w.push(o.gone);
+  if (o.closedForever) w.push('Este sitio ha cerrado');
   if (o.status === 'por_verificar') w.push(isFood(o) || isSuper(o) || SUBCATS.includes(o.category) ? (o.hoursByDay ? 'Horario de Google Maps, orientativo' : o.category === 'noche' ? 'Horario según eventos' : 'Horario sin confirmar') : o.hours ? 'Horario sin confirmar' : 'Horario por verificar');
   return w;
 }
@@ -6604,7 +6846,7 @@ function stopHTML(st, i, withTime) {
       ${withTime ? `<div class="s-time"><span class="s-n">${i + 1}</span>${timeEl}<span class="s-end">${s != null ? '– ' + fmtMin(s + a.dur) : ''}</span>${s != null && s < NIGHT ? `<span class="moon" title="Madrugada: cuenta como la noche de este día (en el calendario ya es el día siguiente)">🌙 +1</span>` : ''}${durEl}</div>` : ''}
       <button class="s-name" data-act="open" data-id="${esc(o.id)}">${emo(o)} ${esc(o.name)}</button>
       ${withTime && a.day ? ambLine(o, a.day) : ''}
-      ${w.length ? `<ul class="warns">${w.map(x => `<li${/^(Cerrado|Fuera de|Termina después|Se solapa|Este sitio figura)/.test(x) ? ' class="dg"' : ''}>⚠️ ${esc(x)}</li>`).join('')}</ul>` : ''}
+      ${w.length ? `<ul class="warns">${w.map(x => `<li${/^(Cerrado|Fuera de|Termina después|Se solapa|Este sitio figura|Este sitio ha cerrado)/.test(x) ? ' class="dg"' : ''}>⚠️ ${esc(x)}</li>`).join('')}</ul>` : ''}
     </div>
     <div class="s-act">${withTime ? `<button class="ib sm" data-act="as-edit" data-uid="${a.uid}" aria-label="Editar día, hora y duración" title="Editar día, hora y duración">✏️</button>`
       : `<button class="btn" data-act="as-edit" data-uid="${a.uid}" style="padding:4px 8px;font-size:12px">🗓️ Programar</button>`}
@@ -6955,6 +7197,7 @@ function toast(msg, action) {
 const byUid = uid => state.assigns.find(a => a.uid === uid);
 const ACT = {
   open: id => openDetail(id),
+  vtoggle: () => { vOpen = !vOpen; renderDetail(); },
   showgrp: id => { const o = BYID[id]; if (!o) return; const prev = G.off.slice(), sk = subKey(o); setGroup(cat(o).id, true); if (sk && G.offSub.includes(sk)) setSub(sk, true); groupsChanged(prev); openDetail(id); },
   closed: () => closeDetail(),
   fav: id => commit(() => { state.favs[id] ? delete state.favs[id] : state.favs[id] = true; }),
@@ -7023,9 +7266,11 @@ $('#scopeSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 }
 /* Panel «Filtros»: interruptores por grupo y subgrupo */
 $('#gbInd').addEventListener('click', e => { if (!e.target.closest('[data-gb="reset"]')) return; const prev = G.off.slice(); setAll(true); groupsChanged(prev); });
+$('#vRep').addEventListener('click', e => e.stopPropagation());
 $('#gSec').addEventListener('change', e => {
   const t = e.target, prev = G.off.slice();
   if (t.id === 'fMine') { G.keepMine = t.checked; return groupsChanged(prev); }
+  if (t.id === 'fGone') { G.hideGone = t.checked; return groupsChanged(prev); }
   if (t.dataset.gt) { setGroup(t.dataset.gt, t.checked); return groupsChanged(prev); }
   if (t.dataset.gs) { setSub(t.dataset.gs, t.checked); return groupsChanged(prev); }
 });
