@@ -786,10 +786,11 @@ input[type=range]{width:100%;accent-color:var(--primary);min-height:24px}
 .tray h3{font:700 14px var(--font-title);color:var(--warn-tx);margin-bottom:2px}
 .tray p{font-size:12px;color:var(--muted);margin-bottom:8px}
 
-.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:var(--panel);padding:3px}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;border:1px solid var(--border);border-radius:22px;overflow:hidden;background:var(--panel);padding:3px}
 .seg button{background:transparent;border:0;border-radius:999px;padding:6px 4px;font-size:12.5px;font-weight:700;min-height:34px;color:var(--text);transition:background .15s,color .15s}
 .seg button:hover{background:var(--panel-2)}
 .seg button.on{background:var(--primary);color:var(--primary-tx)}
+#subF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #foodF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #ftChips,#fgChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--sb) transparent;padding-bottom:4px}
 #ftChips .chip,#fgChips .chip{flex:none}
@@ -1048,7 +1049,7 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
     <div class="filters">
       <input id="q" type="search" placeholder="Buscar nombre, etiqueta, dirección…  ( / )" aria-label="Buscar opciones" autocomplete="off">
       <div id="scopeSeg" class="seg" role="group" aria-label="Qué mostrar">
-        <button data-scope="all">Todo</button><button data-scope="ocio">Solo ocio</button><button data-scope="comida">Solo comida</button><button data-scope="super">Solo súper</button>
+        <button data-scope="all">Todo</button><button data-scope="ocio">Solo ocio</button><button data-scope="comida">Solo comida</button><button data-scope="super">Solo súper</button><button data-scope="peluqueria">Solo peluquería</button><button data-scope="farmacia">Solo farmacia</button><button data-scope="noche">Solo noche</button>
       </div>
       <div id="catChips" class="chips" role="group" aria-label="Filtrar por categoría"></div>
       <div id="foodF" hidden>
@@ -1059,6 +1060,11 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
           <p><b>Horarios de comida:</b> en Granada se come tarde: comida 13:30–16:00 y cena a partir de ~20:00–20:30. La cocina de los bares suele cerrar entre ~16:00 y ~20:00.</p>
           <p><b>Avisos:</b> algunas guías dicen que en la Calle Navas y alrededor de Plaza Nueva hay bares muy turísticos; revisa la carta antes de sentarte. Las valoraciones y los horarios son de Google Maps y orientativos: todos los locales de comida están «por verificar».</p>
         </details>
+      </div>
+      <label class="ck" title="Muestra lo barato o barato-medio; lo que no tiene presupuesto (farmacias, sitios anteriores) se queda"><input type="checkbox" id="fCheap"> 💶 Solo barato</label>
+      <div id="subF" hidden>
+        <div id="subChips" class="chips" role="group" aria-label="Subtipos"></div>
+        <p class="s-note" id="pharmaNote" hidden>💊 Las farmacias de guardia cambian cada día: comprobad la de hoy en la web del Colegio de Farmacéuticos de Granada.</p>
       </div>
       <div id="superF" hidden>
         <div id="stoChips" class="chips" role="group" aria-label="Tipo de tienda"></div>
@@ -2998,6 +3004,2643 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
 }
 </script>
 
+<!-- Actualización 4: peluquerías, farmacias, noche y más sitios para comer (34) -->
+<script type="application/json" id="data-locales">
+{
+"categories_add": [
+{
+"id": "peluqueria",
+"label": "Peluquerías y barberías",
+"emoji": "💈",
+"color": "#8a6bb8"
+},
+{
+"id": "farmacia",
+"label": "Farmacias",
+"emoji": "💊",
+"color": "#3f8f6b"
+},
+{
+"id": "noche",
+"label": "Noche: pubs y discotecas",
+"emoji": "🪩",
+"color": "#a0703f"
+}
+],
+"subTypes": {
+"peluqueria": [
+{
+"id": "barberia",
+"label": "Barberías",
+"emoji": "💈"
+},
+{
+"id": "unisex",
+"label": "Peluquerías unisex",
+"emoji": "✂️"
+},
+{
+"id": "lowcost",
+"label": "Low cost",
+"emoji": "💶"
+}
+],
+"farmacia": [
+{
+"id": "diurna",
+"label": "Hasta las 22:00",
+"emoji": "💊"
+},
+{
+"id": "hasta_tarde",
+"label": "Hasta medianoche",
+"emoji": "🌙"
+},
+{
+"id": "24h",
+"label": "24 horas",
+"emoji": "🚨"
+}
+],
+"noche": [
+{
+"id": "pub",
+"label": "Pubs",
+"emoji": "🍸"
+},
+{
+"id": "chupiteria",
+"label": "Chupiterías",
+"emoji": "🥃"
+},
+{
+"id": "discoteca",
+"label": "Discotecas",
+"emoji": "🪩"
+}
+]
+},
+"foodTypes_add": [
+{
+"id": "menu_dia",
+"label": "Menú del día",
+"emoji": "🍲"
+}
+],
+"options_add": [
+{
+"id": "unnion-barberia",
+"name": "UNNION Barbería · Granada Centro",
+"category": "peluqueria",
+"emoji": "💈",
+"address": "Cuesta del Progreso 6, 18009 Granada",
+"lat": 37.1724278,
+"lng": -3.5965749,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 9:30–14:00 y 16:00–21:00; sáb 9:30–14:00",
+"hoursByDay": {
+"lun": [
+[
+"09:30",
+"14:00"
+],
+[
+"16:00",
+"21:00"
+]
+],
+"mar": [
+[
+"09:30",
+"14:00"
+],
+[
+"16:00",
+"21:00"
+]
+],
+"mie": [
+[
+"09:30",
+"14:00"
+],
+[
+"16:00",
+"21:00"
+]
+],
+"jue": [
+[
+"09:30",
+"14:00"
+],
+[
+"16:00",
+"21:00"
+]
+],
+"vie": [
+[
+"09:30",
+"14:00"
+],
+[
+"16:00",
+"21:00"
+]
+],
+"sab": [
+[
+"09:30",
+"14:00"
+]
+]
+},
+"budget": "barato-medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~1 min)",
+"distanceKmFromHotel": 0.08,
+"description": "La barbería más cercana al hotel (unos 100 m). Corte, degradado y barba; las reseñas destacan la buena relación calidad-precio y que hablan inglés.",
+"tips": "Funcionan con cita: escribid o llamad al +34 611 60 48 84 con un día de antelación.",
+"tags": [
+"barbería",
+"degradado",
+"barba",
+"muy cerca"
+],
+"lateNight": false,
+"rating": {
+"value": 5.0,
+"count": 675,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "barberia"
+},
+{
+"id": "barber-shop-david-martin",
+"name": "Barber Shop · David Martín",
+"category": "peluqueria",
+"emoji": "💈",
+"address": "Calle Carnicería 1, 18009 Granada",
+"lat": 37.173442,
+"lng": -3.5946168,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 9:30–14:00 y 17:00–20:30; sáb 10:00–14:00",
+"hoursByDay": {
+"lun": [
+[
+"09:30",
+"14:00"
+],
+[
+"17:00",
+"20:30"
+]
+],
+"mar": [
+[
+"09:30",
+"14:00"
+],
+[
+"17:00",
+"20:30"
+]
+],
+"mie": [
+[
+"09:30",
+"14:00"
+],
+[
+"17:00",
+"20:30"
+]
+],
+"jue": [
+[
+"09:30",
+"14:00"
+],
+[
+"17:00",
+"20:30"
+]
+],
+"vie": [
+[
+"09:30",
+"14:00"
+],
+[
+"17:00",
+"20:30"
+]
+],
+"sab": [
+[
+"10:00",
+"14:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~2 min)",
+"distanceKmFromHotel": 0.13,
+"description": "Barbería pequeña junto al hotel. Corte y afeitado a navaja muy valorados; a veces atienden sin cita.",
+"tips": "Una reseña de 2026 habla de unos 16 € por corte. Solo español.",
+"tags": [
+"barbería",
+"afeitado",
+"muy cerca"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 338,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "barberia"
+},
+{
+"id": "la-barberia-de-paco",
+"name": "La Barbería de Paco",
+"category": "peluqueria",
+"emoji": "💈",
+"address": "Calle Fábrica Vieja 9, 18002 Granada",
+"lat": 37.176647,
+"lng": -3.6025647,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun 17:00–20:00; mar–vie 10:00–14:00 y 17:00–20:00; sáb 10:00–14:00",
+"hoursByDay": {
+"lun": [
+[
+"17:00",
+"20:00"
+]
+],
+"mar": [
+[
+"10:00",
+"14:00"
+],
+[
+"17:00",
+"20:00"
+]
+],
+"mie": [
+[
+"10:00",
+"14:00"
+],
+[
+"17:00",
+"20:00"
+]
+],
+"jue": [
+[
+"10:00",
+"14:00"
+],
+[
+"17:00",
+"20:00"
+]
+],
+"vie": [
+[
+"10:00",
+"14:00"
+],
+[
+"17:00",
+"20:00"
+]
+],
+"sab": [
+[
+"10:00",
+"14:00"
+]
+]
+},
+"budget": "barato-medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~9 min)",
+"distanceKmFromHotel": 0.71,
+"description": "Barbero de barrio con corte y barba cuidados. Varias reseñas dicen que el precio es bueno.",
+"tips": "Sin cita puede haber espera. Enseñadle una foto del corte que queréis.",
+"tags": [
+"barbería",
+"barba",
+"precio bueno"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 182,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "barberia"
+},
+{
+"id": "urban-barber-shop",
+"name": "Urban Barber Shop",
+"category": "peluqueria",
+"emoji": "💈",
+"address": "Calle Hileras 5, 18001 Granada",
+"lat": 37.1747473,
+"lng": -3.6008475,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mar–vie 10:00–20:00; sáb 10:00–14:00; lunes cerrado",
+"hoursByDay": {
+"mar": [
+[
+"10:00",
+"20:00"
+]
+],
+"mie": [
+[
+"10:00",
+"20:00"
+]
+],
+"jue": [
+[
+"10:00",
+"20:00"
+]
+],
+"vie": [
+[
+"10:00",
+"20:00"
+]
+],
+"sab": [
+[
+"10:00",
+"14:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~6 min)",
+"distanceKmFromHotel": 0.47,
+"description": "Barbería con buen ambiente que acepta clientes sin cita si hay hueco. Corte, barba y tratamientos.",
+"tips": "Cerrada los lunes.",
+"tags": [
+"barbería",
+"sin cita",
+"barba"
+],
+"lateNight": false,
+"rating": {
+"value": 4.8,
+"count": 613,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "barberia"
+},
+{
+"id": "barber28-violon",
+"name": "Barber28 · Granada Centro",
+"category": "peluqueria",
+"emoji": "💈",
+"address": "Paseo del Violón 9, 18006 Granada",
+"lat": 37.1672004,
+"lng": -3.596581,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 9:00–21:00; sáb 9:00–19:00",
+"hoursByDay": {
+"lun": [
+[
+"09:00",
+"21:00"
+]
+],
+"mar": [
+[
+"09:00",
+"21:00"
+]
+],
+"mie": [
+[
+"09:00",
+"21:00"
+]
+],
+"jue": [
+[
+"09:00",
+"21:00"
+]
+],
+"vie": [
+[
+"09:00",
+"21:00"
+]
+],
+"sab": [
+[
+"09:00",
+"19:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~9 min)",
+"distanceKmFromHotel": 0.65,
+"description": "Barbería moderna junto al río, con horario seguido hasta las 21:00.",
+"tips": "Una reseña dice que la calidad es muy alta pero el precio algo elevado.",
+"tags": [
+"barbería",
+"horario seguido"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 108,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "barberia"
+},
+{
+"id": "peluqueria-ganivet",
+"name": "Peluquería Ganivet",
+"category": "peluqueria",
+"emoji": "✂️",
+"address": "Calle Ángel Ganivet 9-11, 18009 Granada",
+"lat": 37.1729971,
+"lng": -3.5979207,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 9:30–20:00; sáb 9:30–14:00",
+"hoursByDay": {
+"lun": [
+[
+"09:30",
+"20:00"
+]
+],
+"mar": [
+[
+"09:30",
+"20:00"
+]
+],
+"mie": [
+[
+"09:30",
+"20:00"
+]
+],
+"jue": [
+[
+"09:30",
+"20:00"
+]
+],
+"vie": [
+[
+"09:30",
+"20:00"
+]
+],
+"sab": [
+[
+"09:30",
+"14:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~2 min)",
+"distanceKmFromHotel": 0.17,
+"description": "Peluquería de mujer y hombre a 2 minutos del hotel. Corte, color y peinado; una reseña la llama «asequible».",
+"tips": "Las reseñas son mixtas en cortes con poca explicación: llevad foto de referencia.",
+"tags": [
+"peluquería",
+"unisex",
+"muy cerca"
+],
+"lateNight": false,
+"rating": {
+"value": 4.5,
+"count": 123,
+"source": "Google Maps"
+},
+"defaultDurationMin": 60,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "unisex"
+},
+{
+"id": "milano-emperatriz-eugenia",
+"name": "Peluquería Milano · Emperatriz Eugenia",
+"category": "peluqueria",
+"emoji": "💶",
+"address": "Calle Emperatriz Eugenia 9, 18002 Granada",
+"lat": 37.1758889,
+"lng": -3.6067688,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–jue 10:00–20:00; vie 9:00–20:00; sáb 9:00–14:00",
+"hoursByDay": {
+"lun": [
+[
+"10:00",
+"20:00"
+]
+],
+"mar": [
+[
+"10:00",
+"20:00"
+]
+],
+"mie": [
+[
+"10:00",
+"20:00"
+]
+],
+"jue": [
+[
+"10:00",
+"20:00"
+]
+],
+"vie": [
+[
+"09:00",
+"20:00"
+]
+],
+"sab": [
+[
+"09:00",
+"14:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~13 min)",
+"distanceKmFromHotel": 1.01,
+"description": "Cadena de peluquería económica; en este local las reseñas recientes son buenas.",
+"tips": "En otros Milano hay quejas de que el precio final es mayor que el del cartel: preguntad el precio total antes de empezar.",
+"tags": [
+"peluquería",
+"low cost",
+"unisex"
+],
+"lateNight": false,
+"rating": {
+"value": 3.9,
+"count": 83,
+"source": "Google Maps"
+},
+"defaultDurationMin": 60,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "lowcost"
+},
+{
+"id": "lowcost-camino-de-ronda",
+"name": "Low Cost Peluquerías · Camino de Ronda 153",
+"category": "peluqueria",
+"emoji": "💶",
+"address": "Camino de Ronda 153, 18003 Granada",
+"lat": 37.1813329,
+"lng": -3.6128061,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–jue 10:00–20:00; vie 9:00–20:00; sáb 9:00–14:00",
+"hoursByDay": {
+"lun": [
+[
+"10:00",
+"20:00"
+]
+],
+"mar": [
+[
+"10:00",
+"20:00"
+]
+],
+"mie": [
+[
+"10:00",
+"20:00"
+]
+],
+"jue": [
+[
+"10:00",
+"20:00"
+]
+],
+"vie": [
+[
+"09:00",
+"20:00"
+]
+],
+"sab": [
+[
+"09:00",
+"14:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~23 min)",
+"distanceKmFromHotel": 1.75,
+"description": "Peluquería low cost que atiende sin cita. Corte, tinte y uñas.",
+"tips": "Varias reseñas avisan de que suman extras (lavado, mascarilla) sin preguntar: pedid el precio cerrado antes. A unos 1,9 km.",
+"tags": [
+"peluquería",
+"low cost",
+"sin cita",
+"uñas"
+],
+"lateNight": false,
+"rating": {
+"value": 3.3,
+"count": 330,
+"source": "Google Maps"
+},
+"defaultDurationMin": 60,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "lowcost"
+},
+{
+"id": "farmacia-granada-centro",
+"name": "Farmacia Granada Centro",
+"category": "farmacia",
+"emoji": "💊",
+"address": "Calle San Matías 2, 18009 Granada",
+"lat": 37.1726173,
+"lng": -3.5969997,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 9:00–22:00",
+"hoursByDay": {
+"lun": [
+[
+"09:00",
+"22:00"
+]
+],
+"mar": [
+[
+"09:00",
+"22:00"
+]
+],
+"mie": [
+[
+"09:00",
+"22:00"
+]
+],
+"jue": [
+[
+"09:00",
+"22:00"
+]
+],
+"vie": [
+[
+"09:00",
+"22:00"
+]
+],
+"sab": [
+[
+"09:00",
+"22:00"
+]
+],
+"dom": [
+[
+"09:00",
+"22:00"
+]
+]
+},
+"budget": "—",
+"price": null,
+"minAge": null,
+"travel": "a pie (~1 min)",
+"distanceKmFromHotel": 0.1,
+"description": "La farmacia más cercana: prácticamente en vuestra calle. Bien surtida y con personal que ayuda (alguna farmacéutica habla inglés).",
+"tips": "",
+"tags": [
+"farmacia",
+"muy cerca",
+"abre domingos"
+],
+"lateNight": false,
+"rating": {
+"value": 4.7,
+"count": 94,
+"source": "Google Maps"
+},
+"defaultDurationMin": 15,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "diurna"
+},
+{
+"id": "farmacia-reyes-catolicos-5",
+"name": "Farmacia Miguel Martín Valverde · Reyes Católicos 5",
+"category": "farmacia",
+"emoji": "💊",
+"address": "Calle Reyes Católicos 5, 18001 Granada",
+"lat": 37.173881,
+"lng": -3.599402,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 9:00–24:00",
+"hoursByDay": {
+"lun": [
+[
+"09:00",
+"00:00"
+]
+],
+"mar": [
+[
+"09:00",
+"00:00"
+]
+],
+"mie": [
+[
+"09:00",
+"00:00"
+]
+],
+"jue": [
+[
+"09:00",
+"00:00"
+]
+],
+"vie": [
+[
+"09:00",
+"00:00"
+]
+],
+"sab": [
+[
+"09:00",
+"00:00"
+]
+],
+"dom": [
+[
+"09:00",
+"00:00"
+]
+]
+},
+"budget": "—",
+"price": null,
+"minAge": null,
+"travel": "a pie (~4 min)",
+"distanceKmFromHotel": 0.32,
+"description": "Farmacia del centro abierta hasta medianoche.",
+"tips": "El nombre dice «24 horas», pero Google indica cierre a las 24:00: comprobadlo si vais de madrugada.",
+"tags": [
+"farmacia",
+"hasta medianoche"
+],
+"lateNight": true,
+"rating": {
+"value": 3.6,
+"count": 90,
+"source": "Google Maps"
+},
+"defaultDurationMin": 15,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "hasta_tarde"
+},
+{
+"id": "farmacia-zarco-puerta-real",
+"name": "Farmacia Zarco · Puerta Real",
+"category": "farmacia",
+"emoji": "💊",
+"address": "Puerta Real de España 2, 18005 Granada",
+"lat": 37.1730245,
+"lng": -3.5997471,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 8:00–24:00",
+"hoursByDay": {
+"lun": [
+[
+"08:00",
+"00:00"
+]
+],
+"mar": [
+[
+"08:00",
+"00:00"
+]
+],
+"mie": [
+[
+"08:00",
+"00:00"
+]
+],
+"jue": [
+[
+"08:00",
+"00:00"
+]
+],
+"vie": [
+[
+"08:00",
+"00:00"
+]
+],
+"sab": [
+[
+"08:00",
+"00:00"
+]
+],
+"dom": [
+[
+"08:00",
+"00:00"
+]
+]
+},
+"budget": "—",
+"price": null,
+"minAge": null,
+"travel": "a pie (~4 min)",
+"distanceKmFromHotel": 0.33,
+"description": "Farmacia en Puerta Real, abierta de 8:00 a medianoche; atienden en inglés.",
+"tips": "Una reseña cuenta que cerraron justo a las 24:00 sin atender: no lo apuréis.",
+"tags": [
+"farmacia",
+"hasta medianoche",
+"Puerta Real"
+],
+"lateNight": true,
+"rating": {
+"value": 3.3,
+"count": 164,
+"source": "Google Maps"
+},
+"defaultDurationMin": 15,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "hasta_tarde"
+},
+{
+"id": "farmacia-nestares",
+"name": "Farmacia Nestares (guardia 365 días)",
+"category": "farmacia",
+"emoji": "💊",
+"address": "Calle Gran Capitán 9, 18002 Granada",
+"lat": 37.1785,
+"lng": -3.60379,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 9:00–22:00",
+"hoursByDay": {
+"lun": [
+[
+"09:00",
+"22:00"
+]
+],
+"mar": [
+[
+"09:00",
+"22:00"
+]
+],
+"mie": [
+[
+"09:00",
+"22:00"
+]
+],
+"jue": [
+[
+"09:00",
+"22:00"
+]
+],
+"vie": [
+[
+"09:00",
+"22:00"
+]
+],
+"sab": [
+[
+"09:00",
+"22:00"
+]
+],
+"dom": [
+[
+"09:00",
+"22:00"
+]
+]
+},
+"budget": "—",
+"price": null,
+"minAge": null,
+"travel": "a pie (~12 min)",
+"distanceKmFromHotel": 0.92,
+"description": "Frente a las urgencias del centro de salud de Gran Capitán; abre todos los días.",
+"tips": "Útil si os atienden en esas urgencias.",
+"tags": [
+"farmacia",
+"junto a urgencias"
+],
+"lateNight": false,
+"rating": {
+"value": 4.3,
+"count": 118,
+"source": "Google Maps"
+},
+"defaultDurationMin": 15,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "diurna"
+},
+{
+"id": "farmacia-viedma-24h",
+"name": "Farmacia Viedma 24 horas",
+"category": "farmacia",
+"emoji": "🚨",
+"address": "Avenida de Dílar 16, 18007 Granada",
+"lat": 37.1598081,
+"lng": -3.5999778,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Abierta 24 horas",
+"hoursByDay": {
+"lun": [
+[
+"00:00",
+"00:00"
+]
+],
+"mar": [
+[
+"00:00",
+"00:00"
+]
+],
+"mie": [
+[
+"00:00",
+"00:00"
+]
+],
+"jue": [
+[
+"00:00",
+"00:00"
+]
+],
+"vie": [
+[
+"00:00",
+"00:00"
+]
+],
+"sab": [
+[
+"00:00",
+"00:00"
+]
+],
+"dom": [
+[
+"00:00",
+"00:00"
+]
+]
+},
+"budget": "—",
+"price": null,
+"minAge": null,
+"travel": "a pie (~20 min)",
+"distanceKmFromHotel": 1.51,
+"description": "Farmacia 24 horas en el Zaidín, a unos 1,5 km. La opción para la madrugada.",
+"tips": "Una reseña dice que de madrugada estaba cerrada: llamad antes al +34 958 81 18 06. Consultad también las farmacias de guardia del día en la web del Colegio de Farmacéuticos de Granada.",
+"tags": [
+"farmacia",
+"24 h",
+"madrugada"
+],
+"lateNight": true,
+"rating": {
+"value": 4.1,
+"count": 142,
+"source": "Google Maps"
+},
+"defaultDurationMin": 15,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "24h"
+},
+{
+"id": "chupiteria-69",
+"name": "Chupitería 69",
+"category": "noche",
+"emoji": "🥃",
+"address": "Calle Sócrates 12, 18004 Granada",
+"lat": 37.1749584,
+"lng": -3.6067976,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–jue 22:00–3:00; vie–sáb 22:00–4:00; domingo cerrado",
+"hoursByDay": {
+"lun": [
+[
+"22:00",
+"03:00"
+]
+],
+"mar": [
+[
+"22:00",
+"03:00"
+]
+],
+"mie": [
+[
+"22:00",
+"03:00"
+]
+],
+"jue": [
+[
+"22:00",
+"03:00"
+]
+],
+"vie": [
+[
+"22:00",
+"04:00"
+]
+],
+"sab": [
+[
+"22:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~13 min)",
+"distanceKmFromHotel": 0.98,
+"description": "Chupitería mítica de estudiantes con decenas de chupitos baratos y vales que se canjean por regalos. Descuentos entre semana.",
+"tips": "En la zona de Pedro Antonio, a unos 1 km.",
+"tags": [
+"chupitos",
+"barato",
+"estudiantes"
+],
+"lateNight": true,
+"rating": {
+"value": 4.4,
+"count": 1190,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "chupiteria"
+},
+{
+"id": "pub-la-flaca",
+"name": "Pub La Flaca",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Pedro Antonio de Alarcón 61, 18004 Granada",
+"lat": 37.1744299,
+"lng": -3.6073491,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Dom–jue 22:00–3:00; vie 19:00–2:00; sáb 22:00–4:00",
+"hoursByDay": {
+"lun": [
+[
+"22:00",
+"03:00"
+]
+],
+"mar": [
+[
+"22:00",
+"03:00"
+]
+],
+"mie": [
+[
+"22:00",
+"03:00"
+]
+],
+"jue": [
+[
+"22:00",
+"03:00"
+]
+],
+"dom": [
+[
+"22:00",
+"03:00"
+]
+],
+"vie": [
+[
+"19:00",
+"02:00"
+]
+],
+"sab": [
+[
+"22:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~14 min)",
+"distanceKmFromHotel": 1.02,
+"description": "Pub muy bien valorado y barato de Pedro Antonio: barra llena de frases escritas, buen ambiente y música para cantar.",
+"tips": "Abre todos los días, también martes y miércoles.",
+"tags": [
+"pub",
+"barato",
+"ambiente"
+],
+"lateNight": true,
+"rating": {
+"value": 4.7,
+"count": 214,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "amsterdam-cafe-pub",
+"name": "Amsterdam Café Pub",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Pedro Antonio de Alarcón 52, 18002 Granada",
+"lat": 37.1741389,
+"lng": -3.6069783,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días desde las 15:00 hasta las 3:00 (vie–sáb 4:00)",
+"hoursByDay": {
+"lun": [
+[
+"15:00",
+"03:00"
+]
+],
+"mar": [
+[
+"15:00",
+"03:00"
+]
+],
+"mie": [
+[
+"15:00",
+"03:00"
+]
+],
+"jue": [
+[
+"15:00",
+"03:00"
+]
+],
+"dom": [
+[
+"15:00",
+"03:00"
+]
+],
+"vie": [
+[
+"15:00",
+"04:00"
+]
+],
+"sab": [
+[
+"15:00",
+"04:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~13 min)",
+"distanceKmFromHotel": 0.98,
+"description": "Pub de rock de los 70–90 con billar, muchas cervezas en nevera y chucherías con la copa.",
+"tips": "Bueno para tomar algo tranquilo y jugar al billar.",
+"tags": [
+"pub",
+"billar",
+"rock"
+],
+"lateNight": true,
+"rating": {
+"value": 4.6,
+"count": 2218,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "alkimia-pub",
+"name": "Alkimia Pub",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Pedro Antonio de Alarcón 71, 18003 Granada",
+"lat": 37.1755791,
+"lng": -3.608231,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 21:00–3:00 (vie–sáb 4:00)",
+"hoursByDay": {
+"lun": [
+[
+"21:00",
+"03:00"
+]
+],
+"mar": [
+[
+"21:00",
+"03:00"
+]
+],
+"mie": [
+[
+"21:00",
+"03:00"
+]
+],
+"jue": [
+[
+"21:00",
+"03:00"
+]
+],
+"dom": [
+[
+"21:00",
+"03:00"
+]
+],
+"vie": [
+[
+"21:00",
+"04:00"
+]
+],
+"sab": [
+[
+"21:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~15 min)",
+"distanceKmFromHotel": 1.12,
+"description": "Pub de reguetón con futbolín y copas baratas según las reseñas.",
+"tips": "",
+"tags": [
+"pub",
+"reguetón",
+"futbolín",
+"barato"
+],
+"lateNight": true,
+"rating": {
+"value": 4.0,
+"count": 284,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "pub-wall-street",
+"name": "Pub Wall Street",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Pedro Antonio de Alarcón 52, 18002 Granada",
+"lat": 37.1741991,
+"lng": -3.6070451,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Jue 21:00–3:00; vie–sáb 21:00–4:00; resto cerrado",
+"hoursByDay": {
+"jue": [
+[
+"21:00",
+"03:00"
+]
+],
+"vie": [
+[
+"21:00",
+"04:00"
+]
+],
+"sab": [
+[
+"21:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~13 min)",
+"distanceKmFromHotel": 0.99,
+"description": "Pub «de bolsa»: el precio de las copas sube y baja cada pocos minutos en pantallas. Curioso y friki.",
+"tips": "Solo abre de jueves a sábado. Las reseñas dicen que al final no se ahorra tanto.",
+"tags": [
+"pub",
+"friki",
+"precios variables"
+],
+"lateNight": true,
+"rating": {
+"value": 3.9,
+"count": 1203,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "pub-la-chica-de-ayer",
+"name": "Pub La Chica de Ayer",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Pedro Antonio de Alarcón 18, 18005 Granada",
+"lat": 37.1702924,
+"lng": -3.6044087,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 16:00–3:00 (vie–sáb 4:00)",
+"hoursByDay": {
+"lun": [
+[
+"16:00",
+"03:00"
+]
+],
+"mar": [
+[
+"16:00",
+"03:00"
+]
+],
+"mie": [
+[
+"16:00",
+"03:00"
+]
+],
+"jue": [
+[
+"16:00",
+"03:00"
+]
+],
+"dom": [
+[
+"16:00",
+"03:00"
+]
+],
+"vie": [
+[
+"16:00",
+"04:00"
+]
+],
+"sab": [
+[
+"16:00",
+"04:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~11 min)",
+"distanceKmFromHotel": 0.8,
+"description": "Pub de música española de los 80 y 90, el más cercano de la zona de Pedro Antonio (unos 800 m).",
+"tips": "Algunas reseñas mencionan un portero estricto con la ropa deportiva.",
+"tags": [
+"pub",
+"años 80",
+"música española"
+],
+"lateNight": true,
+"rating": {
+"value": 4.2,
+"count": 2096,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "nitos-pub",
+"name": "Nito's Pub",
+"category": "noche",
+"emoji": "🍸",
+"address": "Calle Doctor Martín Lagos 4, 18005 Granada",
+"lat": 37.1714622,
+"lng": -3.6023461,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mar–dom 15:30–3:00; lunes cerrado",
+"hoursByDay": {
+"mar": [
+[
+"15:30",
+"03:00"
+]
+],
+"mie": [
+[
+"15:30",
+"03:00"
+]
+],
+"jue": [
+[
+"15:30",
+"03:00"
+]
+],
+"vie": [
+[
+"15:30",
+"03:00"
+]
+],
+"sab": [
+[
+"15:30",
+"03:00"
+]
+],
+"dom": [
+[
+"15:30",
+"03:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~8 min)",
+"distanceKmFromHotel": 0.59,
+"description": "Pub antiguo y tranquilo, lleno de objetos curiosos, con cócteles bien hechos y aperitivos gratis.",
+"tips": "Ideal para charlar. Cerrado los lunes.",
+"tags": [
+"pub",
+"tranquilo",
+"cócteles"
+],
+"lateNight": true,
+"rating": {
+"value": 4.6,
+"count": 311,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "pub-entresuelo",
+"name": "Pub Entresuelo",
+"category": "noche",
+"emoji": "🍸",
+"address": "Plaza de San Agustín 2, 18001 Granada",
+"lat": 37.1778903,
+"lng": -3.5999706,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mar–jue 22:00–3:00; vie–sáb 22:00–4:00; dom–lun cerrado",
+"hoursByDay": {
+"mar": [
+[
+"22:00",
+"03:00"
+]
+],
+"mie": [
+[
+"22:00",
+"03:00"
+]
+],
+"jue": [
+[
+"22:00",
+"03:00"
+]
+],
+"vie": [
+[
+"22:00",
+"04:00"
+]
+],
+"sab": [
+[
+"22:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~9 min)",
+"distanceKmFromHotel": 0.65,
+"description": "Pub céntrico con billar, intercambio de idiomas y clases de salsa gratis los jueves; los miércoles tienen buen ambiente según las reseñas.",
+"tips": "",
+"tags": [
+"pub",
+"billar",
+"salsa gratis",
+"intercambio de idiomas"
+],
+"lateNight": true,
+"rating": {
+"value": 4.6,
+"count": 154,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "pub"
+},
+{
+"id": "chupiteria-algaida",
+"name": "Chupitería Algaida",
+"category": "noche",
+"emoji": "🥃",
+"address": "Calle Sol 14, 18002 Granada",
+"lat": 37.1767397,
+"lng": -3.6081281,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Jue 22:30–3:00; vie–sáb 22:30–4:00; resto cerrado",
+"hoursByDay": {
+"jue": [
+[
+"22:30",
+"03:00"
+]
+],
+"vie": [
+[
+"22:30",
+"04:00"
+]
+],
+"sab": [
+[
+"22:30",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~15 min)",
+"distanceKmFromHotel": 1.15,
+"description": "Chupitería pequeña con más de 30 chupitos y trato cercano.",
+"tips": "Solo abre de jueves a sábado.",
+"tags": [
+"chupitos",
+"barato"
+],
+"lateNight": true,
+"rating": {
+"value": 4.6,
+"count": 83,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "chupiteria"
+},
+{
+"id": "discoteca-backstage",
+"name": "Discoteca Backstage",
+"category": "noche",
+"emoji": "🪩",
+"address": "Calle Moras 2, 18009 Granada",
+"lat": 37.1726858,
+"lng": -3.5983389,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días desde las 23:00 hasta las 6:00 (vie–sáb hasta las 7:00)",
+"hoursByDay": {
+"lun": [
+[
+"23:00",
+"06:00"
+]
+],
+"mar": [
+[
+"23:00",
+"06:00"
+]
+],
+"mie": [
+[
+"23:00",
+"06:00"
+]
+],
+"jue": [
+[
+"23:00",
+"06:00"
+]
+],
+"dom": [
+[
+"23:00",
+"06:00"
+]
+],
+"vie": [
+[
+"22:00",
+"07:00"
+]
+],
+"sab": [
+[
+"16:00",
+"07:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~3 min)",
+"distanceKmFromHotel": 0.21,
+"description": "La discoteca más cercana al hotel (unos 200 m). Abre todos los días hasta el amanecer.",
+"tips": "Reseñas mixtas: portero que elige quién entra y local muy lleno. Llevad DNI.",
+"tags": [
+"discoteca",
+"muy cerca",
+"hasta el amanecer"
+],
+"lateNight": true,
+"rating": {
+"value": 3.5,
+"count": 1057,
+"source": "Google Maps"
+},
+"defaultDurationMin": 180,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "discoteca"
+},
+{
+"id": "moonback-club",
+"name": "MoonBack The Club",
+"category": "noche",
+"emoji": "🪩",
+"address": "Calle Arabial 45, 18004 Granada",
+"lat": 37.167677,
+"lng": -3.6071855,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Horario según eventos (ver sus redes)",
+"hoursByDay": null,
+"budget": "medio",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~15 min)",
+"distanceKmFromHotel": 1.15,
+"description": "Club pequeño de techno. Entrada de unos 10–12 € con una copa incluida, según reseñas.",
+"tips": "Abre según la programación: comprobad sus redes antes de ir. A unos 1,2 km.",
+"tags": [
+"discoteca",
+"techno",
+"entrada con copa"
+],
+"lateNight": true,
+"rating": {
+"value": 4.1,
+"count": 207,
+"source": "Google Maps"
+},
+"defaultDurationMin": 180,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "discoteca"
+},
+{
+"id": "aliatar-club",
+"name": "Aliatar (sala)",
+"category": "noche",
+"emoji": "🪩",
+"address": "Calle Recogidas 2, 18002 Granada",
+"lat": 37.1732806,
+"lng": -3.6002982,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mar–jue 23:00–6:00; vie–sáb 23:00–7:00; lunes cerrado",
+"hoursByDay": {
+"mar": [
+[
+"23:00",
+"06:00"
+]
+],
+"mie": [
+[
+"23:00",
+"06:00"
+]
+],
+"jue": [
+[
+"23:00",
+"06:00"
+]
+],
+"vie": [
+[
+"23:00",
+"07:00"
+]
+],
+"sab": [
+[
+"23:00",
+"07:00"
+]
+],
+"dom": [
+[
+"16:30",
+"00:00"
+]
+]
+},
+"budget": "caro",
+"price": null,
+"minAge": 18,
+"travel": "a pie (~5 min)",
+"distanceKmFromHotel": 0.38,
+"description": "Sala de conciertos y discoteca en Recogidas, muy cerca. Hay noches con grupos tributo.",
+"tips": "Una reseña habla de cerveza a 5 € y copa a 10 €. Portero estricto con la ropa y no dejan volver a entrar tras salir a fumar.",
+"tags": [
+"discoteca",
+"conciertos",
+"cerca"
+],
+"lateNight": true,
+"rating": {
+"value": 3.5,
+"count": 3537,
+"source": "Google Maps"
+},
+"defaultDurationMin": 180,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"subType": "discoteca"
+},
+{
+"id": "bar-poe",
+"name": "Bar Poë",
+"category": "comer",
+"emoji": "🍻",
+"address": "Calle Verónica de la Magdalena 40, 18002 Granada",
+"lat": 37.1743851,
+"lng": -3.603439,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mié, jue y dom 20:00–2:00; vie–sáb 20:00–3:00; lun–mar cerrado",
+"hoursByDay": {
+"mie": [
+[
+"20:00",
+"02:00"
+]
+],
+"jue": [
+[
+"20:00",
+"02:00"
+]
+],
+"dom": [
+[
+"20:00",
+"02:00"
+]
+],
+"vie": [
+[
+"20:00",
+"03:00"
+]
+],
+"sab": [
+[
+"20:00",
+"03:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~9 min)",
+"distanceKmFromHotel": 0.68,
+"description": "Tapa gratis a elegir con cada bebida, con platos internacionales (alitas, picantes, brochetas). Abre hasta las 2:00.",
+"tips": "Solo efectivo. La cocina cierra a las 24:00. Cerrado lunes y martes.",
+"tags": [
+"tapa gratis",
+"solo efectivo",
+"internacional",
+"hasta tarde"
+],
+"lateNight": true,
+"rating": {
+"value": 4.7,
+"count": 1512,
+"source": "Google Maps"
+},
+"defaultDurationMin": 75,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "tapas",
+"freeTapa": true,
+"cashOnly": true
+},
+{
+"id": "la-loca-de-gandoca",
+"name": "La Loca de Gandoca",
+"category": "comer",
+"emoji": "🍻",
+"address": "Calle Santa Paula 19, 18001 Granada",
+"lat": 37.178663,
+"lng": -3.6002988,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun 20:00–24:00; mar–jue 20:00–3:00; vie–sáb 20:00–4:00; domingo cerrado",
+"hoursByDay": {
+"lun": [
+[
+"20:00",
+"00:00"
+]
+],
+"mar": [
+[
+"20:00",
+"03:00"
+]
+],
+"mie": [
+[
+"20:00",
+"03:00"
+]
+],
+"jue": [
+[
+"20:00",
+"03:00"
+]
+],
+"vie": [
+[
+"20:00",
+"04:00"
+]
+],
+"sab": [
+[
+"20:00",
+"04:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~10 min)",
+"distanceKmFromHotel": 0.74,
+"description": "Bar pequeño (unas 20 plazas) con tapas creativas; una reseña habla de 2 cañas con tapa por 6,80 €.",
+"tips": "Las tapas son pequeñas, pero se pueden pedir muchas.",
+"tags": [
+"tapa gratis",
+"creativo",
+"barato"
+],
+"lateNight": true,
+"rating": {
+"value": 4.8,
+"count": 547,
+"source": "Google Maps"
+},
+"defaultDurationMin": 75,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "tapas",
+"freeTapa": true,
+"cashOnly": false
+},
+{
+"id": "casa-fernando-navas",
+"name": "Casa Fernando",
+"category": "comer",
+"emoji": "🍻",
+"address": "Calle Navas 28, 18009 Granada",
+"lat": 37.1737499,
+"lng": -3.5983593,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–sáb 12:30–23:30; domingo cerrado",
+"hoursByDay": {
+"lun": [
+[
+"12:30",
+"23:30"
+]
+],
+"mar": [
+[
+"12:30",
+"23:30"
+]
+],
+"mie": [
+[
+"12:30",
+"23:30"
+]
+],
+"jue": [
+[
+"12:30",
+"23:30"
+]
+],
+"vie": [
+[
+"12:30",
+"23:30"
+]
+],
+"sab": [
+[
+"12:30",
+"23:30"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~3 min)",
+"distanceKmFromHotel": 0.23,
+"description": "Bar familiar de la calle Navas, la calle de tapas a 3 minutos del hotel. Tapas generosas.",
+"tips": "",
+"tags": [
+"tapas",
+"calle Navas",
+"barato"
+],
+"lateNight": false,
+"rating": {
+"value": 4.3,
+"count": 436,
+"source": "Google Maps"
+},
+"defaultDurationMin": 60,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "tapas",
+"freeTapa": false,
+"cashOnly": false
+},
+{
+"id": "el-rincon-de-julio",
+"name": "El Rincón de Julio",
+"category": "comer",
+"emoji": "🍻",
+"address": "Calle Navas 27, 18009 Granada",
+"lat": 37.1737173,
+"lng": -3.5984221,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 12:30–15:00 y 19:30–23:00; fin de semana cerrado",
+"hoursByDay": {
+"lun": [
+[
+"12:30",
+"15:00"
+],
+[
+"19:30",
+"23:00"
+]
+],
+"mar": [
+[
+"12:30",
+"15:00"
+],
+[
+"19:30",
+"23:00"
+]
+],
+"mie": [
+[
+"12:30",
+"15:00"
+],
+[
+"19:30",
+"23:00"
+]
+],
+"jue": [
+[
+"12:30",
+"15:00"
+],
+[
+"19:30",
+"23:00"
+]
+],
+"vie": [
+[
+"12:30",
+"15:00"
+],
+[
+"19:30",
+"23:00"
+]
+]
+},
+"budget": "medio",
+"price": null,
+"minAge": null,
+"travel": "a pie (~3 min)",
+"distanceKmFromHotel": 0.23,
+"description": "Uno de los mejor valorados de Granada: rabo de toro, croquetas y pulpo. No es el más barato, pero sí un capricho a buen precio.",
+"tips": "Reservad por WhatsApp (+34 615 13 29 30): se llena.",
+"tags": [
+"rabo de toro",
+"croquetas",
+"reservar"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 5740,
+"source": "Google Maps"
+},
+"defaultDurationMin": 90,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "tapas",
+"freeTapa": false,
+"cashOnly": false
+},
+{
+"id": "dplatos-centro",
+"name": "D'Platos Centro",
+"category": "comer",
+"emoji": "🍻",
+"address": "Calle Acera del Darro 92, 18005 Granada",
+"lat": 37.1692258,
+"lng": -3.597189,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Todos los días 8:30–24:00 (vie–sáb hasta la 1:00)",
+"hoursByDay": {
+"lun": [
+[
+"08:30",
+"00:00"
+]
+],
+"mar": [
+[
+"08:30",
+"00:00"
+]
+],
+"mie": [
+[
+"08:30",
+"00:00"
+]
+],
+"jue": [
+[
+"08:30",
+"00:00"
+]
+],
+"dom": [
+[
+"08:30",
+"00:00"
+]
+],
+"vie": [
+[
+"08:30",
+"01:00"
+]
+],
+"sab": [
+[
+"08:30",
+"01:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~6 min)",
+"distanceKmFromHotel": 0.43,
+"description": "Bar-restaurante moderno con tapa a elegir con la bebida y horario de cocina muy amplio, desde el desayuno.",
+"tips": "Una reseña dice que a ellos no les pusieron tapa: pedidla.",
+"tags": [
+"tapa a elegir",
+"desayuno",
+"horario amplio"
+],
+"lateNight": false,
+"rating": {
+"value": 4.1,
+"count": 3330,
+"source": "Google Maps"
+},
+"defaultDurationMin": 60,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "tapas",
+"freeTapa": true,
+"cashOnly": false
+},
+{
+"id": "el-cepillo-menu",
+"name": "Restaurante El Cepillo",
+"category": "comer",
+"emoji": "🍲",
+"address": "Plaza Pescadería 18, 18001 Granada",
+"lat": 37.1761432,
+"lng": -3.6005643,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–vie 13:00–16:00 y 20:00–23:00; sáb 13:00–16:00",
+"hoursByDay": {
+"lun": [
+[
+"13:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"mar": [
+[
+"13:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"mie": [
+[
+"13:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"jue": [
+[
+"13:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"vie": [
+[
+"13:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"sab": [
+[
+"13:00",
+"16:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~7 min)",
+"distanceKmFromHotel": 0.53,
+"description": "Menú del día económico con primero, segundo y postre; carta también en inglés.",
+"tips": "Hay quien lo encuentra muy básico: es para comer completo y barato, no para algo especial.",
+"tags": [
+"menú del día",
+"comida completa"
+],
+"lateNight": false,
+"rating": {
+"value": 4.4,
+"count": 651,
+"source": "Google Maps"
+},
+"defaultDurationMin": 75,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "menu_dia",
+"freeTapa": false,
+"cashOnly": false
+},
+{
+"id": "deleite-bocadillos",
+"name": "Deleite Bocadillos",
+"category": "comer",
+"emoji": "🥪",
+"address": "Calle Lepanto 11, 18009 Granada",
+"lat": 37.1744281,
+"lng": -3.5978793,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mediodía y noche todos los días menos el miércoles",
+"hoursByDay": {
+"lun": [
+[
+"12:00",
+"16:00"
+],
+[
+"19:30",
+"22:30"
+]
+],
+"mar": [
+[
+"12:00",
+"16:00"
+],
+[
+"19:30",
+"22:30"
+]
+],
+"jue": [
+[
+"12:00",
+"16:00"
+],
+[
+"19:30",
+"22:30"
+]
+],
+"vie": [
+[
+"12:00",
+"16:00"
+],
+[
+"19:30",
+"22:30"
+]
+],
+"sab": [
+[
+"12:00",
+"16:00"
+],
+[
+"20:00",
+"23:00"
+]
+],
+"dom": [
+[
+"12:00",
+"16:00"
+],
+[
+"19:00",
+"22:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~3 min)",
+"distanceKmFromHotel": 0.23,
+"description": "Bocadillos enormes hechos al momento (philly, pollo crujiente) con patatas y salsas caseras.",
+"tips": "Cada bocadillo tarda unos 10 minutos. Cerrado los miércoles.",
+"tags": [
+"bocadillos",
+"grandes",
+"salsas caseras"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 467,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "bocadillos",
+"freeTapa": false,
+"cashOnly": false
+},
+{
+"id": "se-vende-bocadillos",
+"name": "Se Vende Bocadillos",
+"category": "comer",
+"emoji": "🥪",
+"address": "Calle Mano de Hierro 15, 18001 Granada",
+"lat": 37.1804535,
+"lng": -3.602213,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Mar–sáb 20:00–24:00; dom–lun cerrado",
+"hoursByDay": {
+"mar": [
+[
+"20:00",
+"00:00"
+]
+],
+"mie": [
+[
+"20:00",
+"00:00"
+]
+],
+"jue": [
+[
+"20:00",
+"00:00"
+]
+],
+"vie": [
+[
+"20:00",
+"00:00"
+]
+],
+"sab": [
+[
+"20:00",
+"00:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~13 min)",
+"distanceKmFromHotel": 0.99,
+"description": "Bocadillos con pan casero; se pueden pedir medios para probar varios. A veces organizan bingo, talleres y espectáculos.",
+"tips": "Solo abre por la noche.",
+"tags": [
+"bocadillos",
+"medios bocadillos",
+"eventos"
+],
+"lateNight": false,
+"rating": {
+"value": 4.8,
+"count": 196,
+"source": "Google Maps"
+},
+"defaultDurationMin": 45,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "bocadillos",
+"freeTapa": false,
+"cashOnly": false
+},
+{
+"id": "varietas-bocadillos",
+"name": "Varietas · Bocadillos, Quesos y Vinos",
+"category": "comer",
+"emoji": "🥪",
+"address": "Plaza de San Agustín 2 (Mercado de San Agustín), 18001 Granada",
+"lat": 37.1779642,
+"lng": -3.5992403,
+"coordsConfidence": "alta",
+"status": "por_verificar",
+"hours": "Lun–jue 10:00–16:00; vie–sáb 10:00–17:00",
+"hoursByDay": {
+"lun": [
+[
+"10:00",
+"16:00"
+]
+],
+"mar": [
+[
+"10:00",
+"16:00"
+]
+],
+"mie": [
+[
+"10:00",
+"16:00"
+]
+],
+"jue": [
+[
+"10:00",
+"16:00"
+]
+],
+"vie": [
+[
+"10:00",
+"17:00"
+]
+],
+"sab": [
+[
+"10:00",
+"17:00"
+]
+]
+},
+"budget": "barato",
+"price": null,
+"minAge": null,
+"travel": "a pie (~8 min)",
+"distanceKmFromHotel": 0.62,
+"description": "Puesto del mercado de San Agustín con bocadillos de embutido de calidad (jamón, mortadela, pastrami) a buen precio.",
+"tips": "Solo mediodía. Perfecto para llevar en el viaje de vuelta.",
+"tags": [
+"bocadillos",
+"mercado",
+"para llevar"
+],
+"lateNight": false,
+"rating": {
+"value": 4.9,
+"count": 180,
+"source": "Google Maps"
+},
+"defaultDurationMin": 30,
+"source": "Google Maps (valoración, horario y coordenadas; consultado 17 nov 2026)",
+"extra": false,
+"foodType": "bocadillos",
+"freeTapa": false,
+"cashOnly": false
+}
+]
+}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
 <script>
 (() => {
@@ -3031,9 +5674,17 @@ const DATA  = JSON.parse($('#data').textContent);
   DATA.storeTypes = add.storeTypes;
   DATA.options    = DATA.options.concat(add.options_add);
 }
+{ // fusión de la actualización 4 (peluquerías, farmacias, noche y más comida)
+  const add = JSON.parse($('#data-locales').textContent);
+  DATA.categories = DATA.categories.concat(add.categories_add);
+  DATA.subTypes   = add.subTypes;
+  DATA.foodTypes  = DATA.foodTypes.concat(add.foodTypes_add);
+  DATA.options    = DATA.options.concat(add.options_add);
+}
 { // paleta «Alhambra»: solo cambia el color de cada categoría (id, emoji y comportamiento, igual)
   const PAL = {casino_salon: '#d9842f', videojuegos_vr: '#2f9a8f', tienda_friki: '#c7703c', escape_room: '#6f9a3c', bar_juegos: '#cf6a6a',
-    comer: '#d9a441', super: '#5b86b8', juego_urbano: '#8a6bb8', otros: '#a0703f'};
+    comer: '#d9a441', super: '#5b86b8', juego_urbano: '#8a6bb8', otros: '#a0703f',
+    peluqueria: '#b0689a', farmacia: '#3f8f6b', noche: '#5e5a8f'};   // peluquería y noche: tonos propios (malva y canela ya estaban en uso)
   DATA.categories = DATA.categories.map(c => PAL[c.id] ? {...c, color: PAL[c.id]} : c);
 }
 const HOTEL = DATA.hotel, DAYS = DATA.days;
@@ -3043,11 +5694,19 @@ const cat   = o => CATS[o.category] || CATS.otros;
 const FOOD  = Object.fromEntries(DATA.foodTypes.map(f => [f.id, f]));
 const isFood = o => o.category === 'comer';
 const isSuper = o => o.category === 'super';
+const SUBCATS = Object.keys(DATA.subTypes);                    // categorías con subtipos: peluqueria, farmacia, noche
+const SUB = Object.fromEntries(SUBCATS.flatMap(c => DATA.subTypes[c].map(s => [c + ':' + s.id, s])));
+const subOf = o => SUB[o.category + ':' + o.subType];
+const isSvc = o => o.category === 'peluqueria' || o.category === 'farmacia';   // servicios: marcador pequeño, como comida y súper
+const small = o => isFood(o) || isSuper(o) || isSvc(o);
+const BUDGET = {barato: 'Barato', 'barato-medio': 'Barato / medio', medio: 'Medio', caro: 'Caro'};
+const cheapOK = o => !o.budget || !BUDGET[o.budget] || o.budget === 'barato' || o.budget === 'barato-medio';   // sin presupuesto (o «—», farmacias): nunca se oculta
+const PHARMA_NOTE = 'Las farmacias de guardia cambian cada día: comprobad la de hoy en la web del Colegio de Farmacéuticos de Granada.';
 const STORE = Object.fromEntries(DATA.storeTypes.map(f => [f.id, f]));
 const BRANDS = [...new Set(DATA.options.filter(o => o.category === 'super').map(o => o.brand))];
 const WALK_KM = 0.75;   // «a menos de 10 min a pie»
 const SUPER_NOTE = 'Los horarios son de Google y pueden variar; el domingo muchas tiendas cierran.';
-const emo   = o => isFood(o) && FOOD[o.foodType] ? FOOD[o.foodType].emoji : isSuper(o) && STORE[o.storeType] ? STORE[o.storeType].emoji : cat(o).emoji;   // la comida usa el emoji de su tipo
+const emo   = o => o.emoji ? o.emoji : isFood(o) && FOOD[o.foodType] ? FOOD[o.foodType].emoji : isSuper(o) && STORE[o.storeType] ? STORE[o.storeType].emoji : cat(o).emoji;   // la comida usa el emoji de su tipo
 const BAR_TYPES = new Set(['tapas', 'bocadillos', 'burger']);
 const SLOTS = {desayuno: '🥐 Desayuno', comida: '🍽️ Comida', merienda: '☕ Merienda', cena: '🌆 Cena', madrugada: '🌙 Madrugada'};
 const miles = n => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -3105,7 +5764,7 @@ const KEY = 'granada-mapa-friki-v1';
 const DOC_KEYS = ['favs', 'hidden', 'assigns', 'notes', 'edits', 'pins', 'custom', 'confetti'];   // lo que se deshace/exporta
 const blank = () => ({
   v: 1, favs: {}, hidden: {}, assigns: [], notes: {}, edits: {}, pins: {}, custom: [], confetti: false,
-  filters: {scope: 'all', food: [], store: [], brand: [], sLate: false, sWalk: false, late: false, tapa: false, cash: false, q: '', cats: [], status: [], maxKm: 3, far: true, onlySel: false, onlyFav: false, onlyUnloc: false, showHidden: false},
+  filters: {scope: 'all', cheap: false, sub: [], food: [], store: [], brand: [], sLate: false, sWalk: false, late: false, tapa: false, cash: false, q: '', cats: [], status: [], maxKm: 3, far: true, onlySel: false, onlyFav: false, onlyUnloc: false, showHidden: false},
   ui: {rings: true, day: DAYS[0].id, lock: matchMedia('(pointer:coarse)').matches}
 });
 const isObj = x => x && typeof x === 'object' && !Array.isArray(x);
@@ -3120,7 +5779,7 @@ function normalize(s) {   // valida cualquier estado que venga de localStorage o
   }));
   if (Array.isArray(s.custom)) b.custom = s.custom.filter(c => isObj(c) && c.id && c.name).map(c => ({...c, id: String(c.id), custom: true}));
   b.confetti = !!s.confetti;
-  if (isObj(s.filters)) { Object.assign(b.filters, s.filters); for (const k of ['cats', 'status', 'food', 'store', 'brand']) if (!Array.isArray(b.filters[k])) b.filters[k] = []; if (!['all', 'ocio', 'comida', 'super'].includes(b.filters.scope)) b.filters.scope = 'all'; b.filters.maxKm = Math.min(3, Math.max(0, +b.filters.maxKm || 0)); b.filters.q = String(b.filters.q || ''); }
+  if (isObj(s.filters)) { Object.assign(b.filters, s.filters); for (const k of ['cats', 'status', 'food', 'store', 'brand', 'sub']) if (!Array.isArray(b.filters[k])) b.filters[k] = []; if (!['all', 'ocio', 'comida', 'super', 'peluqueria', 'farmacia', 'noche'].includes(b.filters.scope)) b.filters.scope = 'all'; b.filters.maxKm = Math.min(3, Math.max(0, +b.filters.maxKm || 0)); b.filters.q = String(b.filters.q || ''); }
   if (isObj(s.ui)) { Object.assign(b.ui, s.ui); if (b.ui.day !== '' && !DAYS.some(d => d.id === b.ui.day)) b.ui.day = DAYS[0].id; }
   return b;
 }
@@ -3179,7 +5838,13 @@ function pasa(o) {   // ¿supera los filtros activos?
   const f = state.filters;
   if (state.hidden[o.id] && !f.showHidden) return false;
   const food = isFood(o), sup = isSuper(o);
-  if ((f.scope === 'ocio' && (food || sup)) || (f.scope === 'comida' && !food) || (f.scope === 'super' && !sup)) return false;
+  if ((f.scope === 'ocio' && (food || sup || isSvc(o))) || (f.scope === 'comida' && !food) || (f.scope === 'super' && !sup)) return false;
+  if (SUBCATS.includes(f.scope) && o.category !== f.scope) return false;
+  if (f.cheap && !cheapOK(o)) return false;
+  if (SUBCATS.includes(o.category)) {   // subfiltros por subtipo: solo afectan a su propia categoría
+    const mine = f.sub.filter(k => k.startsWith(o.category + ':'));
+    if (mine.length && !mine.includes(o.category + ':' + o.subType)) return false;
+  }
   if (sup) {   // subfiltros de supermercados: no afectan al ocio ni a la comida
     if (f.store.length && !f.store.includes(o.storeType)) return false;
     if (f.brand.length && !f.brand.includes(o.brand)) return false;
@@ -3190,7 +5855,7 @@ function pasa(o) {   // ¿supera los filtros activos?
     if (f.food.length && !f.food.includes(o.foodType)) return false;
     if ((f.late && !o.lateNight) || (f.tapa && !o.freeTapa) || (f.cash && !o.cashOnly)) return false;
   }
-  if (f.q) { const hay = norm([o.name, o.address, (o.tags || []).join(' '), cat(o).label, (FOOD[o.foodType] || {}).label, o.brand, (STORE[o.storeType] || {}).label].join(' ')); if (!norm(f.q).split(/\s+/).filter(Boolean).every(t => hay.includes(t))) return false; }
+  if (f.q) { const hay = norm([o.name, o.address, (o.tags || []).join(' '), cat(o).label, (FOOD[o.foodType] || {}).label, o.brand, (STORE[o.storeType] || {}).label, (subOf(o) || {}).label].join(' ')); if (!norm(f.q).split(/\s+/).filter(Boolean).every(t => hay.includes(t))) return false; }
   if (f.cats.length && !f.cats.includes(cat(o).id)) return false;
   if (f.status.length && !f.status.includes(o.status)) return false;
   if (f.onlySel && !isSel(o.id)) return false;
@@ -3243,7 +5908,7 @@ let detailId = null;     // opción abierta en la tarjeta de detalle
 
 function markerHTML(o, as, nums) {
   const c = cat(o), cls = ['mk'];
-  if (isFood(o) || isSuper(o)) cls.push('food');
+  if (small(o)) cls.push('food');
   if (isSuper(o)) cls.push('shop');
   if (o.far) cls.push('far');
   if (!o.assignable) cls.push('closed');
@@ -3267,11 +5932,11 @@ function renderMarkers() {
     // con «Ruta del día» activa se ocultan los sitios asignados solo a otros días
     if (routeDay && as.some(a => a.day) && !as.some(a => a.day === routeDay)) return;
     seen[o.id] = 1;
-    const sz = isFood(o) || isSuper(o) ? 32 : 40;   // comida y supermercados van más pequeños para no tapar el ocio
+    const sz = small(o) ? 32 : 40;   // comida y supermercados van más pequeños para no tapar el ocio
     const icon = L.divIcon({className: 'mk-wrap', html: markerHTML(o, as, nums[o.id]), iconSize: [sz, sz], iconAnchor: [sz / 2, sz / 2]});
     let m = markers[o.id];
     if (!m) {
-      m = markers[o.id] = L.marker([o.lat, o.lng], {icon, draggable: !state.ui.lock, title: o.name, alt: o.name, riseOnHover: true, autoPan: true, zIndexOffset: isFood(o) || isSuper(o) ? -200 : 0}).addTo(map);
+      m = markers[o.id] = L.marker([o.lat, o.lng], {icon, draggable: !state.ui.lock, title: o.name, alt: o.name, riseOnHover: true, autoPan: true, zIndexOffset: small(o) ? -200 : 0}).addTo(map);
       m.on('click', () => { if (!pick) openDetail(o.id); });
       m.on('dragend', () => { const ll = m.getLatLng(); commit(() => setPin(o.id, ll)); toast('📍 Pin movido', {label: 'Deshacer', fn: undo}); });
     } else {
@@ -3317,16 +5982,16 @@ function spread(g, minR, step) {
 }
 function fan() {
   clusterLayer.clearLayers();
-  const z = map.getZoom(), ocio = [], food = [], shops = [];
+  const z = map.getZoom(), ocio = [], food = [], shops = [], pelu = [], farma = [];
   Object.keys(markers).forEach(id => {
     const o = BYID[id], it = {id, p: map.latLngToLayerPoint(markers[id].getLatLng())};
     // lo ya elegido, favorito o abierto en la ficha no se agrupa nunca
     const free = o && !isSel(id) && !state.favs[id] && id !== detailId;
-    (o && isFood(o) && free ? food : o && isSuper(o) && free ? shops : ocio).push(it);
+    (!o || !free ? ocio : isFood(o) ? food : isSuper(o) ? shops : o.category === 'peluqueria' ? pelu : o.category === 'farmacia' ? farma : ocio).push(it);
   });
   ocio.push({hotel: true, p: map.latLngToLayerPoint(H)});
   groupNear(ocio, 30).forEach(g => spread(g, 24, 44));
-  [[food, '🍽️', 'sitios para comer', '#d9a441'], [shops, '🛒', 'supermercados', '#5b86b8']].forEach(([list, emoji, label, col]) =>
+  [[food, '🍽️', 'sitios para comer', '#d9a441'], [shops, '🛒', 'supermercados', '#5b86b8'], [pelu, '💈', 'peluquerías', '#b0689a'], [farma, '💊', 'farmacias', '#3f8f6b']].forEach(([list, emoji, label, col]) =>
     groupNear(list, 24).forEach(g => {
       if (g.length <= 4 || z >= 17.5) return spread(g, 20, 36);
       g.forEach(it => place(it.id, 0, 0, false));
@@ -3405,6 +6070,14 @@ function renderFilters() {
   }).join('');
   $('#fgChips').innerHTML = [['late', '🌙 Abierto de madrugada', 'lateNight'], ['tapa', '🍺 Tapa gratis', 'freeTapa'], ['cash', '💶 Solo efectivo', 'cashOnly']].map(([k, lb, prop]) =>
     `<button class="chip${f[k] ? ' on' : ''}" style="--c:#d9a441" data-fg="${k}" aria-pressed="${!!f[k]}">${lb} <i>${visibles.filter(o => isFood(o) && o[prop]).length}</i></button>`).join('');
+  const subCats = SUBCATS.filter(c => f.scope === c || f.cats.includes(c));
+  $('#subF').hidden = !subCats.length;
+  $('#pharmaNote').hidden = !subCats.includes('farmacia');
+  $('#subChips').innerHTML = subCats.flatMap(c => DATA.subTypes[c].map(s => {
+    const k = c + ':' + s.id, n = visibles.filter(o => o.category === c && o.subType === s.id).length, on = f.sub.includes(k);
+    return `<button class="chip${on ? ' on' : ''}" style="--c:${CATS[c].color}" data-sub="${k}" aria-pressed="${on}">${s.emoji} ${esc(s.label)} <i>${n}</i></button>`;
+  })).join('');
+  $('#fCheap').checked = !!f.cheap;
   $('#superF').hidden = !(f.scope === 'super' || f.cats.includes('super'));
   $('#stoChips').innerHTML = DATA.storeTypes.map(s => {
     const n = visibles.filter(o => isSuper(o) && o.storeType === s.id).length, on = f.store.includes(s.id);
@@ -3426,7 +6099,7 @@ function cardHTML(o) {
   const days = as.map(a => `<span class="bdg b-day" style="--c:${a.day ? dayColor(a.day) : '#a0703f'}">${a.day ? dayShort(a.day) + (a.start ? ' ' + a.start : '') : 'Sin día'}</span>`).join('');
   return `<article class="card${o.assignable ? '' : ' closed'}${hid ? ' hid' : ''}" style="--c:${c.color}" data-act="open" data-id="${esc(o.id)}" tabindex="0" role="button" aria-label="${esc(o.name)}">
     <div class="ic" aria-hidden="true">${emo(o)}</div>
-    <div class="cb"><h4>${esc(o.name)}</h4><p class="meta">${esc(isFood(o) && FOOD[o.foodType] ? FOOD[o.foodType].label : isSuper(o) ? o.brand : c.label)} · ${distTxt(o)}${o.rating ? ` · ★ ${String(o.rating.value).replace('.', ',')}` : ''}</p>
+    <div class="cb"><h4>${esc(o.name)}</h4><p class="meta">${esc(isFood(o) && FOOD[o.foodType] ? FOOD[o.foodType].label : isSuper(o) ? o.brand : subOf(o) ? subOf(o).label : c.label)} · ${distTxt(o)}${o.rating ? ` · ★ ${String(o.rating.value).replace('.', ',')}` : ''}</p>
       <div class="badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}${o.freeTapa ? '<span class="bdg b-food">🍺 Tapa</span>' : ''}${o.cashOnly ? '<span class="bdg b-age">💶 Efectivo</span>' : ''}${o.lateNight ? `<span class="bdg b-pin">🌙 ${isSuper(o) ? 'Hasta tarde' : 'Madrugada'}</span>` : ''}${hid ? '<span class="bdg b-hid">Oculta</span>' : ''}${days}</div></div>
     <div class="ca">
       <button class="ib sm fav${fav ? ' on' : ''}" data-act="fav" data-id="${esc(o.id)}" aria-pressed="${fav}" aria-label="${fav ? 'Quitar de favoritas' : 'Marcar como favorita'}" title="Favorita">${fav ? '⭐' : '☆'}</button>
@@ -3461,9 +6134,9 @@ function gmaps(o) {
   return 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(HOTEL.address) + '&destination=' + encodeURIComponent(dest)
     + '&travelmode=' + (o.dist != null && o.dist > 2.5 ? 'driving' : 'walking');
 }
-function hoursTable(o) {   // horario por día de los locales de comida y supermercados (los días del viaje, resaltados)
-  if (!isFood(o) && !isSuper(o)) return '';
-  if (!o.hoursByDay) return '<div class="hrs"><span class="unk">Horario sin confirmar</span></div>';
+function hoursTable(o) {   // horario por día de los sitios que traen hoursByDay (los días del viaje, resaltados)
+  if (!isFood(o) && !isSuper(o) && !SUBCATS.includes(o.category)) return '';
+  if (!o.hoursByDay) return `<div class="hrs"><span class="unk">${o.category === 'noche' ? 'Horario según eventos' : 'Horario sin confirmar'}</span></div>`;
   const trip = Object.fromEntries(DAYS.map(d => [wdOf(d.id), d]));
   return '<div class="hrs">' + ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'].map(k => {
     const v = o.hoursByDay[k], shut = !v || !v.length, d = trip[k];
@@ -3481,7 +6154,7 @@ function renderDetail() {
   el.style.setProperty('--c', c.color);
   el.innerHTML = `
     <div class="d-head"><div class="ic" aria-hidden="true">${emo(o)}</div>
-      <div style="flex:1;min-width:0"><h3>${esc(o.name)}</h3><div class="d-cat">${esc(c.label)}${isSuper(o) ? ' · ' + esc(o.brand) + (STORE[o.storeType] ? ' · ' + esc(STORE[o.storeType].label) : '') : ''}</div></div>
+      <div style="flex:1;min-width:0"><h3>${esc(o.name)}</h3><div class="d-cat">${esc(c.label)}${subOf(o) ? ' · ' + esc(subOf(o).label) : ''}${isSuper(o) ? ' · ' + esc(o.brand) + (STORE[o.storeType] ? ' · ' + esc(STORE[o.storeType].label) : '') : ''}</div></div>
       <button class="ib sm" data-act="closed" aria-label="Cerrar detalle (Esc)">✕</button></div>
     <div class="d-badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}
       ${conf}${o.minAge >= 18 ? '<span class="bdg b-age">+18 · DNI</span>' : ''}${o.freeTapa ? '<span class="bdg b-food">🍺 Tapa gratis</span>' : ''}${o.cashOnly ? '<span class="bdg b-age">💶 Solo efectivo</span>' : ''}${o.lateNight ? `<span class="bdg b-pin">🌙 ${isSuper(o) ? 'Abierto hasta tarde' : 'Abre de madrugada'}</span>` : ''}${o.edited ? '<span class="bdg b-pin">Editada</span>' : ''}${state.hidden[o.id] ? '<span class="bdg b-hid">Oculta</span>' : ''}</div>
@@ -3489,6 +6162,7 @@ function renderDetail() {
       ${o.rating ? `<div><span>⭐</span><span>★ ${String(o.rating.value).replace('.', ',')} · ${miles(o.rating.count)} reseñas · ${esc(o.rating.source)} <small>· orientativo</small></span></div>` : ''}
       <div><span>📍</span><span>${o.address ? esc(o.address) : unk}</span></div>
       <div><span>🕒</span><span>${o.hours ? esc(o.hours) + (o.status === 'por_verificar' ? ' <small>· sin confirmar</small>' : '') : 'Horario: ' + unk}${hoursTable(o)}</span></div>
+      ${BUDGET[o.budget] ? `<div><span>💰</span><span>Presupuesto: ${BUDGET[o.budget]} <small>· según reseñas</small></span></div>` : ''}
       <div><span>💶</span><span>${o.price ? esc(o.price) + (o.status === 'por_verificar' ? ' <small>· sin confirmar</small>' : '') : 'Precio: ' + unk}</span></div>
       ${o.mealSlots && o.mealSlots.length ? `<div><span>🍴</span><span class="slots">${o.mealSlots.map(x => `<i>${esc(SLOTS[x] || x)}</i>`).join('')}</span></div>` : ''}
       ${o.minPlayers ? `<div><span>👥</span><span>Mínimo ${esc(o.minPlayers)} jugadores</span></div>` : ''}
@@ -3496,7 +6170,7 @@ function renderDetail() {
       ${o.minAge ? `<div><span>🔞</span><span>Edad mínima: ${esc(o.minAge)} años${o.minAge >= 18 ? ' (llevar DNI)' : ''}</span></div>` : ''}
       <div><span>🏨</span><span>${o.located ? 'Desde el hotel: ' + distTxt(o) + ' <small style="color:var(--muted)">(línea recta)</small>' : 'Sin ubicar en el mapa'}${o.travel && o.travel !== '—' ? '<br>Cómo llegar: ' + esc(o.travel) : ''}</span></div>
     </div>
-    ${isSuper(o) ? `<p class="s-note">🛒 ${SUPER_NOTE}</p>` : ''}
+    ${isSuper(o) ? `<p class="s-note">🛒 ${SUPER_NOTE}</p>` : ''}${o.category === 'farmacia' ? `<p class="s-note">💊 ${PHARMA_NOTE}</p>` : ''}${o.category === 'noche' ? '<p class="s-note">🔞 +18, llevad DNI.</p>' : ''}
     ${o.description ? `<p class="d-desc">${esc(o.description)}</p>` : ''}
     ${o.tips ? `<p class="d-tip">💡 ${esc(o.tips)}</p>` : ''}
     ${o.source ? `<p class="d-src">Fuente: ${esc(o.source)}</p>` : ''}
@@ -3651,7 +6325,7 @@ function avisos(st, i) {   // avisos NO bloqueantes de una parada
   if (o.cashOnly) w.push('Solo efectivo');
   if (o.minPlayers > 2) w.push(`Mínimo ${o.minPlayers} jugadores`);
   if (o.minAge >= 18) w.push('Solo mayores de 18: llevad el DNI');
-  if (o.status === 'por_verificar') w.push(isFood(o) || isSuper(o) ? (o.hoursByDay ? 'Horario de Google Maps, orientativo' : 'Horario sin confirmar') : o.hours ? 'Horario sin confirmar' : 'Horario por verificar');
+  if (o.status === 'por_verificar') w.push(isFood(o) || isSuper(o) || SUBCATS.includes(o.category) ? (o.hoursByDay ? 'Horario de Google Maps, orientativo' : o.category === 'noche' ? 'Horario según eventos' : 'Horario sin confirmar') : o.hours ? 'Horario sin confirmar' : 'Horario por verificar');
   return w;
 }
 function stopHTML(st, i, withTime) {
@@ -3747,6 +6421,7 @@ function openAssign(optId, uid) {
   info.push(o.hours ? `🕒 Horario según la fuente, sin confirmar: ${o.hours}` : '🕒 Horario por verificar');
   if (o.cashOnly) info.push('💶 Solo efectivo');
   if (isSuper(o)) info.push('🛒 ' + SUPER_NOTE);
+  if (o.category === 'farmacia') info.push('💊 ' + PHARMA_NOTE);
   if (isFood(o)) info.push('🍽️ En Granada se come tarde: comida 13:30–16:00, cena desde ~20:00–20:30');
   const m = openModal(ex ? 'Editar parada' : 'Añadir a mi agenda', `
     <p class="m-sub">${emo(o)} ${esc(o.name)}</p>
@@ -4061,6 +6736,8 @@ $('#scopeSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 $('#ftChips').addEventListener('click', e => { const b = e.target.closest('[data-ft]'); if (!b) return; const a = state.filters.food, i = a.indexOf(b.dataset.ft); i < 0 ? a.push(b.dataset.ft) : a.splice(i, 1); filtersChanged(); });
 $('#stoChips').addEventListener('click', e => { const b = e.target.closest('[data-sto]'); if (!b) return; const a = state.filters.store, i = a.indexOf(b.dataset.sto); i < 0 ? a.push(b.dataset.sto) : a.splice(i, 1); filtersChanged(); });
 $('#brChips').addEventListener('click', e => { const b = e.target.closest('[data-br]'); if (!b) return; const a = state.filters.brand, i = a.indexOf(b.dataset.br); i < 0 ? a.push(b.dataset.br) : a.splice(i, 1); filtersChanged(); });
+$('#subChips').addEventListener('click', e => { const b = e.target.closest('[data-sub]'); if (!b) return; const a = state.filters.sub, i = a.indexOf(b.dataset.sub); i < 0 ? a.push(b.dataset.sub) : a.splice(i, 1); filtersChanged(); });
+$('#fCheap').addEventListener('change', e => { state.filters.cheap = e.target.checked; filtersChanged(); });
 $('#sgChips').addEventListener('click', e => { const b = e.target.closest('[data-sg]'); if (!b) return; state.filters[b.dataset.sg] = !state.filters[b.dataset.sg]; filtersChanged(); });
 $('#fgChips').addEventListener('click', e => { const b = e.target.closest('[data-fg]'); if (!b) return; state.filters[b.dataset.fg] = !state.filters[b.dataset.fg]; filtersChanged(); });
 $('#km').addEventListener('input', e => { state.filters.maxKm = +e.target.value; filtersChanged(); });
