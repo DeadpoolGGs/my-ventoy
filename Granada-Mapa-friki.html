@@ -3205,17 +3205,23 @@ function pasa(o) {   // ¿supera los filtros activos?
    ===================================================================== */
 const map = L.map('map', {zoomControl: false, zoomSnap: .25, worldCopyJump: false}).setView(H, 15);
 map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
-/* Fondo del mapa: CARTO Voyager (claro), con un toque cálido por CSS (.leaflet-tile-pane).
-   Si sus teselas fallaran, se pasa al callejero de Esri, que también es claro y no pide clave. */
-let base = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains: 'abcd', maxZoom: 20,
-  attribution: '&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map);
-{ let ok = 0, ko = 0, swapped = false;
+/* Fondo del mapa (claro, con un toque cálido por CSS en .leaflet-tile-pane).
+   - Abierta como archivo (file://, content:// en Android…): callejero de Esri, que no pide clave.
+     CARTO, en ese caso, no da error: sirve teselas con «API KEY REQUIRED», por eso no se usa.
+   - Alojada en una web (http/https): CARTO Voyager; si sus teselas fallaran, se pasa a Esri. */
+const ESRI = ['https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+  {maxZoom: 19, attribution: 'Mapa &copy; <a href="https://www.esri.com/">Esri</a> y colaboradores'}];
+const web = /^https?:$/.test(location.protocol);
+let base = web
+  ? L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {subdomains: 'abcd', maxZoom: 20,
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'}).addTo(map)
+  : L.tileLayer(...ESRI).addTo(map);
+if (web) { let ok = 0, ko = 0, swapped = false;
   base.on('tileload', () => ok++);
   base.on('tileerror', () => {
     if (swapped || ++ko < 4 || ok) return;
     swapped = true; map.removeLayer(base);
-    base = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom: 19,
-      attribution: 'Mapa &copy; <a href="https://www.esri.com/">Esri</a> y colaboradores'}).addTo(map);
+    base = L.tileLayer(...ESRI).addTo(map);
   });
 }
 
