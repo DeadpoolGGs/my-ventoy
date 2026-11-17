@@ -790,6 +790,25 @@ input[type=range]{width:100%;accent-color:var(--primary);min-height:24px}
 .seg button{background:transparent;border:0;border-radius:999px;padding:6px 4px;font-size:12.5px;font-weight:700;min-height:34px;color:var(--text);transition:background .15s,color .15s}
 .seg button:hover{background:var(--panel-2)}
 .seg button.on{background:var(--primary);color:var(--primary-tx)}
+.mk.dim{opacity:.4;filter:grayscale(.7)}
+.mk-lv{position:absolute;right:-9px;bottom:-7px;padding:0 5px;border-radius:999px;background:var(--lv,#fffdf6);color:var(--text);border:1.5px solid var(--panel);box-shadow:var(--shadow-sm);font:700 10.5px/16px var(--font-body);pointer-events:none;white-space:nowrap}
+#crowdChips{gap:4px} #crowdChips .chip{padding:4px 10px;min-width:34px;justify-content:center} #crowdChips .chip i{color:var(--c);font-size:13px;line-height:1}
+#crowdChips .chip.today{font-weight:800;text-decoration:underline;text-underline-offset:3px} #crowdChips .chip.on i{color:var(--primary-tx)}
+.amb{margin:12px 0;padding:12px;border-radius:16px;border:1px solid var(--border);background:var(--panel-2)}
+.amb-h{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:space-between;margin-bottom:6px} .amb-h h4{font:700 15px var(--font-title)}
+.amb-pop{font-size:13px;color:var(--text);margin-bottom:8px;font-weight:600} .amb-pop .dots{color:var(--accent);letter-spacing:.06em;margin-right:4px} .amb-pop i{font-style:normal;color:var(--border)}
+.amb-chart{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;align-items:end}
+.amb-col{display:flex;flex-direction:column;align-items:center;gap:2px;border-radius:10px;padding:3px 0 2px}
+.amb-col.trip{background:color-mix(in srgb,var(--dc) 12%,transparent)} .amb-col.today{outline:2px solid var(--accent);outline-offset:-1px}
+.amb-bar{width:70%;max-width:30px;height:64px;border-radius:7px;background:var(--panel);border:1px solid var(--border);display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.amb-bar span{display:block;width:100%;border-top:1px solid rgba(31,74,79,.25)} .amb-bar em{font-style:normal;color:var(--muted);align-self:center}
+.amb-col b{font-size:12.5px} .amb-col small{font-size:11px;color:var(--muted);line-height:1} .amb-col.trip b,.amb-col.trip small{color:var(--dc);font-weight:700}
+.amb-leg{font-size:11.5px;color:var(--muted);margin:6px 0 4px}
+.amb-notes{margin:4px 0 6px;padding-left:16px;font-size:12.5px;display:grid;gap:2px}
+.amb-rows{margin:8px 0 4px} .amb-ev{font-size:13px;margin-top:6px} .amb-ev ul{margin:4px 0 0;padding-left:16px;display:grid;gap:2px}
+.s-amb{font-size:12px;color:#4b4a7a;background:#ecebf5;border-radius:9px;padding:2px 8px;margin:4px 0 0;font-weight:600}
+.gone{font-size:13px;font-weight:700;color:var(--danger);background:#fbe9e4;border-radius:12px;padding:7px 10px;margin:0 0 8px}
+.d-src a{word-break:break-all}
 #subF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #foodF{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid var(--border);border-radius:16px;background:var(--panel-2)}
 #ftChips,#fgChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--sb) transparent;padding-bottom:4px}
@@ -972,6 +991,7 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
   .chip i,.bdg,.card .meta,.resn,.frow,.tray p,details.info,.hrs,.d-rows .hrs,.slots i,.s-note,.d-cat,.d-src,.d-notes label,.daynote,.daybar,.tab i,.s-n,
   .d-btn,.s-end,.moon,.warns,.leg,.fl,.m-info,.form label,.count small,.seg button,.d-as,.empty,kbd{font-size:13px}
   .s-n{width:22px;height:22px}
+  .amb-leg,.amb-col small,.s-amb,.mk-lv{font-size:13px} .amb-col b{font-size:13px} #crowdChips .chip{min-width:40px}
   small{font-size:13px} .lnk,.s-name{min-height:44px} .toast .lnk{min-height:0}
   .panel,#detail{left:0!important;right:0!important;top:auto!important;bottom:calc(58px + env(safe-area-inset-bottom))!important;width:auto!important;
     border-radius:var(--radius-lg) var(--radius-lg) 0 0;border-bottom:0}
@@ -1062,8 +1082,10 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
         </details>
       </div>
       <label class="ck" title="Muestra lo barato o barato-medio; lo que no tiene presupuesto (farmacias, sitios anteriores) se queda"><input type="checkbox" id="fCheap"> 💶 Solo barato</label>
+      <div id="crowdF" class="frow"><span>🪩 Ambiente del día en la noche <small style="color:var(--muted)">· estimación</small></span><div id="crowdChips" class="chips" role="group" aria-label="Ambiente del día"></div></div>
       <div id="subF" hidden>
         <div id="subChips" class="chips" role="group" aria-label="Subtipos"></div>
+        <div id="nightChips" class="chips" role="group" aria-label="Opciones de la noche" hidden></div>
         <p class="s-note" id="pharmaNote" hidden>💊 Las farmacias de guardia cambian cada día: comprobad la de hoy en la web del Colegio de Farmacéuticos de Granada.</p>
       </div>
       <div id="superF" hidden>
@@ -5641,6 +5663,11 @@ kbd{font:600 11.5px var(--font-body);border:1px solid var(--border);border-botto
 }
 </script>
 
+<!-- Actualización 5: ambiente de discotecas y pubs por día (9 discotecas nuevas + datos de 12 sitios) -->
+<script type="application/json" id="data-noche">
+{"crowdScale":[{"level":0,"label":"Cerrado"},{"level":1,"label":"Casi vacío"},{"level":2,"label":"Tranquilo"},{"level":3,"label":"Ambiente normal"},{"level":4,"label":"Lleno"},{"level":5,"label":"Muy lleno"}],"options_add":[{"id":"granada-10","name":"Granada 10","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Cárcel Baja 10, 18010 Granada","lat":37.1775583,"lng":-3.5978722,"coordsConfidence":"alta","status":"por_verificar","hours":"Mar–jue 0:00–6:00; vie–sáb 0:00–7:00; dom–lun cerrado","hoursByDay":{"mar":[["23:59","06:00"]],"mie":[["23:59","06:00"]],"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato-medio","price":"Martes Erasmus 8 € con copa; viernes 10 € con copa; lista gratis hasta la 1:30 (precios de oct. 2026)","minAge":18,"travel":"a pie (~7 min)","distanceKmFromHotel":0.53,"description":"La discoteca de referencia para estudiantes y Erasmus, en un antiguo cine junto a la Catedral (a ~550 m). La que más se llena entre semana.","tips":"Apuntaos a la lista gratis antes de la 1:30. Llevad DNI. El martes es la noche Erasmus.","tags":["discoteca","Erasmus","universitaria","céntrica","lista gratis"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":5,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":4,"label":"Lleno","note":"Noche Erasmus (dress code casual)"},"mie":{"level":3,"label":"Ambiente normal"},"jue":{"level":5,"label":"Muy lleno","note":"Gran noche universitaria de la ciudad"},"vie":{"level":4,"label":"Lleno","note":"Lista gratis hasta la 1:30"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–3:30","fillsUp":"Se llena entre las 2:00 y las 3:00","dressCode":"Casual el martes; jueves y viernes piden ir arreglado","crowdType":"Universitarios y Erasmus, 18–25 años","music":"Comercial, reguetón y urbana","capacity":"Hasta 1.000 personas (2 plantas)","tripEvents":[{"date":"2026-11-17","night":"mar","name":"Fiesta Funk","time":"00:00–06:00"},{"date":"2026-11-18","night":"mie","name":"Miércoles en Granada 10","time":"00:00–06:00"},{"date":"2026-11-19","night":"jue","name":"Equis","time":"00:00–06:00"}],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/granada-10; https://clubsingranada.com/es/blog/erasmus-granada-fiesta; https://lastnight.es/discotecas/granada/granada-10/eventos; https://studentexperience.com/es/noticias/908/vida-nocturna-en-granada-la-guia-definitiva-para-estudiantes"},{"id":"mae-west","name":"Mae West","category":"noche","subType":"discoteca","emoji":"🪩","address":"Centro Comercial Neptuno, Calle Arabial s/n, 18004 Granada","lat":37.1683147,"lng":-3.6078836,"coordsConfidence":"alta","status":"por_verificar","hours":"Todos los días 22:00–6:00 (vie–sáb hasta las 7:00)","hoursByDay":{"lun":[["22:00","06:00"]],"mar":[["22:00","06:00"]],"mie":[["22:00","06:00"]],"jue":[["22:00","06:00"]],"dom":[["22:00","06:00"]],"vie":[["22:00","07:00"]],"sab":[["22:00","07:00"]]},"budget":"medio","price":"Mar 17 desde 9,90 €; mié 18 y jue 19 desde 12,10 €; viernes 19 € con 2 copas (chicas 11 € hasta la 1:00)","minAge":18,"travel":"a pie (~16 min) o taxi compartido de vuelta","distanceKmFromHotel":1.17,"description":"La discoteca más grande y conocida de Granada, con varias salas. Abre todas las noches con una fiesta temática distinta.","tips":"Google 3,4 sobre 5: muchas quejas de porteros y de que es cara. Está a ~1,2 km: volved en taxi compartido. Comprad la entrada anticipada, que sale más barata.","tags":["discoteca","la más grande","todas las noches","Ladies Night"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":5,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo","note":"Pretty Monday"},"mar":{"level":3,"label":"Ambiente normal","note":"Maertes"},"mie":{"level":4,"label":"Lleno","note":"Ladies Night, la noche clásica de Mae West"},"jue":{"level":4,"label":"Lleno","note":"Juernes de Contoneo"},"vie":{"level":5,"label":"Muy lleno","note":"Sesión grande"},"sab":{"level":5,"label":"Muy lleno","note":"Sesión grande (y tarde desde las 16:00)"},"dom":{"level":2,"label":"Tranquilo","note":"Domingos Mae West"}},"peakHours":"2:00–4:00","fillsUp":"Se llena a partir de las 2:00; los fines de semana hay colas","dressCode":"Miran la ropa en la puerta: mejor arreglado-informal; se desaconsejan zapatillas blancas y ropa deportiva","crowdType":"Muy joven entre semana (universitarios); más mezclado el fin de semana","music":"Reguetón, comercial y electrónica (varias salas)","capacity":"Más de 2.000 personas","tripEvents":[{"date":"2026-11-17","night":"mar","name":"Maertes","price":"desde 9,90 €"},{"date":"2026-11-18","night":"mie","name":"Ladies Night","price":"desde 12,10 €"},{"date":"2026-11-19","night":"jue","name":"Juernes de Contoneo","price":"desde 12,10 €"}],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/mae-west; https://venta.enterticket.es/rrpp-events.php?rrpp=SANO; https://studentexperience.com/es/noticias/908/vida-nocturna-en-granada-la-guia-definitiva-para-estudiantes; https://maewestgranada.entradasmaster.com/2663244939089447190/"},{"id":"365-music-club","name":"365 Music Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Neptuno 10, 18004 Granada","lat":37.169,"lng":-3.609,"coordsConfidence":"media","status":"por_verificar","hours":"Jue–dom desde las 23:30 hasta las 7:00 (lun–mié cerrado)","hoursByDay":{"jue":[["23:30","07:00"]],"vie":[["23:30","07:00"]],"sab":[["23:30","07:00"]],"dom":[["23:30","07:00"]]},"budget":"barato","price":"Anticipada 8 € con 1 copa o 12 € con 2 (oct. 2026)","minAge":18,"travel":"a pie (~16 min) o taxi compartido de vuelta","distanceKmFromHotel":1.23,"description":"Discoteca de reguetón muy universitaria en la zona de Neptuno.","tips":"Solo jueves a domingo: no abre el martes ni el miércoles. A ~1,2 km.","tags":["discoteca","reguetón","universitaria","barata"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":5,"label":"Muy lleno","note":"Playroom y Tonteo: noche universitaria, se llena"},"vie":{"level":4,"label":"Lleno","note":"Guaja Guaja"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo","note":"Pegao"}},"peakHours":"2:00–4:00","fillsUp":"Las noches universitarias se llenan: comprad la entrada antes","dressCode":"Casual","crowdType":"Universitarios, 18–23 años","music":"Reguetón y urbana","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/365-music-club; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"taboa-club","name":"Taböa Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Plaza de Gracia s/n, 18002 Granada","lat":37.1716,"lng":-3.6052,"coordsConfidence":"media","status":"por_verificar","hours":"Lun, mié y jue 0:00–6:00; vie–sáb 0:00–7:00; mar y dom cerrado","hoursByDay":{"lun":[["23:59","06:00"]],"mie":[["23:59","06:00"]],"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato-medio","price":"Unos 10 € con 1 copa o 2 cervezas; lista casi todos los días (oct. 2026)","minAge":18,"travel":"a pie (~11 min)","distanceKmFromHotel":0.83,"description":"Discoteca universitaria de reguetón a ~800 m del hotel.","tips":"Cuidado con el código de vestimenta: nada de zapatillas.","tags":["discoteca","reguetón","universitaria"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":3,"label":"Ambiente normal","note":"Noche Erasmus según guías de estudiantes"},"jue":{"level":5,"label":"Muy lleno","note":"Noche universitaria: fiestas de facultad"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–4:00","fillsUp":"Se llena hacia las 2:00–3:00","dressCode":"No dejan entrar con ropa deportiva, chanclas ni zapatillas: id arreglados","crowdType":"Universitarios","music":"Reguetón, perreo y urbana; noches de house de los 2000","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/taboa; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"vogues","name":"Discoteca Vogues","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Duquesa 37, 18001 Granada","lat":37.1772,"lng":-3.6033,"coordsConfidence":"media","status":"por_verificar","hours":"Jue 0:00–6:00; vie–sáb 0:00–7:00 (resto cerrado)","hoursByDay":{"jue":[["23:59","06:00"]],"vie":[["23:59","07:00"]],"sab":[["23:59","07:00"]]},"budget":"barato","price":"Gratis antes de las 3:00; después, 10 € con copa (vie–sáb, oct. 2026)","minAge":18,"travel":"a pie (~11 min)","distanceKmFromHotel":0.8,"description":"Discoteca alternativa con dos salas, a ~800 m. La opción si no os va el reguetón.","tips":"Entrar antes de las 3:00 es gratis.","tags":["discoteca","indie","techno","gratis antes de las 3"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Gratis antes de las 3:00"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"3:00–5:00","fillsUp":"Llegad pronto: si una sala se llena podéis pasar a la otra","dressCode":"Casual: vaqueros y zapatillas valen","crowdType":"Público alternativo","music":"Sala 1: indie, rock y pop. Sala 2: techno","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/vogues; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"uny-club","name":"UNY Club","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Arabial 62, 18003 Granada","lat":37.1665,"lng":-3.608,"coordsConfidence":"media","status":"por_verificar","hours":"Jue–vie 23:45–6:00 (resto cerrado)","hoursByDay":{"jue":[["23:45","06:00"]],"vie":[["23:45","06:00"]]},"budget":"barato-medio","price":"Viernes 10 € con 1 copa o 14 € con 2 (oct. 2026)","minAge":18,"travel":"a pie (~17 min) o taxi compartido de vuelta","distanceKmFromHotel":1.29,"description":"Discoteca de la zona de Neptuno que solo abre jueves y viernes.","tips":"A ~1,3 km.","tags":["discoteca","jueves y viernes"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Viernes fuerte según la propia web"},"sab":{"level":0,"label":"Cerrado"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"2:00–4:00","fillsUp":"—","dressCode":"Casual","crowdType":"Jóvenes y universitarios","music":"Comercial","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/uny-club; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"colon-plaza","name":"Colón Plaza","category":"noche","subType":"discoteca","emoji":"🪩","address":"Plaza Isabel la Católica 2, 18009 Granada","lat":37.1756,"lng":-3.5969,"coordsConfidence":"media","status":"por_verificar","hours":"Todos los días desde las 16:00; cierre: dom–mié 3:00, jue 6:00, vie–sáb 7:00","hoursByDay":{"lun":[["16:00","03:00"]],"mar":[["16:00","03:00"]],"mie":[["16:00","03:00"]],"dom":[["16:00","03:00"]],"jue":[["16:00","06:00"]],"vie":[["16:00","07:00"]],"sab":[["16:00","07:00"]]},"budget":"medio","price":"No publicado (consultar por WhatsApp)","minAge":18,"travel":"a pie (~4 min)","distanceKmFromHotel":0.3,"description":"Local con varias salas (comercial, electrónica y karaoke) y terraza, a ~300 m del hotel.","tips":"El karaoke puede ser un buen plan friki entre semana.","tags":["discoteca","karaoke","muy cerca","todos los días"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"1:00–3:00","fillsUp":"—","dressCode":"Arreglado-informal","crowdType":"Mezclado","music":"Comercial; sala Noise Club de electrónica; sala de karaoke","capacity":"No publicado","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/colon-plaza"},{"id":"planta-baja","name":"Sala Planta Baja","category":"noche","subType":"discoteca","emoji":"🎸","address":"Calle Horno de Abad 11, 18002 Granada","lat":37.1738,"lng":-3.6035,"coordsConfidence":"media","status":"por_verificar","hours":"Conciertos casi a diario; sesiones de DJ de jueves a sábado","hoursByDay":null,"budget":"barato","price":"Según concierto; las sesiones de los sábados por la tarde (Plantarde) son gratis","minAge":18,"travel":"a pie (~9 min)","distanceKmFromHotel":0.67,"description":"Sala mítica de conciertos indie y rock con sesiones de DJ los fines de semana.","tips":"Mirad su agenda de conciertos.","tags":["conciertos","indie","rock"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":3,"label":"Ambiente normal"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"1:00–3:00","fillsUp":"Sala pequeña (unas 300 personas): se llena rápido en conciertos","dressCode":"Ve como eres","crowdType":"Indie y rock","music":"Indie, rock y alternativa","capacity":"Unas 300 personas","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"https://clubsingranada.com/es/clubs/planta-baja"},{"id":"lux-granada","name":"Lux","category":"noche","subType":"discoteca","emoji":"🪩","address":"Calle Frailes 7, 18005 Granada","lat":37.1723336,"lng":-3.6007327,"coordsConfidence":"alta","status":"por_verificar","hours":"No publicado","hoursByDay":null,"budget":"medio","price":"Unos 10 € la entrada, +5 € para la otra planta (según reseñas)","minAge":18,"travel":"a pie (~6 min)","distanceKmFromHotel":0.43,"description":"Discoteca de dos plantas a ~400 m. Google 3,5 sobre 5.","tips":"Varias reseñas hablan de cobrar aparte la segunda planta: preguntad antes de pagar.","tags":["discoteca","poco ambiente"],"lateNight":true,"defaultDurationMin":180,"extra":false,"nightlife":{"popularity":1,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":1,"label":"Casi vacío"},"vie":{"level":2,"label":"Tranquilo"},"sab":{"level":2,"label":"Tranquilo"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"—","fillsUp":"Según reseñas, casi vacía incluso un sábado","dressCode":"—","crowdType":"—","music":"Comercial","capacity":"—","tripEvents":[],"estimate":true,"season":"noviembre (curso universitario en marcha)"},"source":"Google Maps (reseñas)"}],"options_patch":[{"id":"discoteca-backstage","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno","note":"Música en directo"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"2:00–4:00","fillsUp":"Reseñas: muy lleno y con mucho calor los fines de semana","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Arreglado-informal; DNI","crowdType":"Algo mayor (más de 30 según Salir.com); mezclado","music":"DJ y música en directo; 80–90 y urbana según la fuente"}},"appendSource":"https://clubsingranada.com/es/clubs/backstage"},{"id":"aliatar-club","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal","note":"Jueves 19: concierto de Temples (≈20:30)"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo","note":"Tarde, hasta medianoche"}},"peakHours":"2:00–4:00","fillsUp":"—","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Estricto con la ropa; DNI","crowdType":"Unos 30 años de media","music":"Comercial, pop y reguetón; conciertos","tripEvents":[{"date":"2026-11-19","night":"jue","name":"Concierto: Temples","time":"≈20:30"}]}},"appendSource":"https://clubsingranada.com/es/clubs/aliatar; https://www.nipopnijazz.com/agenda-granada/"},{"id":"moonback-club","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":1,"label":"Casi vacío"},"vie":{"level":2,"label":"Tranquilo"},"sab":{"level":3,"label":"Ambiente normal"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"—","fillsUp":"Techno de nicho: con grupo pequeño puede estar vacío","estimate":true,"season":"noviembre (curso universitario en marcha)","dressCode":"Casual","crowdType":"Fans del techno","music":"Techno"}},"appendSource":"Google Maps (reseñas)"},{"id":"chupiteria-69","set":{"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo","note":"Descuentos entre semana"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":3,"label":"Ambiente normal"},"jue":{"level":4,"label":"Lleno"},"vie":{"level":5,"label":"Muy lleno"},"sab":{"level":5,"label":"Muy lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-la-flaca","set":{"nightlife":{"popularity":4,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":4,"label":"Lleno"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":5,"label":"Muy lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"amsterdam-cafe-pub","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":2,"label":"Tranquilo"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"alkimia-pub","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":1,"label":"Casi vacío"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":1,"label":"Casi vacío"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-wall-street","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-la-chica-de-ayer","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":1,"label":"Casi vacío"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"nitos-pub","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":2,"label":"Tranquilo"},"jue":{"level":2,"label":"Tranquilo"},"vie":{"level":3,"label":"Ambiente normal"},"sab":{"level":3,"label":"Ambiente normal"},"dom":{"level":2,"label":"Tranquilo"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"pub-entresuelo","set":{"nightlife":{"popularity":3,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":2,"label":"Tranquilo"},"mie":{"level":3,"label":"Ambiente normal","note":"Buen ambiente los miércoles según reseñas"},"jue":{"level":3,"label":"Ambiente normal","note":"Clases de salsa gratis"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"},{"id":"chupiteria-algaida","set":{"nightlife":{"popularity":2,"crowdByDay":{"lun":{"level":0,"label":"Cerrado"},"mar":{"level":0,"label":"Cerrado"},"mie":{"level":0,"label":"Cerrado"},"jue":{"level":3,"label":"Ambiente normal"},"vie":{"level":4,"label":"Lleno"},"sab":{"level":4,"label":"Lleno"},"dom":{"level":0,"label":"Cerrado"}},"peakHours":"0:00–2:00","fillsUp":"Pedro Antonio se anima a partir de medianoche de jueves a sábado","estimate":true,"season":"noviembre (curso universitario en marcha)"}},"appendSource":"https://turism-granada-en.pages.dev/discover/granada-nightlife-guide; https://clubsingranada.com/es/blog/erasmus-granada-fiesta"}],"remove_if_present":[{"id_or_name":"El Camborio","reason":"Ya no funciona como discoteca: solo bodas y eventos (clubsingranada.com, oct. 2026)"}]}
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" async></script>
 <script>
 (() => {
@@ -5681,6 +5708,20 @@ const DATA  = JSON.parse($('#data').textContent);
   DATA.foodTypes  = DATA.foodTypes.concat(add.foodTypes_add);
   DATA.options    = DATA.options.concat(add.options_add);
 }
+{ // fusión de la actualización 5 (ambiente de la noche): discotecas nuevas + parches + avisos
+  const add = JSON.parse($('#data-noche').textContent);
+  DATA.crowdScale = add.crowdScale;
+  DATA.options = DATA.options.concat(add.options_add);
+  (add.options_patch || []).forEach(p => {   // si el id no existe, se ignora
+    const o = DATA.options.find(x => x.id === p.id); if (!o) return;
+    Object.assign(o, p.set || {});
+    if (p.appendSource) o.source = o.source ? o.source + '; ' + p.appendSource : p.appendSource;
+  });
+  (add.remove_if_present || []).forEach(r => {   // no se borra: se marca y se avisa
+    const q = norm(r.id_or_name);
+    DATA.options.filter(x => x.id === r.id_or_name || norm(x.name).includes(q)).forEach(x => { x.gone = 'Ya no es discoteca'; x.goneReason = r.reason; });
+  });
+}
 { // paleta «Alhambra»: solo cambia el color de cada categoría (id, emoji y comportamiento, igual)
   const PAL = {casino_salon: '#d9842f', videojuegos_vr: '#2f9a8f', tienda_friki: '#c7703c', escape_room: '#6f9a3c', bar_juegos: '#cf6a6a',
     comer: '#d9a441', super: '#5b86b8', juego_urbano: '#8a6bb8', otros: '#a0703f',
@@ -5701,6 +5742,10 @@ const isSvc = o => o.category === 'peluqueria' || o.category === 'farmacia';   /
 const small = o => isFood(o) || isSuper(o) || isSvc(o);
 const BUDGET = {barato: 'Barato', 'barato-medio': 'Barato / medio', medio: 'Medio', caro: 'Caro'};
 const cheapOK = o => !o.budget || !BUDGET[o.budget] || o.budget === 'barato' || o.budget === 'barato-medio';   // sin presupuesto (o «—», farmacias): nunca se oculta
+const WDK = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'], WDLET = {lun: 'L', mar: 'M', mie: 'X', jue: 'J', vie: 'V', sab: 'S', dom: 'D'};
+const todayWd = () => WD[new Date().getDay()];
+const crowdOf = (o, wd) => o.nightlife && o.nightlife.crowdByDay ? o.nightlife.crowdByDay[wd] || null : null;
+const CROWD_COL = ['', '#e4efe9', '#bcd9d3', '#86bdb7', '#4a9a98', '#1f7a80'];   // 1 → 5, de más claro a más intenso
 const PHARMA_NOTE = 'Las farmacias de guardia cambian cada día: comprobad la de hoy en la web del Colegio de Farmacéuticos de Granada.';
 const STORE = Object.fromEntries(DATA.storeTypes.map(f => [f.id, f]));
 const BRANDS = [...new Set(DATA.options.filter(o => o.category === 'super').map(o => o.brand))];
@@ -5765,7 +5810,7 @@ const DOC_KEYS = ['favs', 'hidden', 'assigns', 'notes', 'edits', 'pins', 'custom
 const blank = () => ({
   v: 1, favs: {}, hidden: {}, assigns: [], notes: {}, edits: {}, pins: {}, custom: [], confetti: false,
   filters: {scope: 'all', cheap: false, sub: [], food: [], store: [], brand: [], sLate: false, sWalk: false, late: false, tapa: false, cash: false, q: '', cats: [], status: [], maxKm: 3, far: true, onlySel: false, onlyFav: false, onlyUnloc: false, showHidden: false},
-  ui: {rings: true, day: DAYS[0].id, lock: matchMedia('(pointer:coarse)').matches}
+  ui: {rings: true, crowd: null, day: DAYS[0].id, lock: matchMedia('(pointer:coarse)').matches}
 });
 const isObj = x => x && typeof x === 'object' && !Array.isArray(x);
 function normalize(s) {   // valida cualquier estado que venga de localStorage o de un JSON importado
@@ -5834,12 +5879,14 @@ function distTxt(o) {
   if (isFood(o) && o.dist >= 1) return fmtDist(o.dist) + ' · 🚕 taxi/VTC o ~' + walkMin(o.dist) + ' min a pie';
   return fmtDist(o.dist) + ' · ' + walkMin(o.dist) + ' min a pie';
 }
+function crowdDay() { return state.ui.crowd || (state.ui.day ? wdOf(state.ui.day) : todayWd()); }
 function pasa(o) {   // ¿supera los filtros activos?
   const f = state.filters;
   if (state.hidden[o.id] && !f.showHidden) return false;
   const food = isFood(o), sup = isSuper(o);
   if ((f.scope === 'ocio' && (food || sup || isSvc(o))) || (f.scope === 'comida' && !food) || (f.scope === 'super' && !sup)) return false;
   if (SUBCATS.includes(f.scope) && o.category !== f.scope) return false;
+  if (f.hideClosedNight && o.category === 'noche') { const c = crowdOf(o, crowdDay()); if (c && c.level === 0) return false; }
   if (f.cheap && !cheapOK(o)) return false;
   if (SUBCATS.includes(o.category)) {   // subfiltros por subtipo: solo afectan a su propia categoría
     const mine = f.sub.filter(k => k.startsWith(o.category + ':'));
@@ -5914,6 +5961,8 @@ function markerHTML(o, as, nums) {
   if (!o.assignable) cls.push('closed');
   if (as.length) cls.push('sel');
   if (bounceId === o.id) cls.push('bounce');
+  const cw = state.ui.crowd && crowdOf(o, state.ui.crowd);
+  if (cw && cw.level === 0) cls.push('dim');
   let tag = '';
   if (as.length) {
     const d = as.filter(a => a.day).sort((x, y) => x.day.localeCompare(y.day) || sortKey(x) - sortKey(y))[0];
@@ -5921,7 +5970,8 @@ function markerHTML(o, as, nums) {
   }
   return `<div class="${cls.join(' ')}" style="--c:${c.color}"><span class="aura"></span><span class="dot">${emo(o)}</span>${tag}`
     + (o.far ? `<span class="mk-far">${o.dist > 60 ? 'coche' : 'taxi/coche'}</span>` : '')
-    + (nums ? `<span class="mk-n">${nums.join(',')}</span>` : '') + '</div>';
+    + (nums ? `<span class="mk-n">${nums.join(',')}</span>` : '')
+    + (cw ? `<span class="mk-lv" style="--lv:${CROWD_COL[cw.level] || '#fffdf6'}" title="${esc(cw.label)} (estimación)">${cw.level ? cw.level + '/5' : '—'}</span>` : '') + '</div>';
 }
 function renderMarkers() {
   const seen = {}, nums = {};
@@ -6073,6 +6123,14 @@ function renderFilters() {
   const subCats = SUBCATS.filter(c => f.scope === c || f.cats.includes(c));
   $('#subF').hidden = !subCats.length;
   $('#pharmaNote').hidden = !subCats.includes('farmacia');
+  const cd = crowdDay();
+  $('#crowdF').hidden = ['comida', 'super', 'peluqueria', 'farmacia'].includes(f.scope);
+  $('#crowdChips').innerHTML = `<button class="chip${state.ui.crowd ? '' : ' on'}" data-crowd="" aria-pressed="${!state.ui.crowd}">Apagado</button>`
+    + WDK.map(k => { const on = state.ui.crowd === k, trip = DAYS.find(x => wdOf(x.id) === k);
+      return `<button class="chip cday${on ? ' on' : ''}${k === todayWd() ? ' today' : ''}" data-crowd="${k}" aria-pressed="${on}" title="${WDL[k]}${trip ? ' · ' + esc(trip.label) + ' (viaje)' : ''}${k === todayWd() ? ' · hoy' : ''}"${trip ? ` style="--c:${dayColor(trip.id)}"` : ''}>${WDLET[k]}${trip ? '<i>•</i>' : ''}</button>`; }).join('');
+  $('#nightChips').hidden = !subCats.includes('noche');
+  $('#nightChips').innerHTML = [['hideClosedNight', `🚫 Ocultar cerrados ese día (${WDL[cd]})`], ['sortCrowd', `↕️ Ordenar por ambiente (${WDL[cd]})`]].map(([k, lb]) =>
+    `<button class="chip${f[k] ? ' on' : ''}" style="--c:#5e5a8f" data-nf="${k}" aria-pressed="${!!f[k]}">${lb}</button>`).join('');
   $('#subChips').innerHTML = subCats.flatMap(c => DATA.subTypes[c].map(s => {
     const k = c + ':' + s.id, n = visibles.filter(o => o.category === c && o.subType === s.id).length, on = f.sub.includes(k);
     return `<button class="chip${on ? ' on' : ''}" style="--c:${CATS[c].color}" data-sub="${k}" aria-pressed="${on}">${s.emoji} ${esc(s.label)} <i>${n}</i></button>`;
@@ -6109,6 +6167,10 @@ function cardHTML(o) {
 }
 function renderList() {
   const shown = OPTS.filter(pasa), loc = shown.filter(o => o.located), un = shown.filter(o => !o.located);
+  if (state.filters.sortCrowd && (state.filters.scope === 'noche' || state.filters.cats.includes('noche'))) {
+    const lv = o => { const c = crowdOf(o, crowdDay()); return c ? c.level : -1; };
+    loc.sort((a, b) => lv(b) - lv(a));
+  }
   $('#resN').textContent = `${shown.length} de ${OPTS.length} opciones`;
   let h = loc.map(cardHTML).join('');
   if (!shown.length) h = '<div class="empty">Ninguna opción coincide con los filtros.</div>';
@@ -6134,13 +6196,39 @@ function gmaps(o) {
   return 'https://www.google.com/maps/dir/?api=1&origin=' + encodeURIComponent(HOTEL.address) + '&destination=' + encodeURIComponent(dest)
     + '&travelmode=' + (o.dist != null && o.dist > 2.5 ? 'driving' : 'walking');
 }
+function linkify(src) {   // «Fuente: a; b; c» → enlaces para las URLs
+  return String(src).split(/;\s+/).map(s => /^https?:\/\/\S+$/.test(s.trim())
+    ? `<a href="${esc(s.trim())}" target="_blank" rel="noopener noreferrer">${esc(s.trim().replace(/^https?:\/\/(www\.)?/, '').split('/')[0])}</a>` : esc(s)).join(' · ');
+}
+function ambHTML(o) {   // sección «Ambiente por día» (estimación)
+  const n = o.nightlife; if (!n || !n.crowdByDay) return '';
+  const trip = Object.fromEntries(DAYS.map(d => [wdOf(d.id), d])), hoy = todayWd();
+  const bars = WDK.map(k => {
+    const c = n.crowdByDay[k] || {level: 0, label: 'Sin datos'}, d = trip[k], lv = c.level || 0;
+    return `<div class="amb-col${k === hoy ? ' today' : ''}${d ? ' trip' : ''}" title="${WDL[k]}: ${esc(c.label)}${c.note ? ' · ' + esc(c.note) : ''}"${d ? ` style="--dc:${dayColor(d.id)}"` : ''}>
+      <div class="amb-bar">${lv ? `<span style="height:${lv * 20}%;background:${CROWD_COL[lv]}"></span>` : '<em>—</em>'}</div>
+      <b>${WDLET[k]}</b><small>${d ? d.id.slice(8) : k === hoy ? 'hoy' : '&nbsp;'}</small></div>`;
+  }).join('');
+  const notes = WDK.filter(k => n.crowdByDay[k] && n.crowdByDay[k].note).map(k => `<li><b>${WDL[k]}</b> ${esc(n.crowdByDay[k].note)}</li>`).join('');
+  const pop = n.popularity ? `<div class="amb-pop" aria-label="Popularidad ${n.popularity} de 5"><span class="dots">${'●'.repeat(n.popularity)}<i>${'●'.repeat(5 - n.popularity)}</i></span>Popularidad ${n.popularity}/5</div>` : '';
+  const rows = [['⏰', 'Hora punta', n.peakHours], ['📈', 'Cuándo se llena', n.fillsUp], ['👔', 'Vestimenta', n.dressCode], ['👥', 'Público', n.crowdType],
+    ['🎵', 'Música', n.music], ['🏟️', 'Aforo', n.capacity], ['💶', 'Precio', o.price || 'por verificar']].filter(r => r[2])
+    .map(([i, k, v]) => `<div><span>${i}</span><span><b>${k}:</b> ${esc(v)}</span></div>`).join('');
+  const ev = (n.tripEvents || []).map(e => `<li><b>${esc(DAYS.some(d => d.id === e.date) ? dayLabel(e.date) : e.date)}</b> · ${esc(e.name)}${e.time ? ' · ' + esc(e.time) : ''}${e.price ? ' · ' + esc(e.price) : ''}</li>`).join('');
+  return `<section class="amb"><div class="amb-h"><h4>🪩 Ambiente por día</h4><span class="bdg st-pv">Estimación para ${esc((n.season || 'noviembre').split(' ')[0])} · puede variar</span></div>
+    ${pop}<div class="amb-chart" role="img" aria-label="Nivel de ambiente estimado de lunes a domingo">${bars}</div>
+    <p class="amb-leg">0 cerrado · 1 casi vacío · 2 tranquilo · 3 normal · 4 lleno · 5 muy lleno${Object.keys(trip).length ? ' · color = días del viaje' : ''}</p>
+    ${notes ? `<ul class="amb-notes">${notes}</ul>` : ''}
+    <div class="d-rows amb-rows">${rows}</div>
+    ${ev ? `<div class="amb-ev"><b>📅 Eventos en vuestras noches</b><ul>${ev}</ul></div>` : ''}</section>`;
+}
 function hoursTable(o) {   // horario por día de los sitios que traen hoursByDay (los días del viaje, resaltados)
   if (!isFood(o) && !isSuper(o) && !SUBCATS.includes(o.category)) return '';
   if (!o.hoursByDay) return `<div class="hrs"><span class="unk">${o.category === 'noche' ? 'Horario según eventos' : 'Horario sin confirmar'}</span></div>`;
   const trip = Object.fromEntries(DAYS.map(d => [wdOf(d.id), d]));
   return '<div class="hrs">' + ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'].map(k => {
     const v = o.hoursByDay[k], shut = !v || !v.length, d = trip[k];
-    return `<b${d ? ` style="color:${dayColor(d.id)}"` : ''}>${WDL[k]}${d ? ' ' + d.id.slice(8) : ''}</b><span class="${shut ? 'cl' : ''}">${shut ? 'cerrado' : v.map(([a, b]) => a === b ? '24 h' : a + '–' + b).join(' · ')}</span>`;
+    return `<b${d ? ` style="color:${dayColor(d.id)}"` : ''}>${WDL[k]}${d ? ' ' + d.id.slice(8) : ''}</b><span class="${shut ? 'cl' : ''}">${shut ? 'cerrado' : v.map(([a, b]) => a === b ? '24 h' : (a === '23:59' ? '00:00' : a) + '–' + b).join(' · ')}</span>`;
   }).join('') + '</div>';
 }
 function renderDetail() {
@@ -6156,7 +6244,7 @@ function renderDetail() {
     <div class="d-head"><div class="ic" aria-hidden="true">${emo(o)}</div>
       <div style="flex:1;min-width:0"><h3>${esc(o.name)}</h3><div class="d-cat">${esc(c.label)}${subOf(o) ? ' · ' + esc(subOf(o).label) : ''}${isSuper(o) ? ' · ' + esc(o.brand) + (STORE[o.storeType] ? ' · ' + esc(STORE[o.storeType].label) : '') : ''}</div></div>
       <button class="ib sm" data-act="closed" aria-label="Cerrar detalle (Esc)">✕</button></div>
-    <div class="d-badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}
+    ${o.gone ? `<p class="gone">⚠️ ${esc(o.gone)}: ${esc(o.goneReason || '')}</p>` : ''}<div class="d-badges"><span class="bdg ${st.cls}">${esc(st.label)}</span>${o.extra ? '<span class="bdg b-x">Extra</span>' : ''}${o.custom ? '<span class="bdg b-x">Propio</span>' : ''}
       ${conf}${o.minAge >= 18 ? '<span class="bdg b-age">+18 · DNI</span>' : ''}${o.freeTapa ? '<span class="bdg b-food">🍺 Tapa gratis</span>' : ''}${o.cashOnly ? '<span class="bdg b-age">💶 Solo efectivo</span>' : ''}${o.lateNight ? `<span class="bdg b-pin">🌙 ${isSuper(o) ? 'Abierto hasta tarde' : 'Abre de madrugada'}</span>` : ''}${o.edited ? '<span class="bdg b-pin">Editada</span>' : ''}${state.hidden[o.id] ? '<span class="bdg b-hid">Oculta</span>' : ''}</div>
     <div class="d-rows">
       ${o.rating ? `<div><span>⭐</span><span>★ ${String(o.rating.value).replace('.', ',')} · ${miles(o.rating.count)} reseñas · ${esc(o.rating.source)} <small>· orientativo</small></span></div>` : ''}
@@ -6173,7 +6261,8 @@ function renderDetail() {
     ${isSuper(o) ? `<p class="s-note">🛒 ${SUPER_NOTE}</p>` : ''}${o.category === 'farmacia' ? `<p class="s-note">💊 ${PHARMA_NOTE}</p>` : ''}${o.category === 'noche' ? '<p class="s-note">🔞 +18, llevad DNI.</p>' : ''}
     ${o.description ? `<p class="d-desc">${esc(o.description)}</p>` : ''}
     ${o.tips ? `<p class="d-tip">💡 ${esc(o.tips)}</p>` : ''}
-    ${o.source ? `<p class="d-src">Fuente: ${esc(o.source)}</p>` : ''}
+    ${ambHTML(o)}
+    ${o.source ? `<p class="d-src">Fuente: ${linkify(o.source)}</p>` : ''}
     ${o.assignable ? '' : '<p class="noass">ℹ️ Solo informativo: no se puede añadir a la agenda.</p>'}
     ${as.length ? `<div class="d-as">${as.map(a => `<div><span><b style="color:${a.day ? dayColor(a.day) : 'var(--primary)'}">${esc(dayLabel(a.day))}</b> · ${a.start || 'sin hora'} · ${a.dur} min</span>
         <button class="ib sm" data-act="as-edit" data-uid="${a.uid}" aria-label="Editar día y hora">✏️</button><button class="ib sm" data-act="as-del" data-uid="${a.uid}" aria-label="Quitar de la agenda">✕</button></div>`).join('')}</div>` : ''}
@@ -6325,8 +6414,14 @@ function avisos(st, i) {   // avisos NO bloqueantes de una parada
   if (o.cashOnly) w.push('Solo efectivo');
   if (o.minPlayers > 2) w.push(`Mínimo ${o.minPlayers} jugadores`);
   if (o.minAge >= 18) w.push('Solo mayores de 18: llevad el DNI');
+  if (o.gone) w.push(o.gone);
   if (o.status === 'por_verificar') w.push(isFood(o) || isSuper(o) || SUBCATS.includes(o.category) ? (o.hoursByDay ? 'Horario de Google Maps, orientativo' : o.category === 'noche' ? 'Horario según eventos' : 'Horario sin confirmar') : o.hours ? 'Horario sin confirmar' : 'Horario por verificar');
   return w;
+}
+function ambLine(o, day) {   // «🪩 4/5 Lleno · Evento: …» para un día concreto (estimación)
+  const wd = wdOf(day), c = crowdOf(o, wd); if (!c) return '';
+  const ev = ((o.nightlife || {}).tripEvents || []).filter(e => e.date === day);
+  return `<p class="s-amb">🪩 Ambiente estimado ${WDL[wd]}: ${c.level ? c.level + '/5 · ' : ''}${esc(c.label)}${c.note ? ' · ' + esc(c.note) : ''}${ev.map(e => ` · 📅 ${esc(e.name)}${e.time ? ' ' + esc(e.time) : ''}${e.price ? ' (' + esc(e.price) + ')' : ''}`).join('')}</p>`;
 }
 function stopHTML(st, i, withTime) {
   const {a, o} = st[i], c = cat(o), w = withTime ? avisos(st, i) : [], s = a.start ? toMin(a.start) : null;
@@ -6340,6 +6435,7 @@ function stopHTML(st, i, withTime) {
     <div class="s-main">
       ${withTime ? `<div class="s-time"><span class="s-n">${i + 1}</span>${timeEl}<span class="s-end">${s != null ? '– ' + fmtMin(s + a.dur) : ''}</span>${s != null && s < NIGHT ? `<span class="moon" title="Madrugada: cuenta como la noche de este día (en el calendario ya es el día siguiente)">🌙 +1</span>` : ''}${durEl}</div>` : ''}
       <button class="s-name" data-act="open" data-id="${esc(o.id)}">${emo(o)} ${esc(o.name)}</button>
+      ${withTime && a.day ? ambLine(o, a.day) : ''}
       ${w.length ? `<ul class="warns">${w.map(x => `<li${/^(Cerrado|Fuera de|Termina después|Se solapa|Este sitio figura)/.test(x) ? ' class="dg"' : ''}>⚠️ ${esc(x)}</li>`).join('')}</ul>` : ''}
     </div>
     <div class="s-act">${withTime ? `<button class="ib sm" data-act="as-edit" data-uid="${a.uid}" aria-label="Editar día, hora y duración" title="Editar día, hora y duración">✏️</button>`
@@ -6417,6 +6513,7 @@ function openAssign(optId, uid) {
   const d = ex ? {day: ex.day, start: ex.start, dur: ex.dur} : {day: state.ui.day || null, start: null, dur: clampDur(o.durationMin || o.defaultDurationMin || 60)};
   const info = [];
   if (o.minPlayers > 2) info.push(`⚠️ Mínimo ${o.minPlayers} jugadores`);
+  if (o.gone) info.push('⚠️ ' + o.gone + ': ' + (o.goneReason || ''));
   if (o.minAge >= 18) info.push('⚠️ Solo mayores de 18: llevad el DNI');
   info.push(o.hours ? `🕒 Horario según la fuente, sin confirmar: ${o.hours}` : '🕒 Horario por verificar');
   if (o.cashOnly) info.push('💶 Solo efectivo');
@@ -6440,7 +6537,7 @@ function openAssign(optId, uid) {
     $$('#aD .chip', m).forEach(b => b.classList.toggle('on', +b.dataset.v === d.dur));
     if ($('#aTime', m).value !== (d.start || '')) $('#aTime', m).value = d.start || '';
     if (+$('#aDur', m).value !== d.dur) $('#aDur', m).value = d.dur;
-    $('#aLive', m).innerHTML = avisosHorario(o, d.day, d.start, d.dur).map(x => `<span>⚠️ ${esc(x)}</span>`).join('');
+    $('#aLive', m).innerHTML = avisosHorario(o, d.day, d.start, d.dur).map(x => `<span>⚠️ ${esc(x)}</span>`).join('') + (d.day ? ambLine(o, d.day) : '');
   };
   sync();
   m.addEventListener('click', e => {
@@ -6736,6 +6833,8 @@ $('#scopeSeg').addEventListener('click', e => { const b = e.target.closest('[dat
 $('#ftChips').addEventListener('click', e => { const b = e.target.closest('[data-ft]'); if (!b) return; const a = state.filters.food, i = a.indexOf(b.dataset.ft); i < 0 ? a.push(b.dataset.ft) : a.splice(i, 1); filtersChanged(); });
 $('#stoChips').addEventListener('click', e => { const b = e.target.closest('[data-sto]'); if (!b) return; const a = state.filters.store, i = a.indexOf(b.dataset.sto); i < 0 ? a.push(b.dataset.sto) : a.splice(i, 1); filtersChanged(); });
 $('#brChips').addEventListener('click', e => { const b = e.target.closest('[data-br]'); if (!b) return; const a = state.filters.brand, i = a.indexOf(b.dataset.br); i < 0 ? a.push(b.dataset.br) : a.splice(i, 1); filtersChanged(); });
+$('#crowdChips').addEventListener('click', e => { const b = e.target.closest('[data-crowd]'); if (!b) return; state.ui.crowd = b.dataset.crowd || null; filtersChanged(); });
+$('#nightChips').addEventListener('click', e => { const b = e.target.closest('[data-nf]'); if (!b) return; state.filters[b.dataset.nf] = !state.filters[b.dataset.nf]; filtersChanged(); });
 $('#subChips').addEventListener('click', e => { const b = e.target.closest('[data-sub]'); if (!b) return; const a = state.filters.sub, i = a.indexOf(b.dataset.sub); i < 0 ? a.push(b.dataset.sub) : a.splice(i, 1); filtersChanged(); });
 $('#fCheap').addEventListener('change', e => { state.filters.cheap = e.target.checked; filtersChanged(); });
 $('#sgChips').addEventListener('click', e => { const b = e.target.closest('[data-sg]'); if (!b) return; state.filters[b.dataset.sg] = !state.filters[b.dataset.sg]; filtersChanged(); });
