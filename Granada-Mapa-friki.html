@@ -6021,7 +6021,8 @@ function renderGroups() {
   const nOff = G.off.length, nSub = G.offSub.length;
   // barra rápida
   // indicador fuera de la fila desplazable: al aparecer no mueve ninguna pastilla
-  $('#gbInd').innerHTML = nOff || nSub ? `<button class="gp gp-ind" data-gb="reset" aria-label="Restablecer filtros de grupos">🎛️ ${nOff ? nOff + (nOff === 1 ? ' oculto' : ' ocultos') : ''}${nOff && nSub ? ' + ' : ''}${nSub ? nSub + ' subgr.' : ''} · <u>Restablecer</u></button>` : '';
+  $('#gbInd').innerHTML = false && (nOff || nSub) ?   // a petición del usuario: sin pastilla «X ocultos · Restablecer» («Todo» lo restablece)
+    `<button class="gp gp-ind" data-gb="reset" aria-label="Restablecer filtros de grupos">🎛️ ${nOff ? nOff + (nOff === 1 ? ' oculto' : ' ocultos') : ''}${nOff && nSub ? ' + ' : ''}${nSub ? nSub + ' subgr.' : ''} · <u>Restablecer</u></button>` : '';
   $('#gbIn').innerHTML = `<button class="gp gp-fix${!nOff && !nSub ? ' on' : ''}" data-gb="all" aria-pressed="${!nOff && !nSub}">Todo</button>`
     + `<button class="gp gp-fix${nOff === GIDS.length ? ' on' : ''}" data-gb="none" aria-pressed="${nOff === GIDS.length}">Nada</button>`
     + GROUPS.map(c => { const on = groupOn(c.id), part = on && subsOff(c.id).length;
@@ -6940,6 +6941,7 @@ function confirmar(html, okLabel) {
   });
 }
 function toast(msg, action) {
+  if (action) return;   // a petición del usuario: sin avisos con «Deshacer» (sigue disponible en ↶ y Ctrl+Z)
   const box = $('#toasts'), t = document.createElement('div'); t.className = 'toast glass'; t.setAttribute('role', 'status');
   const s = document.createElement('span'); s.textContent = msg; t.append(s);
   if (action) { const b = document.createElement('button'); b.className = 'lnk'; b.textContent = action.label; b.onclick = () => { t.remove(); action.fn(); }; t.append(b); }
